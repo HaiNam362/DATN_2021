@@ -7,10 +7,12 @@ export const create = Joi.object({
         .required(),
     phone: Joi.number()
         .required(),
-    timeBooking: Joi.string()
+    timeBookingStart: Joi.string()
         .required(),
+    timeBookingEnd: Joi.string().required(),
     totalRoomRate: Joi.number()
-        .required()
+        .required(),
+    advanceDeposit: Joi.number().required(),
 })
 export const update = Joi.object({
     fullName: Joi.string()
@@ -20,8 +22,10 @@ export const update = Joi.object({
         .required(),
     phone: Joi.number()
         .required(),
-    timeBooking: Joi.string()
+    timeBookingStart: Joi.string()
         .required(),
+    timeBookingEnd: Joi.string().required(),
     totalRoomRate: Joi.number()
-        .required()
+        .required(),
+    advanceDeposit: Joi.number().required(),
 })

@@ -9,8 +9,17 @@ const orderRoomBookedModel = Mongoose.Schema({
         type: Number,
         required: true
     },
-    timeBooking: {
+
+    timeBookingStart: {
         type: String,
+        required: true
+    },
+    timeBookingEnd: {
+        type: String,
+        required: true
+    },
+    advanceDeposit: {
+        type: Number,
         required: true
     },
     createdAt: {

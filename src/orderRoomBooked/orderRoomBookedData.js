@@ -12,6 +12,10 @@ class orderRoomBookedData {
         const doc = await orderRoomBookedModel.updateOne({ _id: id }, { $set: obj })
         return doc
     }
+    async findPhone(phone) {
+        const doc = await orderRoomBookedModel.findOne(phone)
+        return doc
+    }
     async delete(id) {
         const doc = await orderRoomBookedModel.deleteOne(id)
         return doc

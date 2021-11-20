@@ -13,6 +13,10 @@ class OrderRoomBookedController {
         const doc = await data.updateOne(id, obj)
         return doc
     }
+    async findPhone(phone) {
+        const doc = await data.findOne(phone)
+        return doc
+    }
     async delete(id) {
         const doc = await data.delete(id)
         return doc

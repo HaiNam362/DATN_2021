@@ -40,7 +40,11 @@ app.get('/:bookingStatus', async(req, res) => {
     const docs = await orderRoomBooked.findOne({ bookingStatus })
     res.json(docs)
 })
-
+app.get('/phone/:phone', async(req, res) => {
+    const phone = req.params.phone
+    const docs = await orderRoomBooked.findOne({ phone })
+    res.json(docs)
+})
 app.post('/update/:id', async(req, res) => {
     const id = req.params.id
     const data = req.body
