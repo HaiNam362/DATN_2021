@@ -19,17 +19,12 @@ export const create = Joi.object({
 export const update = Joi.object({
     fullName: Joi.string()
         .alphanum()
-        .min(6)
-        .max(20)
-        .required(),
-    phone: Joi.string()
-        .required(),
+        .max(20),
+    phone: Joi.string(),
     email: Joi.string(),
-    timeBookingStart: Joi.string()
-        .required(),
-    timeBookingEnd: Joi.string().required(),
-    totalRoomRate: Joi.number()
-        .required(),
-    advanceDeposit: Joi.number().required(),
-    bookingStatus: Joi.number().required(),
+    timeBookingStart: Joi.string(),
+    timeBookingEnd: Joi.string(),
+    totalRoomRate: Joi.number(),
+    advanceDeposit: Joi.number(),
+    bookingStatus: Joi.number(),
 })
