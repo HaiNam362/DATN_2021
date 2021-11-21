@@ -16,6 +16,9 @@ const roomDetailModel = Mongoose.Schema({
         type: String,
         required: true,
     },
+    roomPosition: {
+        type: String
+    },
     roomStatus: {
         type: Number,
         default: 1,
