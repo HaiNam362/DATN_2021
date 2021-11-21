@@ -25,7 +25,6 @@ app.post('/create', async(req, res, next) => {
             res.send(validate.error)
         }
         const doc = await orderRoomBooked.create(data)
-        await orderRoomBooking.create({ idBookingDetails: doc.id })
         res.json(doc)
     } catch (err) {
         res.json(err)
@@ -71,7 +70,6 @@ app.post('/delete/:id', async(req, res) => {
     const del1 = await orderRoomBooked.delete({ _id: id })
 
     if (del1) {
-        await orderRoomBooking.delete({ _id: id })
         res.json(`Delete thanh cong  ${id}`)
     } else {
         res.status(HTTP_STATUS.BAD_REQUEST)
