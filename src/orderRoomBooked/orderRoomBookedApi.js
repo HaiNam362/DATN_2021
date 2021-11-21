@@ -18,10 +18,7 @@ app.get('/', async(req, res) => {
 })
 app.post('/create', async(req, res, next) => {
     try {
-
-
         const data = req.body
-
         const validate = create.validate(data)
         if (validate.error) {
             res.status(HTTP_STATUS.BAD_REQUEST)
@@ -37,12 +34,13 @@ app.post('/create', async(req, res, next) => {
 
 app.get('/:bookingStatus', async(req, res) => {
     const bookingStatus = req.params.bookingStatus
-    const docs = await orderRoomBooked.findOne({ bookingStatus })
+    const docs = await orderRoomBooked.findBookingStatus({ bookingStatus })
+
     res.json(docs)
 })
 app.get('/phone/:phone', async(req, res) => {
     const phone = req.params.phone
-    const docs = await orderRoomBooked.findOne({ phone })
+    const docs = await orderRoomBooked.findPhone({ phone })
     res.json(docs)
 })
 app.post('/update/:id', async(req, res) => {
@@ -55,10 +53,15 @@ app.post('/update/:id', async(req, res) => {
     }
     data.updatedAt = Date.now()
     const doc1 = await orderRoomBooked.updateOne({ _id: id }, data)
+
     if (doc1) {
-        res.json("update thanh cong")
+
+        return res.status(200).send({
+            message: 'update  successfully',
+            data: data
+        })
     } else {
-        res.json("update that bai")
+        res.status(404).send(error)
     }
 
 })

@@ -9,7 +9,9 @@ const orderRoomBookedModel = Mongoose.Schema({
         type: String,
         required: true
     },
-
+    email: {
+        type: String,
+    },
     timeBookingStart: {
         type: String,
         required: true

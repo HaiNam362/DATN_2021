@@ -21,18 +21,23 @@ app.get('/all', async(req, res) => {
 })
 app.get('/getAllByStatus/:roomStatus', async(req, res) => {
     const roomStatus = req.params.roomStatus
-    const docs = await roomDetail.findRoomByStatus({roomStatus})
+    const docs = await roomDetail.findRoomByStatus({ roomStatus })
     res.json(docs)
 })
 
 app.get('/getAllByIdKind/:idKindOfRoom', async(req, res) => {
     const idKindOfRoom = req.params.idKindOfRoom
-    const docs = await roomDetail.findByIdKind({idKindOfRoom})
+    const docs = await roomDetail.findByIdKind({ idKindOfRoom })
     res.json(docs)
 })
 
+app.get('/idBooking/:idBooking', async(req, res) => {
+    const idBooking = req.params.idBooking
+    const docs = await roomDetail.findByIdBooking({ idBooking })
+    res.json(docs)
+})
 
-app.post('/create', async(req,res) => {
+app.post('/create', async(req, res) => {
     try {
         const data = req.body
 

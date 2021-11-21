@@ -31,5 +31,9 @@ class roomDetailController {
         const doc = await data.delete(id)
         return doc
     }
+    async findByIDBooking(idBooking) {
+        const doc = await data.find(idBooking)
+        return doc
+    }
 }
 export default roomDetailController
