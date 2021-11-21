@@ -3,12 +3,12 @@ import express from 'express'
 
 
 import OrderRoomBookedController from './orderRoomBookedControler.js'
-import OrderRoomBookingDetailController from '../oderRoomBookingDetail/oderRoomBookingDetailController.js'
+
 import { create, update } from './oderRoomBookedJoi.js'
 import { HTTP_STATUS } from '../err/http-status.js'
 const app = express()
 const orderRoomBooked = new OrderRoomBookedController
-const orderRoomBooking = new OrderRoomBookingDetailController
+
 
 app.use(express())
 
