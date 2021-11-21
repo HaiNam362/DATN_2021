@@ -70,10 +70,10 @@ app.post('/delete/:id', async(req, res) => {
     const del1 = await orderRoomBooked.delete({ _id: id })
 
     if (del1) {
-        res.json(`Delete thanh cong  ${id}`)
+        res.json({"result":`Delete thanh cong  ${id}`})
     } else {
         res.status(HTTP_STATUS.BAD_REQUEST)
-        res.json("Delete thất bại ")
+        res.json({"result":"Delete thất bại "})
     }
 
 })
