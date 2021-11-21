@@ -33,7 +33,7 @@ app.get('/getAllByIdKind/:idKindOfRoom', async(req, res) => {
 
 app.get('/idBooking/:idBooking', async(req, res) => {
     const idBooking = req.params.idBooking
-    const docs = await roomDetail.findByIdBooking({ idBooking })
+    const docs = await roomDetail.findByIDBooking({ idBooking })
     res.json(docs)
 })
 

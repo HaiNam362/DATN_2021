@@ -32,7 +32,7 @@ class roomDetailController {
         return doc
     }
     async findByIDBooking(idBooking) {
-        const doc = await data.find(idBooking)
+        const doc = await data.findByIDBooking(idBooking)
         return doc
     }
 }
