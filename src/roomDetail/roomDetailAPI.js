@@ -62,9 +62,9 @@ app.put('/update/:id', async(req, res) => {
     const data = req.body
     const doc1 = await roomDetail.updateOne({ _id: id }, data)
     if (doc1) {
-        res.json("message":"Successfully!!!")
+        res.json({"message":"Successfully!!!"})
     } else {
-        res.json("message":"Failed")
+        res.json({"message":"Failed"})
     }
 
 })
