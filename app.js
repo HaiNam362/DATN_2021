@@ -7,6 +7,7 @@ const require = createRequire(
     import.meta.url);
 import orderRoomBookedApi from './src/orderRoomBooked/orderRoomBookedApi.js';
 import roomDetailAPI from "./src/roomDetail/roomDetailAPI.js";
+import oderRoomBookingDetailApi from "./src/oderRoomBookingDetail/oderRoomBookingDatailApi.js";
 // configs
 import connectDatabase from "./src/configs/dbConfigs.js";
 import userAPI from "./src/user/userAPI.js";
@@ -52,7 +53,7 @@ app.use('/roomDetail', roomDetailAPI)
 app.use('/user', userAPI)
 app.use('/roomAmenities', amenitiesAPI)
 app.use('/api/v1/auth', authRouter.Router);
-
+app.use('/oderRoomBookingDetail', oderRoomBookingDetailApi);
 //Server
 app.listen(process.env.PORT || 7777, async() => {
     console.log(`Server chạy bằng con port ${process.env.port}`);
