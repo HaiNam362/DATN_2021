@@ -62,13 +62,27 @@ app.put('/update/:id', async(req, res) => {
     const data = req.body
     const doc1 = await roomDetail.updateOne({ _id: id }, data)
     if (doc1) {
-        res.json({"message":"Successfully!!!"})
+        res.json({ "message": "Successfully!!!" })
     } else {
-        res.json({"message":"Failed"})
+        res.json({ "message": "Failed" })
     }
 
 })
+app.post('/updateAny/:idBooking', async(req, res) => {
+    const idBooking = req.params.idBooking
+    const data = req.body
 
+    const doc = await roomDetail.updateAny(idBooking, data)
+    if (doc) {
+        return res.status(200).send({
+            message: 'update  successfully',
+            data: data
+        })
+    } else {
+        res.status(404).send(error)
+
+    }
+})
 app.get('/:id', async(req, res) => {
     const id = req.params.id
     const docs = await roomDetail.findOne({ _id: id })

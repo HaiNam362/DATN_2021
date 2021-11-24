@@ -35,5 +35,9 @@ class roomDetailController {
         const doc = await data.findByIDBooking(idBooking)
         return doc
     }
+    async updateAny(idBooking, obj) {
+        const doc = await data.updateAny(idBooking, obj)
+        return doc
+    }
 }
 export default roomDetailController

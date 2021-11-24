@@ -33,5 +33,9 @@ class roomDetailData {
         const doc = await roomDetailModel.find(idBooking)
         return doc
     }
+    async updateAny(idBooking, obj) {
+        const doc = await roomDetailModel.updateMany({ idBooking: idBooking }, obj);
+        return doc
+    }
 }
 export default roomDetailData
