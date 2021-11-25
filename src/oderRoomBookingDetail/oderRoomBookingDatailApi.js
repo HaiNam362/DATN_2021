@@ -20,7 +20,7 @@ app.post('/create', async(req, res) => {
 app.get('/:idBooking', async(req, res) => {
     try {
         const idBooking = req.params.idBooking
-        const docs = await orderRoomBooking.findOne({ idBooking })
+        const docs = await orderRoomBooking.findByIDBooking({ idBooking })
         res.json(docs)
     } catch (error) {
         res.status(500).send(error);

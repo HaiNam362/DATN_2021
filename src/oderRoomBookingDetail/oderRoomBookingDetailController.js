@@ -7,8 +7,8 @@ class OrderRoomBookingDetailController {
         const doc = await orderRoomBookingDetailData.create(obj);
         return doc
     }
-    async findOne(idBooking) {
-        const doc = await orderRoomBookingDetailData.findOne(idBooking)
+    async findByIDBooking(idBooking) {
+        const doc = await orderRoomBookingDetailData.findByIDBooking(idBooking)
         return doc
     }
     async delete(id) {
