@@ -5,12 +5,16 @@ class OrderRoomBookedController {
         const doc = await data.create(obj)
         return doc
     }
-    async findOne(bookingStatus) {
-        const doc = await data.findOne(bookingStatus)
+    async findBookingStatus(bookingStatus) {
+        const doc = await data.findBookingStatus(bookingStatus)
         return doc
     }
     async updateOne(id, obj) {
         const doc = await data.updateOne(id, obj)
+        return doc
+    }
+    async findPhone(phone) {
+        const doc = await data.findPhone(phone)
         return doc
     }
     async delete(id) {

@@ -7,11 +7,12 @@ const require = createRequire(
     import.meta.url);
 import orderRoomBookedApi from './src/orderRoomBooked/orderRoomBookedApi.js';
 import roomDetailAPI from "./src/roomDetail/roomDetailAPI.js";
+import oderRoomBookingDetailApi from "./src/orderRoomBookingDetail/orderRoomBookingDatailApi.js";
 // configs
 import connectDatabase from "./src/configs/dbConfigs.js";
 import userAPI from "./src/user/userAPI.js";
 import amenitiesAPI from "./src/roomAmenities/amenitiesAPI.js";
-import oderRoomBookingDetailApi from "./src/oderRoomBookingDetail/oderRoomBookingDatailApi.js";
+
 // const authRouter = require('./src/auth/auth.Router')
 import * as authRouter from './src/auth/auth.Router.js';
 import * as pictureOfRoom from './src/pictureOfRoom/pictureOfRoom.Router.js'

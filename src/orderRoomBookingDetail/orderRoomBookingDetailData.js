@@ -1,11 +1,11 @@
-import oderRoomBookingDetailModel from "./oderRoomBookingDetailModel.js";
+import oderRoomBookingDetailModel from "./orderRoomBookingDetailModel.js";
 class orderRoomBookingDetail {
     async create(obj) {
         const doc = await oderRoomBookingDetailModel.create(obj)
         return doc
     }
-    async findOne(idBookingDetails) {
-        const doc = await oderRoomBookingDetailModel.findOne(idBookingDetails)
+    async findByIDBooking(idBooking) {
+        const doc = await oderRoomBookingDetailModel.find(idBooking)
         return doc
     }
     async delete(id) {

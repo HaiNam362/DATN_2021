@@ -13,7 +13,7 @@ class roomDetailData {
         const doc = await roomDetailModel.updateOne({ _id: id }, { $set: obj })
         return doc
     }
-    async findRoomByStatus(roomStatus){
+    async findRoomByStatus(roomStatus) {
         const doc = await roomDetailModel.find(roomStatus)
         return doc
     }
@@ -21,7 +21,7 @@ class roomDetailData {
         const doc = await roomDetailModel.find()
         return doc
     }
-    async findByIdKind(idKindOfRoom){
+    async findByIdKind(idKindOfRoom) {
         const doc = await roomDetailModel.find(idKindOfRoom)
         return doc
     }
@@ -29,6 +29,13 @@ class roomDetailData {
         const doc = await roomDetailModel.deleteOne(id)
         return doc
     }
-
+    async findByIDBooking(idBooking) {
+        const doc = await roomDetailModel.find(idBooking)
+        return doc
+    }
+    async updateAny(idBooking, obj) {
+        const doc = await roomDetailModel.updateMany({ idBooking: idBooking }, obj);
+        return doc
+    }
 }
 export default roomDetailData
