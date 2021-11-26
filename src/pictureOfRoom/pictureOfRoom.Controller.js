@@ -22,10 +22,10 @@ export const updatePictureOfRoom = async (req,res,next) => {
         for (let i = 0; i < req.files.length; i++) {
             data.push(req.files[i].filename);
         }
-         await pictureOfRoom.updateOne({_id: userID},{picture: data},{returnOriginal: false});
+        let pictureDB = await pictureOfRoom.findByIdAndUpdate({_id: userID},{picture: data},{returnOriginal: false});
         res.status(200).json({
             message: 'upload pictureOfRoom successfully',
-            data: data
+            data: pictureDB
         })
     } catch (error) {
         console.log(error);
