@@ -20,5 +20,7 @@ Router.delete('/deleteUser/:id',authController.DelateOneUser);
 Router.put('/uploadAvatar',upload.single('avatar'),authController.uploadAvatar);
 Router.post('/createEmployeeAccount',checkRole("admin"), authController.createEmployeeAccount);
 Router.get('/getEmployees',checkRole("admin"),authController.getEmployees);
+Router.post('/changePassword',checkRole("admin"),authController.changePassword);
+Router.get('/getPhone',checkRole("admin"),authController.getPhone);
 
 export {Router};
