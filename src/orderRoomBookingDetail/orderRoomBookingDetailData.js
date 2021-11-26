@@ -1,4 +1,4 @@
-import oderRoomBookingDetailModel from "./oderRoomBookingDetailModel.js";
+import oderRoomBookingDetailModel from "./orderRoomBookingDetailModel.js";
 class orderRoomBookingDetail {
     async create(obj) {
         const doc = await oderRoomBookingDetailModel.create(obj)

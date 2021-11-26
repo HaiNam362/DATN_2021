@@ -1,6 +1,6 @@
 import express from 'express'
 
-import OrderRoomBookingDetailController from '../oderRoomBookingDetail/oderRoomBookingDetailController.js'
+import OrderRoomBookingDetailController from './orderRoomBookingDetailController.js'
 
 
 

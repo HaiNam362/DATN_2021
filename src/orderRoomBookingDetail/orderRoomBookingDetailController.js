@@ -1,6 +1,6 @@
 import { expiredHrs } from "../math/time.js";
 
-import orderRoomBookingDetail from "./oderRoomBookingDetailData.js";
+import orderRoomBookingDetail from "./orderRoomBookingDetailData.js";
 const orderRoomBookingDetailData = new orderRoomBookingDetail;
 class OrderRoomBookingDetailController {
     async create(obj) {

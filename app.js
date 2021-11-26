@@ -7,7 +7,7 @@ const require = createRequire(
     import.meta.url);
 import orderRoomBookedApi from './src/orderRoomBooked/orderRoomBookedApi.js';
 import roomDetailAPI from "./src/roomDetail/roomDetailAPI.js";
-import oderRoomBookingDetailApi from "./src/oderRoomBookingDetail/oderRoomBookingDatailApi.js";
+import oderRoomBookingDetailApi from "./src/orderRoomBookingDetail/orderRoomBookingDatailApi.js";
 // configs
 import connectDatabase from "./src/configs/dbConfigs.js";
 import userAPI from "./src/user/userAPI.js";
