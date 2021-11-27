@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
 
 const pictureOfRoomSchema = new mongoose.Schema({
-    idKindOfRoom:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'AmenitiesDetailsData'
+    price:{
+        type: Number,
     },
     picture:{
        type: [String],

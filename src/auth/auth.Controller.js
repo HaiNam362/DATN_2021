@@ -32,6 +32,7 @@ export const login = async (req, res, next) => {
                 res.status(200).json({
                     status: 'login success',
                     data: {
+                        user: user,
                         token, userName: user.name,
                     }
                 })
@@ -148,40 +149,40 @@ export const getEmployees = async (req, res, next) => {
 
 export const changePassword = async (req, res, next) => {
     // đang bug
-    // try {
-    //     const v = new Validator(req.body, {
-    //         old_password: 'required',
-    //         new_password: 'required',
-    //         confirm_password: 'required|same:new_password'
-    //     });
-    //     const matched = await v.check();
-    //     if (!matched) {
-    //         return res.status(422).send(v.errors);
-    //     }
-    //     let current_user = req.user;
-    //     if (bcrypt.compareSync(req.body.old_password, current_user.password)) {
-    //         let hashPassword = bcrypt.hashSync(req.body.new_password, 10);
-    //         await User.updateOne({
-    //             _id: current_user._id
-    //         },{
-    //             password: hashPassword
-    //         });
-    //             let userData = await User.findOne({_id:current_user._id})
-    //             let token = jwt.sign({data: userData},'project', { algorithm: 'HS256' })
-    //         return res.status(200).json({
-    //             message: 'Password successfully update',
-    //             data: userData,
-    //             token: token,
-    //         })
-    //     } else {
-    //         return res.status(400).send({
-    //             message: 'password does not matched',
-    //             data: {}
-    //         })
-    //     }
-    // } catch (error) {
-    //     console.log(error);
-    // }
+    try {
+        const v = new Validator(req.body, {
+            old_password: 'required',
+            new_password: 'required',
+            confirm_password: 'required|same:new_password'
+        });
+        const matched = await v.check();
+        if (!matched) {
+            return res.status(422).send(v.errors);
+        }
+        let current_user = req.user;
+        if (bcrypt.compareSync(req.body.old_password, current_user.password)) {
+            let hashPassword = bcrypt.hashSync(req.body.new_password, 10);
+            await User.updateOne({
+                _id: current_user._id
+            },{
+                password: hashPassword
+            });
+                let userData = await User.findOne({_id:current_user._id})
+                let token = jwt.sign({data: userData},'project', { algorithm: 'HS256' })
+            return res.status(200).json({
+                message: 'Password successfully update',
+                data: userData,
+                token: token,
+            })
+        } else {
+            return res.status(400).send({
+                message: 'password does not matched',
+                data: {}
+            })
+        }
+    } catch (error) {
+        console.log(error);
+    }
 
 }
 

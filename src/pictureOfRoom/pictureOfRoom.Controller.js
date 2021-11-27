@@ -6,7 +6,7 @@ export const createPictureOfRoom = async (req,res,next) => {
         for (let i = 0; i < req.files.length; i++) {
             data.push(req.files[i].filename);
         }
-        let userDB = await pictureOfRoom.create({picture: data},{returnOriginal: false});
+        let userDB = await pictureOfRoom.create({...req.body,picture: data},{returnOriginal: false});
         res.status(200).send({ 
             message: 'create pictureOfRoom successfully',
             data: userDB
@@ -26,6 +26,19 @@ export const updatePictureOfRoom = async (req,res,next) => {
         res.status(200).json({
             message: 'upload pictureOfRoom successfully',
             data: pictureDB
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getPictureAndPrice = async (req, res) => {
+    try {
+        const picture = await pictureOfRoom.find({});
+        return res.status(200).json({
+            status:'get price',
+            result: picture.length,
+            data: { picture }
         })
     } catch (error) {
         console.log(error);
