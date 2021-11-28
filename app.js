@@ -1,4 +1,4 @@
-import express from 'express'
+import express from 'express';
 // import dotenv from 'dotenv';
 import exphbs from 'express-handlebars';
 import path from 'path';
@@ -15,6 +15,7 @@ import amenitiesAPI from "./src/roomAmenities/amenitiesAPI.js";
 
 // const authRouter = require('./src/auth/auth.Router')
 import * as authRouter from './src/auth/auth.Router.js';
+import * as pictureOfRoom from './src/pictureOfRoom/pictureOfRoom.Router.js'
 //dotenv.config()
 connectDatabase();
 const app = express();
@@ -53,6 +54,7 @@ app.use('/roomDetail', roomDetailAPI)
 app.use('/user', userAPI)
 app.use('/roomAmenities', amenitiesAPI)
 app.use('/api/v1/auth', authRouter.Router);
+app.use('/api/v1/pictureOfRoom',pictureOfRoom.Router);
 app.use('/oderRoomBookingDetail', oderRoomBookingDetailApi);
 //Server
 app.listen(process.env.PORT || 7777, async() => {
