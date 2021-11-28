@@ -29,6 +29,7 @@ const orderRoomBookedModel = Mongoose.Schema({
         default: Date.now()
     },
     updatedAt: {
+        default: Date.now(),
         type: Date,
     },
     bookingStatus: {
