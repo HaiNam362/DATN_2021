@@ -2,6 +2,7 @@
 // const bcrypt = require('bcryptjs');
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 const userSchema = new mongoose.Schema({
     role:{
@@ -73,6 +74,7 @@ userSchema.pre('save', async function (next) {
     try {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(this.password, salt);
+        // const hashedPassword = jwt.sign(this.password,'hashPass')
         this.password = hashedPassword;
         console.log("dsad")
         next();

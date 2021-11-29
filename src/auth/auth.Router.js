@@ -14,13 +14,13 @@ Router.post('/login',authController.login);
 // verifyToken
 Router.use(verifyToken)
 Router.get('/getUser/:id',authController.getListUserId);
-Router.get('/getUser',checkRole("admin"),authController.getListUser);
+Router.get('/getUser',checkRole(["admin"]),authController.getListUser);
 Router.put('/updateUser/:id',authController.UpdateOneUser);
 Router.delete('/deleteUser/:id',authController.DelateOneUser);
 Router.put('/uploadAvatar',upload.single('avatar'),authController.uploadAvatar);
-Router.post('/createEmployeeAccount',checkRole("admin"), authController.createEmployeeAccount);
-Router.get('/getEmployees',checkRole("admin"),authController.getEmployees);
-Router.post('/changePassword',checkRole("admin"),authController.changePassword);
-Router.get('/getPhone',checkRole("admin"),authController.getPhone);
+Router.post('/createEmployeeAccount',checkRole(["admin"]), authController.createEmployeeAccount);
+Router.get('/getEmployees',checkRole(["admin"]),authController.getEmployees);
+Router.post('/changePassword',checkRole(["admin","employee"]),authController.changePassword);
+Router.get('/getPhone',checkRole(["admin"]),authController.getPhone);
 
 export {Router};

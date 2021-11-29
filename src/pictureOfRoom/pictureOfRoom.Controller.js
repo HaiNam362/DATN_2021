@@ -6,7 +6,7 @@ export const createPictureOfRoom = async (req,res,next) => {
         for (let i = 0; i < req.files.length; i++) {
             data.push(req.files[i].filename);
         }
-        let userDB = await pictureOfRoom.create({...req.body,picture: data},{returnOriginal: false});
+        let userDB = await pictureOfRoom.create({...req.body,picture: data},{returning: true});
         res.status(200).send({ 
             message: 'create pictureOfRoom successfully',
             data: userDB
