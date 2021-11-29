@@ -17,18 +17,11 @@ app.get('/', async(req, res) => {
     res.json("orderRoomBooked")
 })
 app.post('/create', async(req, res, next) => {
-    try {
+   
         const data = req.body
-        const validate = create.validate(data)
-        if (validate.error) {
-            res.status(HTTP_STATUS.BAD_REQUEST)
-            res.send(validate.error)
-        }
+       
         const doc = await orderRoomBooked.create(data)
         res.json(doc)
-    } catch (err) {
-        res.json(err)
-    }
 })
 
 app.get('/:bookingStatus', async(req, res) => {
