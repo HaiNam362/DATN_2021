@@ -13,8 +13,10 @@ const orderRoomBooked = new OrderRoomBookedController
 app.use(express())
 
 
-app.get('/', async(req, res) => {
-    res.json("orderRoomBooked")
+app.get('/:id', async(req, res) => {
+    const id = req.params.id
+    const docs = await orderRoomBooked.findone({ _id: id })
+    res.json(docs)
 })
 app.post('/create', async(req, res, next) => {
     try {
@@ -70,10 +72,10 @@ app.post('/delete/:id', async(req, res) => {
     const del1 = await orderRoomBooked.delete({ _id: id })
 
     if (del1) {
-        res.json({"message":`Delete thanh cong  ${id}`})
+        res.json({ "message": `Delete thanh cong  ${id}` })
     } else {
         res.status(HTTP_STATUS.BAD_REQUEST)
-        res.json({"message":"Delete thất bại "})
+        res.json({ "message": "Delete thất bại " })
     }
 
 })
