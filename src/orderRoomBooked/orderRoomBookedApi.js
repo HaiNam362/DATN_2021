@@ -33,7 +33,7 @@ app.post('/create', async(req, res, next) => {
     }
 })
 
-app.get('/:bookingStatus', async(req, res) => {
+app.get('/getOrderByBookingStatus/:bookingStatus', async(req, res) => {
     const bookingStatus = req.params.bookingStatus
     const docs = await orderRoomBooked.findBookingStatus({ bookingStatus })
 
