@@ -19,7 +19,7 @@ app.get('/:id', async(req, res) => {
     res.json(docs)
 })
 app.post('/create', async(req, res, next) => {
-    try {
+         try {
         const data = req.body
         const validate = create.validate(data)
         if (validate.error) {
