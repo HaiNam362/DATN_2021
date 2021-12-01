@@ -1,31 +1,41 @@
 import pictureOfRoom from './pictureOfRoom.models.js';
+let pictureURL = '../../public/upload'
 
-export const createPictureOfRoom = async (req,res,next) => {
+export const createPictureOfRoom = async (req, res, next) => {
     try {
-        let data =[];
+        let data = [];
         for (let i = 0; i < req.files.length; i++) {
             data.push(req.files[i].filename);
         }
-        let userDB = await pictureOfRoom.create({...req.body,picture: data},{returning: true});
-        res.status(200).send({ 
+        let pictureDB = await pictureOfRoom.create({ ...req.body, picture: data }, { returning: true });
+        res.status(200).send({
             message: 'create pictureOfRoom successfully',
-            data: userDB
+            data: pictureDB
         })
     } catch (error) {
         console.log(error);
     }
 }
-export const updatePictureOfRoom = async (req,res,next) => {
+export const updatePictureOfRoom = async (req, res, next) => {
     try {
-        const userID = req.user;
-        let data = []; 
-        for (let i = 0; i < req.files.length; i++) {
-            data.push(req.files[i].filename);
+        const { _id, price } = req.body;
+        let pictureDB = await pictureOfRoom.findOne({ _id: _id });
+        // console.log(pictureDB,"abc");
+
+        let picture = pictureDB.picture;
+
+        picture.splice(0, 6);
+        if (req.files.length < 2) {
+            return res.status(400).send({ message: 'cần ít nhất 2 ảnh' });
         }
-        let pictureDB = await pictureOfRoom.findByIdAndUpdate({_id: userID},{picture: data},{returnOriginal: false});
-        res.status(200).json({
-            message: 'upload pictureOfRoom successfully',
-            data: pictureDB
+        for (let i = 0; i < req.files.length; i++) {
+            picture.push(req.files[i].filename);
+        }
+        let data = {price,picture};
+        await pictureOfRoom.updateOne({_id},data);
+        return res.status(200).json({
+            message: 'update ảnh phòng thành công',
+            data: data,
         })
     } catch (error) {
         console.log(error);
@@ -36,7 +46,7 @@ export const getPictureAndPrice = async (req, res) => {
     try {
         const picture = await pictureOfRoom.find({});
         return res.status(200).json({
-            status:'get price',
+            status: 'get price',
             result: picture.length,
             data: { picture }
         })

@@ -186,6 +186,9 @@ export const changePassword = async (req, res, next) => {
         console.log(error);
     }
 }
+export const ResetPassWord = async (req,res,next) => {
+    res.send({message: 'ResetPassWord'})
+}
 
 export const logout = async (req, res, next) => {
     try {

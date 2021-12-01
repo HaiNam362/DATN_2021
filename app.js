@@ -32,12 +32,17 @@ app.set('view engine', '.hbs');
 //app.engine("hbs", exphbs({ defaultLayout: false }));
 
 
-
+app.get("/login", async(req, res) => {
+    res.render('login')
+})
 app.get("/home", async(req, res) => {
     res.render('index')
 })
-app.get("/login", async(req, res) => {
-    res.render('login')
+// app.get("/login", async(req, res) => {
+//     res.render('login')
+// })
+app.get("/notifications", async (req,res,next) =>{
+    res.render('notifications')
 })
 app.get("/register", async(req, res) => {
     res.render('register')

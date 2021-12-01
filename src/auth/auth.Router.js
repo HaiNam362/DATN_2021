@@ -21,6 +21,7 @@ Router.put('/uploadAvatar',upload.single('avatar'),authController.uploadAvatar);
 Router.post('/createEmployeeAccount',checkRole(["admin"]), authController.createEmployeeAccount);
 Router.get('/getEmployees',checkRole(["admin"]),authController.getEmployees);
 Router.post('/changePassword',checkRole(["admin","employee"]),authController.changePassword);
+Router.post('/ResetPassWord',checkRole(["admin","employee"]),authController.ResetPassWord);
 Router.get('/getPhone',checkRole(["admin"]),authController.getPhone);
 
 export {Router};
