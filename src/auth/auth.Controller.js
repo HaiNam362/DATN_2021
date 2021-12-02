@@ -148,7 +148,7 @@ export const getEmployees = async (req, res, next) => {
 }
 
 export const changePassword = async (req, res, next) => {
-    // đang bug
+    
     try {
         const v = new Validator(req.body, {
             old_password: 'required',
@@ -159,7 +159,9 @@ export const changePassword = async (req, res, next) => {
         if (!matched) {
             return res.status(422).send(v.errors);
         }
-        let current_user = req.user;
+        let current_user = await User.findOne({_id: req.user});
+        // console.log(req.body.old_password,"abc678");
+        // console.log(current_user);
         if (bcrypt.compareSync(req.body.old_password, current_user.password)) {
             let hashPassword = bcrypt.hashSync(req.body.new_password, 10);
             await User.updateOne({
@@ -183,7 +185,9 @@ export const changePassword = async (req, res, next) => {
     } catch (error) {
         console.log(error);
     }
-
+}
+export const ResetPassWord = async (req,res,next) => {
+    res.send({message: 'ResetPassWord'})
 }
 
 export const logout = async (req, res, next) => {
