@@ -23,7 +23,8 @@ const __dirname = path.resolve();
 app.use(express())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '/public'));
+app.use('/public', express.static(path.join(__dirname, 'public'))); 
 app.set('views', path.join(__dirname, 'views'));
 //app.engine('html', require('ejs').renderFile);
 //app.set('view engine', 'html');
