@@ -4,28 +4,28 @@ import moment from 'moment'
 
 
 export const list = async (req, res, next) => {
-   let isSearch = false;
-   var search = {};
-   if(!_.isEmpty(req.query)){
-       var {
+//    let isSearch = false;
+//    var search = {};
+//    if(!_.isEmpty(req.query)){
+//        var {
 
-       }
-   }
+//        }
+//    }
 }
 export const login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
 
         if (email == 'admin' && password == 'admin')
-            return res.redirect('' + moment().unix());
+            return res.redirect('/home' );
 
-        const data = await User.findOne({ email, password });
+        // const data = await User.findOne({ email, password });
 
-        if (!data) return res.redirect('login', { msgError: 'Sai email hoặc mậy khẩu' });
+        // if (!data) return res.redirect('login', { msgError: 'Sai email hoặc mậy khẩu' });
         
-        if (data.role != 'admin') return res.render('login', { msgError: 'Tài Khoản không có quyền hạn' })
+        // if (data.role != 'admin') return res.render('login', { msgError: 'Tài Khoản không có quyền hạn' })
         
-        res.redirect('' + moment().unix());
+        // res.redirect('/home' + moment().unix());
     } catch (error) {
         res.status(500).send(error.message);
     }

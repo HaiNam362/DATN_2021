@@ -16,6 +16,8 @@ import amenitiesAPI from "./src/roomAmenities/amenitiesAPI.js";
 // const authRouter = require('./src/auth/auth.Router')
 import * as authRouter from './src/auth/auth.Router.js';
 import * as pictureOfRoom from './src/pictureOfRoom/pictureOfRoom.Router.js'
+// web
+import * as authWebRouter from './src/web/router/auth.web.router.js'
 //dotenv.config()
 connectDatabase();
 const app = express();
@@ -39,9 +41,6 @@ app.get("/login", async(req, res) => {
 app.get("/home", async(req, res) => {
     res.render('index')
 })
-// app.get("/login", async(req, res) => {
-//     res.render('login')
-// })
 app.get("/notifications", async (req,res,next) =>{
     res.render('notifications')
 })
@@ -54,7 +53,7 @@ app.get("/profile", async(req, res) => {
 app.get("/table", async(req, res) => {
         res.render('table')
     })
-    //Route
+//Route api
 app.use('/orderRoomBooked', orderRoomBookedApi)
 app.use('/roomDetail', roomDetailAPI)
 app.use('/user', userAPI)
@@ -62,8 +61,10 @@ app.use('/roomAmenities', amenitiesAPI)
 app.use('/api/v1/auth', authRouter.Router);
 app.use('/api/v1/pictureOfRoom',pictureOfRoom.Router);
 app.use('/oderRoomBookingDetail', oderRoomBookingDetailApi);
+//Router web
+app.use('/',authWebRouter.router);
 //Server
 app.listen(process.env.PORT || 7777, async() => {
-    console.log(`Server chạy bằng con port ${process.env.port}`);
+    console.log(`Listening on PORT ${process.env.port}`);
 })
 export default app;
