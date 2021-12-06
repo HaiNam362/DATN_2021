@@ -1,6 +1,6 @@
 import pictureOfRoom from './pictureOfRoom.models.js';
-// let pictureURL = 'https://datphongkhachsan.herokuapp.com/public/upload/'
-let pictureURL = 'http://localhost:7777/public/upload/'
+let pictureURL = 'https://datphongkhachsan.herokuapp.com/public/upload/'
+// let pictureURL = 'http://localhost:7777/public/upload/'
 
 export const createPictureOfRoom = async (req, res, next) => {
     try {
@@ -8,7 +8,7 @@ export const createPictureOfRoom = async (req, res, next) => {
         for (let i = 0; i < req.files.length; i++) {
             data.push(pictureURL + req.files[i].filename);
         }
-        let pictureDB = await pictureOfRoom.create({ ...req.body, picture: data });
+        let pictureDB = await pictureOfRoom.create({ ...req.body, picture: data});
         res.status(200).send({
             message: 'create pictureOfRoom successfully',
             data: pictureDB
@@ -27,7 +27,7 @@ export const updatePictureOfRoom = async (req, res, next) => {
             return res.status(400).send({ message: 'cần ít nhất 2 ảnh' });
         }
         for (let i = 0; i < req.files.length; i++) {
-            picture.push(req.files[i].filename);
+            picture.push(pictureURL + req.files[i].filename);
         }
         let data = { price, picture };
         await pictureOfRoom.updateOne({ _id }, data);
