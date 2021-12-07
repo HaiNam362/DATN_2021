@@ -1,13 +1,14 @@
 import pictureOfRoom from './pictureOfRoom.models.js';
-let pictureURL = '../../public/upload'
+let pictureURL = 'https://datphongkhachsan.herokuapp.com/public/upload/'
+// let pictureURL = 'http://localhost:7777/public/upload/'
 
 export const createPictureOfRoom = async (req, res, next) => {
     try {
         let data = [];
         for (let i = 0; i < req.files.length; i++) {
-            data.push(req.files[i].filename);
+            data.push(pictureURL + req.files[i].filename);
         }
-        let pictureDB = await pictureOfRoom.create({ ...req.body, picture: data }, { returning: true });
+        let pictureDB = await pictureOfRoom.create({ ...req.body, picture: data});
         res.status(200).send({
             message: 'create pictureOfRoom successfully',
             data: pictureDB
@@ -20,19 +21,16 @@ export const updatePictureOfRoom = async (req, res, next) => {
     try {
         const { _id, price } = req.body;
         let pictureDB = await pictureOfRoom.findOne({ _id: _id });
-        // console.log(pictureDB,"abc");
-
         let picture = pictureDB.picture;
-
         picture.splice(0, 6);
         if (req.files.length < 2) {
             return res.status(400).send({ message: 'cần ít nhất 2 ảnh' });
         }
         for (let i = 0; i < req.files.length; i++) {
-            picture.push(req.files[i].filename);
+            picture.push(pictureURL + req.files[i].filename);
         }
-        let data = {price,picture};
-        await pictureOfRoom.updateOne({_id},data);
+        let data = { price, picture };
+        await pictureOfRoom.updateOne({ _id }, data);
         return res.status(200).json({
             message: 'update ảnh phòng thành công',
             data: data,

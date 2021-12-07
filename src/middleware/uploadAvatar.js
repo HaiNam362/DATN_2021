@@ -2,7 +2,7 @@ import multer from 'multer';
 import path  from 'path';
 import fs from 'fs';
 const __dirname = path.resolve();
-const uploadFile = path.join(__dirname, './public/upload');
+const uploadFile = path.join(__dirname, 'public/upload');//./public/upload
 console.log("2001",uploadFile);
 console.log("2002",__dirname);
 

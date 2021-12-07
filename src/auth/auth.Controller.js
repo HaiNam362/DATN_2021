@@ -2,6 +2,7 @@ import User from './user.models.js'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import {Validator} from 'node-input-validator'
+let pictureURL = 'https://datphongkhachsan.herokuapp.com/public/upload/'
 
 export const register = async (req, res, next) => {
     try {
@@ -81,7 +82,7 @@ export const UpdateOneUser = async (req, res, next) => {
         const id = req.params.id;
         const userDB = await User.findOne({ _id: id });
         if (!userDB) {
-            res.status(404).send({ message: 'User not found' });
+            res.status(404).json({ message: 'User not found' });
         }
         const userDB2 = await User.findByIdAndUpdate(id, { $set: req.body }, { new: true });
         await userDB2.save();
@@ -107,14 +108,14 @@ export const DelateOneUser = async (req, res, next) => {
 export const uploadAvatar = async (req, res, next) => {
     try {
         const userID = req.user;
-        let userDB = await User.findOneAndUpdate({ _id: userID }, { avatar: req.file.filename }, { returnOriginal: false });
+        let userDB = await User.findOneAndUpdate({ _id: userID }, { avatar: pictureURL + req.file.filename });
         console.log(userDB, "1234");
         if (!userDB) {
             return res.status(404).send({ message: 'not found' });
         }
         console.log(req.file.filename, "9876");
         res.status(200).send({
-            message: 'Apload avatar successfully',
+            message: 'Upload avatar successfully',
             data: userDB
         })
     } catch (error) {
@@ -188,6 +189,13 @@ export const changePassword = async (req, res, next) => {
 }
 export const ResetPassWord = async (req,res,next) => {
     res.send({message: 'ResetPassWord'})
+    try {
+        const {email} = req.body;
+        const data = await User.findOne({email}); 
+        if(!data) return res.status(404).json({message: 'email not found'});
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export const logout = async (req, res, next) => {

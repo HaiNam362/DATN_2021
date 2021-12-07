@@ -2,7 +2,7 @@ import multer from 'multer';
 import path  from 'path';
 import fs from 'fs';
 const __dirname = path.resolve();
-const uploadFile = path.join(__dirname, './public/upload');
+const uploadFile = path.join(__dirname, 'public/upload');
 
 if (!fs.existsSync(uploadFile)) {
     fs.mkdirSync(uploadFile, { recursive: true });
