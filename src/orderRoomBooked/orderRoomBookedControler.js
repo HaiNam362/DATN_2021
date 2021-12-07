@@ -21,5 +21,9 @@ class OrderRoomBookedController {
         const doc = await data.delete(id)
         return doc
     }
+    async findone(id) {
+        const doc = await data.findone(id)
+        return doc
+    }
 }
 export default OrderRoomBookedController
