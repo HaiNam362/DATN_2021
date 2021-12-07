@@ -108,7 +108,7 @@ export const DelateOneUser = async (req, res, next) => {
 export const uploadAvatar = async (req, res, next) => {
     try {
         const userID = req.user;
-        let userDB = await User.findOneAndUpdate({ _id: userID }, { avatar: pictureURL + req.file.filename });
+        let userDB = await User.findOneAndUpdate({ _id: userID }, { avatar: pictureURL + req.file.filename },{returnOriginal: false});
         console.log(userDB, "1234");
         if (!userDB) {
             return res.status(404).send({ message: 'not found' });
