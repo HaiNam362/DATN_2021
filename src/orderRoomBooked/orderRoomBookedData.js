@@ -4,6 +4,10 @@ class orderRoomBookedData {
         const doc = await orderRoomBookedModel.create(obj)
         return doc
     }
+    async findone(id) {
+        const doc = await orderRoomBookedModel.findById(id)
+        return doc
+    }
     async findBookingStatus(bookingStatus) {
         const doc = await orderRoomBookedModel.find(bookingStatus)
         return doc
