@@ -11,6 +11,7 @@ import {checkRole} from '../middleware/auth.js'
 
 Router.post('/register',authController.register);
 Router.post('/login',authController.login);
+Router.post('/ResetPassWord',authController.ResetPassWord);
 // verifyToken
 Router.use(verifyToken)
 Router.get('/getUser/:id',authController.getListUserId);
@@ -21,7 +22,7 @@ Router.put('/uploadAvatar',upload.single('avatar'),authController.uploadAvatar);
 Router.post('/createEmployeeAccount',checkRole(["admin"]), authController.createEmployeeAccount);
 Router.get('/getEmployees',checkRole(["admin"]),authController.getEmployees);
 Router.post('/changePassword',checkRole(["admin","employee"]),authController.changePassword);
-Router.post('/ResetPassWord',checkRole(["admin","employee"]),authController.ResetPassWord);
+
 Router.get('/getPhone',checkRole(["admin"]),authController.getPhone);
 
 export {Router};
