@@ -35,79 +35,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                {{!-- <div class="col-md-auto">
-                                    <div id="dataTable_length" aria-controls="dataTable">
-                                        <label class="form-label">
-                                            <select id="facilities" class="d-inline-block form-select form-select-sm">
-                                                {{#each facilities}}
-                                                {{#optionFacilities "" this}}{{/optionFacilities}}
-                                                {{/each}}
-                                            </select>
-                                        </label>
-                                    </div>
-                                </div> --}}
-
-                                 {{!-- <div class="col-md-auto">
-                                    <div id="dataTable_length" aria-controls="dataTable">
-                                        <label class="form-label">
-                                            <select class="d-inline-block form-select form-select-sm" id="specialized">
-                                                {{#each specialized}}
-                                                {{#optionSpecialized "" this}} {{/optionSpecialized}}
-                                                {{/each}}
-                                            </select>
-                                            {{#optionSpecialized "" specialized}} {{/optionSpecialized}} 
-                                        </label>
-                                    </div>
-                                </div> --}}
-
-                                {{!-- <div class="col-md-auto">
-                                    <div id="dataTable_length" aria-controls="dataTable">
-                                        <label class="form-label">
-                                            <select id="course" class="d-inline-block form-select form-select-sm">
-                                                {{#each course}}
-                                                {{#optionCourse "" this}} {{/optionCourse}}
-                                                {{/each}}
-                                            </select>
-                                        </label>
-                                    </div>
-                                </div> --}}
-
-                                {{!-- <div class="col-md-auto">
-                                    <div id="dataTable_length" aria-controls="dataTable">
-                                        <label class="form-label">
-                                            <select id="gender" class="d-inline-block form-select form-select-sm">
-                                                {{#optionGender "" "Giới tính"}} {{/optionGender}}
-                                                {{#optionGender "" "Nam"}} {{/optionGender}}
-                                                {{#optionGender "" "Nữ"}} {{/optionGender}}
-                                            </select>
-                                        </label>
-                                    </div>
-                                </div> --}}
-                                {{!-- <div class="col-md-auto">
-                                    <div id="dataTable_length" aria-controls="dataTable">
-                                        <label class="form-label">
-                                            <select id="report" class="d-inline-block form-select form-select-sm">
-                                                {{#optionReport "" "Báo cáo"}} {{/optionReport}}
-                                                {{#optionReport "" "25"}} {{/optionReport}}
-                                                {{#optionReport "" "50"}} {{/optionReport}}
-                                                {{#optionReport "" "100"}} {{/optionReport}}
-                                            </select>
-                                        </label>
-                                    </div>
-                                </div> --}}
-
-                                {{!-- <div class="col-md-auto">
-                                    <div id="dataTable_length" aria-controls="dataTable">
-                                        <label class="form-label">
-                                            <select id="status" class="d-inline-block form-select form-select-sm">
-                                                {{#optionStatus '' 'Hoạt động'}}{{/optionStatus}}
-                                                {{#optionStatus '' 'Kích hoạt'}}{{/optionStatus}}
-                                                {{#optionStatus '' 'Chặn'}}{{/optionStatus}}
-                                            </select>
-                                        </label>
-                                    </div>
-                                </div> --}}
-
+                               
                                 <div class="col-md-auto">
                                     <div class="text-md-end dataTables_filter" id="dataTable_filter">
                                         <label class="form-label">
@@ -130,7 +58,7 @@
 
                             </div>
 
-                            <form id="form" action="/users/page/1">
+                            <form id="form" action="/profileUser">
                                 <input type="hidden" name="facilities" />
                                 <input type="hidden" name="specialized" value="" />
                                 <input type="hidden" name="course" value="" />
@@ -145,67 +73,30 @@
                                 <table class="table table-hover my-0" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>avatar</th>
-                                            <th>Họ Tên</th>
-                                            <th>Phone</th>
-                                            <th>Email</th>
-                                            <th>Ngày sinh</th>
-                                            <th>Địa Chỉ</th>
+                                            <th>fullName</th>
+                                            <th>email</th>
+                                            <th>phone</th>
+                                            <th>DateOfBirth</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {{#each profileUser}}
                                         <tr>
-                                            <td>avatar</td>
-                                            <td>Nguyễn Văn Lục</td>
-                                            <td>0966012376</td>
-                                            <td>vanluc@gmail.com</td>
-                                            <td>30-10-2001</td>
-                                            <td>HaNoi</td>
-                                        </tr>
-                                        <tr>
-                                            <td>avatar</td>
-                                            <td>Nguyễn Văn Lục</td>
-                                            <td>0966012376</td>
-                                            <td>vanluc@gmail.com</td>
-                                            <td>30-10-2001</td>
-                                            <td>HaNoi</td>
-                                        </tr>
-                                        <tr>
-                                            <td>avatar</td>
-                                            <td>Nguyễn Văn Lục</td>
-                                            <td>0966012376</td>
-                                            <td>vanluc@gmail.com</td>
-                                            <td>30-10-2001</td>
-                                            <td>HaNoi</td>
-                                        </tr>
-                                        {{!-- {{#each users}}
-                                        <tr>
-                                            <td><a href="/users/{{this.email}}">{{this.email}}</a></td>
+                                            <td><a href="/profileUser/{{this.email}}">{{this.email}}</a></td>
                                             <td>
                                                 <img class="rounded-circle me-2" width="30" height="30"
-                                                    src="{{this.images.[0]}}">
+                                                    src="{{this.avatar.[0]}}">
                                                 {{this.name}}
                                             </td>
-                                            <td>{{this.hobbies}}</td>
-                                            <td>{{this.birthDay}}</td>
-                                            <td>{{this.gender}}</td>
-                                            <td>{{this.facilities}}</td>
-                                            <td>{{this.specialized}}</td>
-                                            <td>{{this.course}}</td>
-                                            <td>0</td>
-
-                                            {{#if (eq this.isActive "Kích hoạt")}}
-                                            <td class="text-success">{{this.isActive}}</td>
-                                            {{else}}
-                                            <td class="text-danger">{{this.isActive}}</td>
-                                            {{/if}}
-
+                                            <td>{{this.fullName}}</td>
+                                            <td>{{this.email}}</td>
+                                            <td>{{this.phone}}</td>
+                                            <td>{{this.DateOfBirth}}</td>
                                         </tr>
-                                        {{/each }} --}}
+                                        {{/each }}
                                     </tbody>
                                 </table>
                             </div>
-
                             <div class="row">
                                 <div class="col-md-6 align-self-center">
                                     <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Hiển
@@ -214,7 +105,7 @@
                                 <div class="col-md-6">
                                     <nav
                                         class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                        <ul class="pagination">
+                                        {{!-- <ul class="pagination">
                                             {{#if buttonFirt}}
                                             {{#if isSearch}}
                                             <li class="page-item"><a class="page-link"
@@ -239,7 +130,7 @@
                                                     aria-label="Next"><span aria-hidden="true">Cuối</span></a></li>
                                             {{/if}}
                                             {{/if}}
-                                        </ul>
+                                        </ul> --}}
                                     </nav>
                                 </div>
                             </div>

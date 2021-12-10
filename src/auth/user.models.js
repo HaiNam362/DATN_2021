@@ -3,8 +3,16 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import MUUID from 'uuid-mongodb'
+const mUUID1 = MUUID.v1();
 
 const userSchema = new mongoose.Schema({
+    tokenId:{
+        type: String,
+        value: { type: 'Buffer'},
+        default: () => MUUID.v1(),
+        primaryKey: true
+    },
     role:{
        type: String,
        trim: true,
@@ -19,6 +27,7 @@ const userSchema = new mongoose.Schema({
     phone: {
         type: String,
         unique: true,
+        trim: true,
         require: [true, 'phone must be require']
     },
     email: {
@@ -74,15 +83,12 @@ userSchema.pre('save', async function (next) {
     try {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(this.password, salt);
-        // const hashedPassword = jwt.sign(this.password,'hashPass')
         this.password = hashedPassword;
-        console.log("dsad")
         next();
     } catch (error) {
         console.log(error);
     }
 })
-
 
 const User = mongoose.model('User', userSchema);
 export default User;

@@ -1,7 +1,7 @@
 import User from './user.models.js'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
-import {Validator} from 'node-input-validator'
+import { Validator } from 'node-input-validator'
 let pictureURL = 'https://datphongkhachsan.herokuapp.com/public/upload/'
 
 export const register = async (req, res, next) => {
@@ -18,17 +18,17 @@ export const register = async (req, res, next) => {
 }
 export const login = async (req, res, next) => {
     try {
-        const email = req.body.email;
-        const user = await User.findOne({ email: req.body.email });
+        const phone = req.body.phone;
+        const user = await User.findOne({ phone: req.body.phone });
         console.log(user);
         if (!user) {
             res.status(400).json({
                 status: 'not found',
-                message: 'Email is not correct',
+                message: 'phone is not correct',
             })
         } else {
             let check = await bcrypt.compareSync(req.body.passWord, user.password);
-            if (user.email === email && check == true) {
+            if (user.phone === phone && check == true) {
                 const token = jwt.sign({ userId: user._id }, 'project', { algorithm: 'HS256' });
                 res.status(200).json({
                     status: 'Login success',
@@ -108,7 +108,7 @@ export const DelateOneUser = async (req, res, next) => {
 export const uploadAvatar = async (req, res, next) => {
     try {
         const userID = req.user;
-        let userDB = await User.findOneAndUpdate({ _id: userID }, { avatar: pictureURL + req.file.filename });
+        let userDB = await User.findOneAndUpdate({ _id: userID }, { avatar: pictureURL + req.file.filename }, { returnOriginal: false });
         console.log(userDB, "1234");
         if (!userDB) {
             return res.status(404).send({ message: 'not found' });
@@ -149,7 +149,7 @@ export const getEmployees = async (req, res, next) => {
 }
 
 export const changePassword = async (req, res, next) => {
-    
+
     try {
         const v = new Validator(req.body, {
             old_password: 'required',
@@ -160,18 +160,16 @@ export const changePassword = async (req, res, next) => {
         if (!matched) {
             return res.status(422).send(v.errors);
         }
-        let current_user = await User.findOne({_id: req.user});
-        // console.log(req.body.old_password,"abc678");
-        // console.log(current_user);
+        let current_user = await User.findOne({ _id: req.user });
         if (bcrypt.compareSync(req.body.old_password, current_user.password)) {
             let hashPassword = bcrypt.hashSync(req.body.new_password, 10);
             await User.updateOne({
                 _id: current_user._id
-            },{
+            }, {
                 password: hashPassword
             });
-                let userData = await User.findOne({_id:current_user._id})
-                let token = jwt.sign({data: userData},'project', { algorithm: 'HS256' })
+            let userData = await User.findOne({ _id: current_user._id })
+            let token = jwt.sign({ data: userData }, 'project', { algorithm: 'HS256' })
             return res.status(200).json({
                 message: 'Password successfully update',
                 data: userData,
@@ -187,12 +185,22 @@ export const changePassword = async (req, res, next) => {
         console.log(error);
     }
 }
-export const ResetPassWord = async (req,res,next) => {
-    res.send({message: 'ResetPassWord'})
+export const ResetPassWord = async (req, res, next) => {
     try {
-        const {email} = req.body;
-        const data = await User.findOne({email}); 
-        if(!data) return res.status(404).json({message: 'email not found'});
+        const { phone, password} = req.body;
+        if(phone.length <1 || password.length <1 ) {
+           return res.status(400).send({ message: "phone and password is required" });
+        } 
+        let dataUser = await User.findOne({phone: phone});
+        if(!dataUser) {
+            return res.status(404).send({message: 'not found'});
+        }
+        let hashPassword = bcrypt.hashSync(req.body.password);
+        const newUser =  await User.findOneAndUpdate({_id: dataUser._id},{password: hashPassword});
+        return res.status(200).json({
+            message: 'Update forgot password successfully',
+            data: newUser
+        })
     } catch (error) {
         console.log(error);
     }
