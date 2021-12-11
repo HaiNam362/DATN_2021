@@ -8,16 +8,22 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="home"><i class="fas fa-tachometer-alt"></i><span>Thống Kê</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="profile"><i class="fas fa-user"></i><span>Người Dùng</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="table"><i class="fas fa-flag"></i><span>Báo Cáo</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="notifications"><i class="fas fa-bell"></i><span>Thông Báo</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="login"><i class="fas fa-sign-out-alt"></i><span>Đăng Xuất</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="home"><i
+                                class="fas fa-tachometer-alt"></i><span>Thống Kê</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profile"><i
+                                class="fas fa-user"></i><span>Người Dùng</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="table"><i class="fas fa-flag"></i><span>Báo
+                                Cáo</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="notifications"><i class="fas fa-bell"></i><span>Thông
+                                Báo</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="login"><i class="fas fa-sign-out-alt"></i><span>Đăng
+                                Xuất</span></a></li>
                 </ul>
-                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
-         <div class="d-flex flex-column" id="content-wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3"
@@ -35,26 +41,22 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                               
-                                <div class="col-md-auto">
-                                    <div class="text-md-end dataTables_filter" id="dataTable_filter">
-                                        <label class="form-label">
-                                            <input id="search" type="search" class="form-control form-control-sm"
-                                                value="{{#if searchParams}}{{searchParams}}{{/if}}"
-                                                aria-controls="dataTable" placeholder="Tìm kiếm...">
-                                        </label>
-                                    </div>
-                                </div>
 
                                 <div class="col-md-auto">
                                     <div class="text-md-end dataTables_filter" id="dataTable_filter">
                                         <label class="form-label">
-                                            <input type="submit" id="btn-search"
-                                                class="form-control form-control-sm btn-primary"
-                                                aria-controls="dataTable" value="Tìm kiếm">
+
+                                            <form id="form" action="/profile">
+                                                <input id="search" type="search" class="form-control form-control-sm"
+                                                    name="keySearch" aria-controls="dataTable"
+                                                    placeholder="Tìm kiếm...">
+                                                <button class="btn btn-dark d-block btn-user w-100" type="submit">Tìm
+                                                    kiếm</button>
+                                            </form>
                                         </label>
                                     </div>
                                 </div>
+
 
                             </div>
 
@@ -73,35 +75,39 @@
                                 <table class="table table-hover my-0" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>fullName</th>
-                                            <th>email</th>
-                                            <th>phone</th>
+                                            <th>STT</th>
+                                            <th>Avatar</th>
+                                            <th>FullName</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
                                             <th>DateOfBirth</th>
+                                            <th>Role</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{#each profileUser}}
+
+                                        {{#each UserDB}}
                                         <tr>
-                                            <td><a href="/profileUser/{{this.email}}">{{this.email}}</a></td>
+                                            <td>{{@index}}</td>
                                             <td>
                                                 <img class="rounded-circle me-2" width="30" height="30"
-                                                    src="{{this.avatar.[0]}}">
-                                                {{this.name}}
+                                                    src="{{this.avatar}}">
                                             </td>
                                             <td>{{this.fullName}}</td>
-                                            <td>{{this.email}}</td>
+                                            <td><a>{{this.email}}</a></td>
                                             <td>{{this.phone}}</td>
                                             <td>{{this.DateOfBirth}}</td>
+                                            <td>{{this.role}}</td>
                                         </tr>
                                         {{/each }}
                                     </tbody>
                                 </table>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 align-self-center">
+                                {{!-- <div class="col-md-6 align-self-center">
                                     <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Hiển
                                         thị {{countFrom}} đến {{countTo}} của {{countPage}}</p>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-6">
                                     <nav
                                         class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
@@ -145,7 +151,7 @@
                 </div>
             </footer>
         </div>
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
 
 </body>

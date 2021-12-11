@@ -9,9 +9,7 @@ const verifyToken = async (req, res, next) => {
     let token = Bearer.split(" ")[1];
     try {
         const decoded = await jwt.verify(token, 'project', { algorithm: 'HS256' });
-        // console.log(decoded);
-        const user_abc = await User.findOne({   _id: decoded.userId  })
-        // console.log(user_abc._id,"có ra ko");
+        const user_abc = await User.findOne({   _id: decoded.userId  })   
         req.user = user_abc._id;
     } catch (error) {
         console.log(error)

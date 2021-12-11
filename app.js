@@ -1,4 +1,8 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+// const bodyParser = new bodyParser()
+// var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 // import dotenv from 'dotenv';
 import exphbs from 'express-handlebars';
 import path from 'path';
@@ -22,17 +26,20 @@ import * as authWebRouter from './src/web/router/auth.web.router.js'
 connectDatabase();
 const app = express();
 const __dirname = path.resolve();
-app.use(express())
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }));
-// app.use(express.static(__dirname + '/public'));
+
+
+
+app.use(bodyParser.json());                        
+app.use(bodyParser.urlencoded({ extended: true }));
+ 
+
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+
 app.use('/public', express.static(path.join(__dirname, 'public'))); 
 app.set('views', path.join(__dirname, 'views'));
-//app.engine('html', require('ejs').renderFile);
-//app.set('view engine', 'html');
-app.engine('.hbs', exphbs({ extname: '.hbs' }));
-app.set('view engine', '.hbs');
-//app.engine("hbs", exphbs({ defaultLayout: false }));
+
 
 
 app.get("/login", async(req, res) => {
@@ -46,9 +53,6 @@ app.get("/notifications", async (req,res,next) =>{
 })
 app.get("/register", async(req, res) => {
     res.render('register')
-})
-app.get("/profile", async(req, res) => {
-    res.render('profile')
 })
 app.get("/table", async(req, res) => {
         res.render('table')
