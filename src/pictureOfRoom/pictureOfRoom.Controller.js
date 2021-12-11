@@ -53,11 +53,11 @@ export const getPictureAndPrice = async (req, res) => {
     }
 }
 export const getPrice = async (req, res, next) => {
-    const Price = req.body.price;
+    const Price = req.body.price || req.body.Price;
     console.log(Price,"123");
     try {
         if(Price.length < 1) {
-            return res.status(404).send({message: 'not found'});
+            return res.status(404).send({message: 'price cannot be empty'});
         }
         const priceDB = await pictureOfRoom.findOne({ price: Price });
         if(!priceDB){
