@@ -8,8 +8,10 @@ export const listUser = async (req, res, next) => {
   let data;
 
   if (keySearch) {
-
-    data = await User.find({ email: { $regex: ".*" + keySearch + ".*" } });
+    var options = {
+      email: { $regex: ".*" + keySearch + ".*" }
+    }
+    data = await User.find( options);
     console.log(data, 1);
   }
   else {

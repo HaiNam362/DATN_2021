@@ -215,11 +215,18 @@ export const logout = async (req, res, next) => {
 }
 export const getPhone = async (req, res, next) => {
     const phone = req.body.phone;
+    console.log(phone,"abc");
     try {
+        if(phone.length <1) {
+            return res.status(404).send({message: 'not found'})
+        }
         const user = await User.findOne({ phone: phone });
+        if(!user){
+            return res.status(400).send({message: 'phone not found'})
+        }
         res.status(200).json({
             status: 'get phone',
-            data: { user }
+            data:  user 
         })
     } catch (error) {
         console.log(error);

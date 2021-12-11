@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const pictureOfRoomSchema = new mongoose.Schema({
     price:{
         type: Number,
+        require: [true, 'price must be require']
     },
     picture:{
        type: [String],

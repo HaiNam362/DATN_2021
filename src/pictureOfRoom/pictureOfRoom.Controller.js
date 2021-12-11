@@ -53,13 +53,19 @@ export const getPictureAndPrice = async (req, res) => {
     }
 }
 export const getPrice = async (req, res, next) => {
-    const Price = req.body.Price;
+    const Price = req.body.price;
     console.log(Price,"123");
     try {
+        if(Price.length < 1) {
+            return res.status(404).send({message: 'not found'});
+        }
         const priceDB = await pictureOfRoom.findOne({ price: Price });
-        res.status(200).json({
+        if(!priceDB){
+            return res.status(400).send("price not found");
+        }
+        return res.status(200).json({
             status: 'get price',
-            data: { priceDB }
+            data: priceDB
         })
     } catch (error) {
         console.log(error);

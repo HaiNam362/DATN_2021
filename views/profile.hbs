@@ -85,7 +85,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                         {{#each UserDB}}
                                         <tr>
                                             <td>{{@index}}</td>
@@ -96,7 +95,8 @@
                                             <td>{{this.fullName}}</td>
                                             <td><a>{{this.email}}</a></td>
                                             <td>{{this.phone}}</td>
-                                            <td>{{this.DateOfBirth}}</td>
+                                            {{!-- <td>{{this.DateOfBirth}}</td> --}}
+                                            <td>{{dateFormat this.DateOfBirth "dddd, MMMM Do YYYY"}}</td>
                                             <td>{{this.role}}</td>
                                         </tr>
                                         {{/each }}

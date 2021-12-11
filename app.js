@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 
 // import dotenv from 'dotenv';
 import exphbs from 'express-handlebars';
+import hbs from 'hbs'
 import path from 'path';
 import { createRequire } from 'module';
 const require = createRequire(
@@ -32,6 +33,7 @@ const __dirname = path.resolve();
 app.use(bodyParser.json());                        
 app.use(bodyParser.urlencoded({ extended: true }));
  
+hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 
 
 app.set('views', path.join(__dirname, 'views'));
