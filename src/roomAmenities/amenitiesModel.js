@@ -7,32 +7,68 @@ const amenitiesModel = Mongoose.Schema({
     },
     airConditioner: {
         type: Number,
-        default:0,
+        default: 0,
     },
     wifi: {
         type: Number,
-        default:0,
+        default: 0,
     },
     smartTV: {
         type: Number,
-        default:0,
+        default: 0,
     },
     bed: {
         type: Number,
-        default:0,
+        default: 0,
     },
     sofa: {
         type: Number,
-        default:0,
+        default: 0,
     },
-    created_at    : {
+    hairdryer: {
+        type: Number,
+        default: 0,
+    },
+    slippers: {
+        type: Number,
+        default: 0,
+    },
+    smoking: {
+        type: Number,
+        default: 0,
+    },
+    telephone: {
+        type: Number,
+        default: 0,
+    },
+    towel: {
+        type: Number,
+        default: 0,
+    },
+    view: {
+        type: String,
+        required: true,
+    },
+    waterboiler: {
+        type: Number,
+        default: 0,
+    },
+    waterfree: {
+        type: Number,
+        default: 0,
+    },
+    acreage: {
+        type: String,
+        required: true,
+    },
+    created_at: {
         type: Date,
 
         default: Date.now()
     },
-    updatedAt:{
-        type:Date,
-        default:Date.now()
+    updatedAt: {
+        type: Date,
+        default: Date.now()
     },
 
 })

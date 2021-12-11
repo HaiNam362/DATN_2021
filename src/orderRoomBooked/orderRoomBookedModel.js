@@ -40,6 +40,10 @@ const orderRoomBookedModel = Mongoose.Schema({
     totalRoomRate: {
         type: Number,
         required: true
+    },
+
+    serviceCharge: {
+        type: Number,
     }
 })
 export default Mongoose.model('orderRoomBooked', orderRoomBookedModel)
