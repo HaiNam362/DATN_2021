@@ -10,5 +10,6 @@ Router.put('/createPictureOfRoom', upload.single('picture'), pictureOfRoomContro
 Router.post('/uploadPicture', uploadPicture, pictureOfRoomController.createPictureOfRoom);
 Router.put('/updatePictureOfRoom',uploadPicture, pictureOfRoomController.updatePictureOfRoom);
 Router.get('/getPictureOfRoom',pictureOfRoomController.getPictureAndPrice);
+Router.get('/getPrice',pictureOfRoomController.getPrice);
 
 export { Router }

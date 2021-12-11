@@ -52,5 +52,18 @@ export const getPictureAndPrice = async (req, res) => {
         console.log(error);
     }
 }
+export const getPrice = async (req, res, next) => {
+    const Price = req.body.Price;
+    console.log(Price,"123");
+    try {
+        const priceDB = await pictureOfRoom.findOne({ price: Price });
+        res.status(200).json({
+            status: 'get price',
+            data: { priceDB }
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
