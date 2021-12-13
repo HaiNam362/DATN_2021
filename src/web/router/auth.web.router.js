@@ -6,6 +6,8 @@ import * as authWebController from '../controller/auth.web.controller.js'
 router.post('/login',authWebController.login);
 router.get('/logout',authWebController.logout);
 router.get('/profile',authWebController.listUser);
-
+router.get('/profile/:email',authWebController.findOneProfile);
+// router.get('/profile/:email',authWebController.findOneProfile);
+// router.post('/profileDetail/delete',authWebController.deleteProfile);
 
 export {router};
