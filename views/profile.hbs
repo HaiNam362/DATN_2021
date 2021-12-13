@@ -10,13 +10,14 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link" href="home"><i
                                 class="fas fa-tachometer-alt"></i><span>Thống Kê</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="profile"><i
+                    <li class="nav-item"><a class="nav-link active" href="/profile"><i
                                 class="fas fa-user"></i><span>Người Dùng</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="table"><i class="fas fa-flag"></i><span>Báo
+                    <li class="nav-item"><a class="nav-link" href="/table"><i class="fas fa-flag"></i><span>Báo
                                 Cáo</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="notifications"><i class="fas fa-bell"></i><span>Thông
+                    <li class="nav-item"><a class="nav-link" href="/notifications"><i
+                                class="fas fa-bell"></i><span>Thông
                                 Báo</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="login"><i class="fas fa-sign-out-alt"></i><span>Đăng
+                    <li class="nav-item"><a class="nav-link" href="/login"><i class="fas fa-sign-out-alt"></i><span>Đăng
                                 Xuất</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
@@ -46,21 +47,64 @@
                                     <div class="text-md-end dataTables_filter" id="dataTable_filter">
                                         <label class="form-label">
 
-                                            <form id="form" action="/profile">
-                                                <input id="search" type="search" class="form-control form-control-sm"
-                                                    name="keySearch" aria-controls="dataTable"
-                                                    placeholder="Tìm kiếm...">
+                                            <form id="form" action="/profile" style="display: flex;">
+                                                <input id="search" type="search"
+                                                    class="form-control form-control-sm me-3" name="keySearch"
+                                                    aria-controls="dataTable" placeholder="Tìm kiếm..."
+                                                    style="width: auto;">
                                                 <button class="btn btn-dark d-block btn-user w-100" type="submit">Tìm
                                                     kiếm</button>
                                             </form>
                                         </label>
                                     </div>
                                 </div>
-
-
                             </div>
 
-                            <form id="form" action="/profileUser">
+                            <button href="#" class="btn btn-dark d-block btn-user " data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" style="text-decoration: none;">Tạo tài khoản Nhân
+                                Viên</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-primary">Tạo tài khoản nhân viên</h5>
+                                        </div>
+                                        <form id="form" action="/" method="post">
+                                            <div class="modal-body">
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">FullName</label>
+                                                    <input type="text" class="form-control" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Phone</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+    
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">Address</label>
+                                                    <select name="role" id="">
+                                                        <option value="employee">Nhân viên</option>
+                                                        <option value="employee2">Nhân viên 2</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Hủy</button>
+                                                <button type="submit" class="btn btn-primary">Lưu</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{!-- <form id="form" action="/profileUser">
                                 <input type="hidden" name="facilities" />
                                 <input type="hidden" name="specialized" value="" />
                                 <input type="hidden" name="course" value="" />
@@ -68,7 +112,7 @@
                                 <input type="hidden" name="report" value="" />
                                 <input type="hidden" name="status" value="" />
                                 <input type="hidden" name="email" />
-                            </form>
+                            </form> --}}
 
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
@@ -93,9 +137,8 @@
                                                     src="{{this.avatar}}">
                                             </td>
                                             <td>{{this.fullName}}</td>
-                                            <td><a>{{this.email}}</a></td>
+                                            <td><a href="/profile/{{this.email}}">{{this.email}}</a></td>
                                             <td>{{this.phone}}</td>
-                                            {{!-- <td>{{this.DateOfBirth}}</td> --}}
                                             <td>{{dateFormat this.DateOfBirth "dddd, MMMM Do YYYY"}}</td>
                                             <td>{{this.role}}</td>
                                         </tr>

@@ -23,33 +23,34 @@ import * as authRouter from './src/auth/auth.Router.js';
 import * as pictureOfRoom from './src/pictureOfRoom/pictureOfRoom.Router.js'
 // web
 import * as authWebRouter from './src/web/router/auth.web.router.js'
+import * as statisticalRouter from './src/web/router/statistical.web.router.js'
 //dotenv.config()
 connectDatabase();
 const app = express();
 const __dirname = path.resolve();
 
 
-
-app.use(bodyParser.json());                        
-app.use(bodyParser.urlencoded({ extended: true }));
- 
-hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
-
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+app.use(bodyParser.json());                        
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/public', express.static(path.join(__dirname, 'public'))); 
-app.set('views', path.join(__dirname, 'views'));
+
+hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
+
+
+
+// app.set('views', path.join(__dirname, 'views'));
 
 
 
 app.get("/login", async(req, res) => {
     res.render('login')
 })
-app.get("/home", async(req, res) => {
-    res.render('index')
-})
+// app.get("/home", async(req, res) => {
+//     res.render('index')
+// })
 app.get("/notifications", async (req,res,next) =>{
     res.render('notifications')
 })
@@ -69,6 +70,8 @@ app.use('/api/v1/pictureOfRoom',pictureOfRoom.Router);
 app.use('/oderRoomBookingDetail', oderRoomBookingDetailApi);
 //Router web
 app.use('/',authWebRouter.router);
+app.use('/',statisticalRouter.router);
+
 //Server
 app.listen(process.env.PORT || 7777, async() => {
     console.log(`Listening on PORT ${process.env.port}`);

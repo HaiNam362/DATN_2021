@@ -53,7 +53,7 @@ export const getPictureAndPrice = async (req, res) => {
     }
 }
 export const getPrice = async (req, res, next) => {
-    const Price = req.params.price ;
+    const Price = req.params.price;
     console.log(Price,"123");
     try {
         if(Price.length < 1) {

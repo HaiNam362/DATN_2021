@@ -11,7 +11,7 @@ export const listUser = async (req, res, next) => {
     var options = {
       email: { $regex: ".*" + keySearch + ".*" }
     }
-    data = await User.find( options);
+    data = await User.find(options);
     console.log(data, 1);
   }
   else {
@@ -21,6 +21,49 @@ export const listUser = async (req, res, next) => {
 
   res.render('profile', { UserDB: data });
 }
+export const findOneProfile = async (req, res) => {
+  try {
+    let { email } = req.params;
+
+    console.log(email);
+    // let user = await User.findOne({ email });
+    // if (!user) return res.sendStatus(404);
+    // res.render('test123', user);
+    res.render('test123', {email});
+
+  } catch (error) {
+    res.send(error.message);
+  }
+}
+
+export const createEmployee = async (req,res,next) => {
+    let {role,fullName} = req.body; 
+
+    /// Lấy thông tin từ field
+
+}
+
+// export const deleteProfile = async (req, res, next) => {
+//   try {
+
+//   } catch (error) {
+//     res.status(500).send({ message: error.message });
+//   }
+// }
+
+// export const createUser = async (req, res, next) => {
+//   try {
+
+
+//   } catch (error) {
+//     res.status(500).send({ message: error.message });
+//   }
+// }
+
+
+
+
+
 
 // export const listUser = async (req, res, next) => {
 
@@ -62,3 +105,24 @@ export const logout = async (req, res, next) => {
     })
   }
 }
+
+// <div class="mb-3">
+// <label class="form-label">Email</label>
+// <input type="text" class="form-control">
+// </div>
+// <div class="mb-3">
+// <label class="form-label">UserName</label>
+// <input type="text" class="form-control">
+// </div>
+// <div class="mb-3">
+// <label class="form-label">Password</label>
+// <input type="text" class="form-control">
+// </div>
+// <div class="mb-3">
+// <label class="form-label">DateOfBirth</label>
+// <input type="text" class="form-control">
+// </div>
+// <div class="mb-3">
+// <label class="form-label">Address</label>
+// <input type="text" class="form-control">
+// </div>
