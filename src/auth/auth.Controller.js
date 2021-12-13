@@ -126,7 +126,8 @@ export const uploadAvatar = async (req, res, next) => {
 export const updateTokenID = async (req,res,next)=>{
     try {
         const userID = req.user;
-        let userDB = await User.findOneAndUpdate({_id: userID},{tokenId: MUUID.v1()},{returnOriginal: false});
+        const tokenId = req.body.tokenId;
+        let userDB = await User.findOneAndUpdate({_id: userID},{tokenId: req.body.tokenId},{returnOriginal: false});
         if(!userDB){
             return res.status(404).send({message: 'not found'});
         }
