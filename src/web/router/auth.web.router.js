@@ -3,9 +3,9 @@ const router = express.Router();
 import * as authWebController from '../controller/auth.web.controller.js'
 
 
-router.post('/login',authWebController.login);
-router.get('/logout',authWebController.logout);
-router.get('/profile',authWebController.listUser);
+router.post('/login', authWebController.login);
+router.get('/logout', authWebController.logout);
+router.get('/profile', authWebController.listUser);
+router.get('/table', authWebController.listRoom);
 
-
-export {router};
+export { router };

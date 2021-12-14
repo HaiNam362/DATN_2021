@@ -52,7 +52,7 @@ app.post('/create', async(req, res) => {
 
 app.delete('/delete/:id', async(req, res) => {
     const id = req.params.id
-    await roomDetail.delete({ id })
+    await roomDetail.delete({ _id: id })
     res.json(`Delete ${id}`)
 })
 
