@@ -36,7 +36,24 @@ export const findOneProfile = async(req, res) => {
     }
 }
 
+export const listCustomers = async(req, res, next) => {
+    let { keySearch } = req.query;
+    let data;
 
+
+    if (keySearch) {
+        var options = {
+            email: { $regex: ".*" + keySearch + ".*" },
+        }
+        data = await User.find(options);
+        console.log(data, 1);
+    } else {
+        data = await User.find({ role: "customer" });
+
+    }
+
+    res.render('customer', { UserDB: data });
+}
 
 export const createUser = async(req, res, next) => {
     try {
@@ -60,19 +77,6 @@ export const DeleteUser = async(req, res, next) => {
 }
 
 
-
-
-// export const listUser = async (req, res, next) => {
-
-//   try {
-//     const UserDB = await User.find({});
-//     console.log(UserDB);
-//     res.render('profile', { UserDB, test: 'ok' });
-//   } catch (error) {
-//     console.log(error.message)
-//   }
-
-// }
 export const login = async(req, res, next) => {
     try {
         const { email, password } = req.body;

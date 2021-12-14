@@ -4,7 +4,7 @@
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="home">
                     <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-                    <div class="sidebar-brand-text mx-3"><span>Hanoi Prime</span></div>
+                    <div class="sidebar-brand-text mx-3"><span>Brand</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
@@ -14,13 +14,13 @@
                                 class="fas fa-user"></i><span>Quản Lý Nhân Viên</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/table"><i class="fas fa-flag"></i><span>Quản Lý Phòng
                                 </span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/customer"><i
-                                class="fas fa-bell"></i><span>Quản Lý Người Dùng
-                                </span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customer"><i class="fas fa-bell"></i><span>Quản Lý
+                                Người Dùng
+                            </span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/login"><i class="fas fa-sign-out-alt"></i><span>Đăng
                                 Xuất</span></a></li>
                 </ul>
-         
+             
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
@@ -37,7 +37,7 @@
                 <div class="container-fluid">
                     <div class="card shadow mb-3">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Thông tin Nhân Viên</p>
+                            <p class="text-primary m-0 fw-bold">Thông tin người dùng</p>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -60,29 +60,30 @@
                             </div>
 
                             <button href="#" class="btn btn-dark d-block btn-user " data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" style="text-decoration: none;">Tạo tài khoản Nhân
-                                Viên</button>
+                                data-bs-target="#exampleModal" style="text-decoration: none;">Tạo tài khoản Người Dùng
+                                </button>
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title text-primary">Tạo tài khoản nhân viên</h5>
+                                            <h5 class="modal-title text-primary">Tạo tài khoản Người Dùng</h5>
                                         </div>
                                         <form class="user" action="/profile/createUser" method="post">
                                             <div class="modal-body">
 
                                                 <div class="mb-3">
                                                     <label class="form-label">FullName</label>
-                                                    <input type="text" class="form-control" required="required" name="fullName">
+                                                    <input type="text" class="form-control" required="required"
+                                                        name="fullName">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Phone</label>
                                                     <input type="text" class="form-control" name="phone">
                                                 </div>
-    
+
                                                 <div class="mb-3">
                                                     <label class="form-label">Email</label>
                                                     <input type="text" class="form-control" name="email">
@@ -101,13 +102,14 @@
                                                 </div>
                                                 <label for="start">
                                                     Enter the Date:
-                                                </label> 
-                                                <input type="date" name="DateOfBirth" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31">
+                                                </label>
+                                                <input type="date" name="DateOfBirth" placeholder="dd-mm-yyyy" value=""
+                                                    min="1997-01-01" max="2030-12-31">
                                                 <div class="mb-3">
                                                     <label class="form-label">Role</label>
                                                     <select name="role" id="">
-                                                        <option value="employee">Nhân viên</option>
-                                                        <option value="employee2">Tạp vụ</option>
+                                                        <option value="customer">Người Dùng</option>
+                            
                                                     </select>
                                                 </div>
                                             </div>
@@ -115,7 +117,8 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Hủy</button>
-                                                <button type="submit" method="POST" action=""  class="btn btn-primary">Lưu</button>
+                                                <button type="submit" method="POST" action=""
+                                                    class="btn btn-primary">Lưu</button>
                                             </div>
                                         </form>
                                     </div>
@@ -145,43 +148,46 @@
                                                 <img class="rounded-circle me-2" width="30" height="30"
                                                     src="{{this.avatar}}">
                                             </td>
-                                            <td>{{this.fullName}}</td>
+                                            <td><p><strong>{{this.fullName}}</strong></p></td>
                                             <td><a href="/profile/{{this.email}}">{{this.email}}</a></td>
                                             <td>{{this.phone}}</td>
                                             <td>{{dateFormat this.DateOfBirth "dddd, MMMM Do YYYY"}}</td>
                                             <td>{{this.role}}</td>
-                                            <td><div class="col-lg-13"></div>
-                                            <form class="row" method="POST" action="/profile/deleteUser">
-    
-                                                <button class="btn btn-danger"type="submit" name="_id" value={{this._id}}>Xóa</button>
-                                            
-                                            </form>
-                                            </div></td>
-                                        </tr>
-                                        {{/each }}
-                                    </tbody>
-                                </table>
+                                            <td>
+                                                <div class="col-lg-13"></div>
+                                                <form class="row" method="POST" action="/profile/deleteUser">
+
+                                                    <button class="btn btn-danger" type="submit" name="_id"
+                                                        value={{this._id}}>Xóa</button>
+
+                                                </form>
                             </div>
-                            <div class="row">
-                    
-                                <div class="col-md-6">
-                                    <nav
-                                        class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                    </nav>
-                                </div>
+                            </td>
+                            </tr>
+                            {{/each }}
+                            </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                </nav>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>
-                </div>
-            </footer>
+
         </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>
+            </div>
+        </footer>
+    </div>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
 
 </body>
+
