@@ -10,12 +10,12 @@ export const listUser = async(req, res, next) => {
 
     if (keySearch) {
         var options = {
-            email: { $regex: ".*" + keySearch + ".*" }
+            email: { $regex: ".*" + keySearch + ".*" },
         }
         data = await User.find(options);
         console.log(data, 1);
     } else {
-        data = await User.find();
+        data = await User.find({ role: "employee" });
 
     }
 
