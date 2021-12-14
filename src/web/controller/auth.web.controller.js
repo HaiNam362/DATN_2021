@@ -8,6 +8,7 @@ export const listUser = async(req, res, next) => {
     let { keySearch } = req.query;
     let data;
 
+<<<<<<< HEAD
     if (keySearch) {
         var options = {
             email: { $regex: ".*" + keySearch + ".*" }
@@ -16,11 +17,65 @@ export const listUser = async(req, res, next) => {
         console.log(data, 1);
     } else {
         data = await User.find();
+=======
+  if (keySearch) {
+    var options = {
+      email: { $regex: ".*" + keySearch + ".*" }
+    }
+    data = await User.find(options);
+    console.log(data, 1);
+  }
+  else {
+    data = await User.find();
+>>>>>>> 2836123dbd5d31a76e74e8ddd06df06d4b3f2406
 
     }
 
     res.render('profile', { UserDB: data });
 }
+export const findOneProfile = async (req, res) => {
+  try {
+    let { email } = req.params;
+
+    console.log(email);
+    // let user = await User.findOne({ email });
+    // if (!user) return res.sendStatus(404);
+    // res.render('test123', user);
+    res.render('test123', {email});
+
+  } catch (error) {
+    res.send(error.message);
+  }
+}
+
+export const createEmployee = async (req,res,next) => {
+    let {role,fullName} = req.body; 
+
+    /// Lấy thông tin từ field
+
+}
+
+// export const deleteProfile = async (req, res, next) => {
+//   try {
+
+//   } catch (error) {
+//     res.status(500).send({ message: error.message });
+//   }
+// }
+
+// export const createUser = async (req, res, next) => {
+//   try {
+
+
+//   } catch (error) {
+//     res.status(500).send({ message: error.message });
+//   }
+// }
+
+
+
+
+
 
 // export const listUser = async (req, res, next) => {
 
@@ -56,6 +111,7 @@ export const login = async(req, res, next) => {
         res.status(500).send(error.message);
     }
 }
+<<<<<<< HEAD
 export const logout = async(req, res, next) => {
     if (req.session) {
         req.session.destroy(function(err) {
@@ -67,3 +123,37 @@ export const logout = async(req, res, next) => {
         })
     }
 }
+=======
+export const logout = async (req, res, next) => {
+  if (req.session) {
+    req.session.destroy(function (err) {
+      if (err) {
+        return next(err);
+      } else {
+        return res.redirect('/');//đoạn này còn thiều đường dẫn
+      }
+    })
+  }
+}
+
+// <div class="mb-3">
+// <label class="form-label">Email</label>
+// <input type="text" class="form-control">
+// </div>
+// <div class="mb-3">
+// <label class="form-label">UserName</label>
+// <input type="text" class="form-control">
+// </div>
+// <div class="mb-3">
+// <label class="form-label">Password</label>
+// <input type="text" class="form-control">
+// </div>
+// <div class="mb-3">
+// <label class="form-label">DateOfBirth</label>
+// <input type="text" class="form-control">
+// </div>
+// <div class="mb-3">
+// <label class="form-label">Address</label>
+// <input type="text" class="form-control">
+// </div>
+>>>>>>> 2836123dbd5d31a76e74e8ddd06df06d4b3f2406

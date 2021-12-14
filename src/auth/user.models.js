@@ -9,9 +9,6 @@ const mUUID1 = MUUID.v1();
 const userSchema = new mongoose.Schema({
     tokenId:{
         type: String,
-        value: { type: 'Buffer'},
-        default: () => MUUID.v1(),
-        primaryKey: true
     },
     role:{
        type: String,

@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import { Validator } from 'node-input-validator'
 let pictureURL = 'https://datphongkhachsan.herokuapp.com/public/upload/'
+import MUUID from 'uuid-mongodb'
 
 export const register = async (req, res, next) => {
     try {
@@ -114,8 +115,24 @@ export const uploadAvatar = async (req, res, next) => {
             return res.status(404).send({ message: 'not found' });
         }
         console.log(req.file.filename, "9876");
-        res.status(200).send({
+        res.status(200).json({
             message: 'Upload avatar successfully',
+            data: userDB
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const updateTokenID = async (req,res,next)=>{
+    try {
+        const userID = req.user;
+        const tokenId = req.body.tokenId;
+        let userDB = await User.findOneAndUpdate({_id: userID},{tokenId: req.body.tokenId},{returnOriginal: false});
+        if(!userDB){
+            return res.status(404).send({message: 'not found'});
+        }
+        return res.status(200).json({
+            message: 'update tokenId successfully',
             data: userDB
         })
     } catch (error) {
@@ -141,8 +158,28 @@ export const getEmployees = async (req, res, next) => {
         return res.status(200).json({
             message: "Get employee",
             result: user.length,
-            data: { user }
+            data: user 
+           
         })
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const getCustomer = async (req,res,next) => {
+    try {
+        const user = await User.find({role: 'customer'})
+        return res.status(200).json({
+            message: "Get customer",
+            result: user.length,
+            data: user
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const UpdateTokenID = async (req,res,next) => {
+    try {
+        
     } catch (error) {
         console.log(error);
     }
