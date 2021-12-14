@@ -3,8 +3,8 @@
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-                    <div class="sidebar-brand-text mx-3"><span>Brand</span></div>
+                    {{!-- <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div> --}}
+                    <div class="sidebar-brand-text mx-2"><span>Hanoi Prime Center</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
@@ -14,9 +14,9 @@
                                 class="fas fa-user"></i><span>Người Dùng</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/table"><i class="fas fa-flag"></i><span>Báo
                                 Cáo</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/notifications"><i
+                    {{!-- <li class="nav-item"><a class="nav-link" href="/notifications"><i
                                 class="fas fa-bell"></i><span>Thông
-                                Báo</span></a></li>
+                                Báo</span></a></li> --}}
                     <li class="nav-item"><a class="nav-link" href="/login"><i class="fas fa-sign-out-alt"></i><span>Đăng
                                 Xuất</span></a></li>
                 </ul>
@@ -38,7 +38,74 @@
                 <div class="container-fluid">
                     <div class="card shadow mb-3">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Thông tin người dùng</p>
+                            <div class="row">
+                                <p class="text-primary m-0 fw-bold col-md-9">Thông tin người dùng</p>
+                                <a href="#" class="text-primary m-0 fw-bold col-md-3 " data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" style="text-decoration: none;">Tạo tài khoản Nhân
+                                    Viên</a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-primary">Tạo tài khoản nhân viên</h5>
+                                            </div>
+                                            <form id="form" action="/profile/insert" method="post"
+                                                >
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Role</label>
+                                                        <select name="role" id="">
+                                                            <option value="employee">employee</option>
+                                                            <option value="employee2">dataEntry</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">FullName</label>
+                                                        <input type="text" class="form-control" name="fullName"
+                                                            required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Phone</label>
+                                                        <input type="text" class="form-control" name="phone" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Email</label>
+                                                        <input type="text" class="form-control" name="email" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">UserName</label>
+                                                        <input type="text" class="form-control" name="userName"
+                                                            required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Password</label>
+                                                        <input type="text" class="form-control" name="passWord"
+                                                            required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">DateOfBirth</label>
+                                                        <input type="date" class="form-control" name="DateOfBirth"
+                                                            required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Address</label>
+                                                        <input type="text" class="form-control" name="Address" required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Hủy</button>
+                                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -60,59 +127,7 @@
                                 </div>
                             </div>
 
-                            <button href="#" class="btn btn-dark d-block btn-user " data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" style="text-decoration: none;">Tạo tài khoản Nhân
-                                Viên</button>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title text-primary">Tạo tài khoản nhân viên</h5>
-                                        </div>
-                                        <form id="form" action="/" method="post">
-                                            <div class="modal-body">
-
-                                                <div class="mb-3">
-                                                    <label class="form-label">FullName</label>
-                                                    <input type="text" class="form-control" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Phone</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-    
-
-                                                <div class="mb-3">
-                                                    <label class="form-label">Address</label>
-                                                    <select name="role" id="">
-                                                        <option value="employee">Nhân viên</option>
-                                                        <option value="employee2">Nhân viên 2</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Hủy</button>
-                                                <button type="submit" class="btn btn-primary">Lưu</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{!-- <form id="form" action="/profileUser">
-                                <input type="hidden" name="facilities" />
-                                <input type="hidden" name="specialized" value="" />
-                                <input type="hidden" name="course" value="" />
-                                <input type="hidden" name="gender" value="" />
-                                <input type="hidden" name="report" value="" />
-                                <input type="hidden" name="status" value="" />
-                                <input type="hidden" name="email" />
-                            </form> --}}
 
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
@@ -144,6 +159,17 @@
                                         </tr>
                                         {{/each }}
                                     </tbody>
+                                      <tfoot>
+                                        <tr>
+                                            <td><strong>STT</strong></td>
+                                            <td><strong>Avatar</strong></td>
+                                            <td><strong>FullName</strong></td>
+                                            <td><strong>Email</strong></td>
+                                            <td><strong>Phone</strong></td>
+                                            <td><strong>DateOfBirth</strong></td>
+                                            <td><strong>Role</strong></td>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                             <div class="row">
@@ -190,7 +216,7 @@
             </div>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>
+                    <div class="text-center my-auto copyright"><span>Hanoi Prime Center</span></div>
                 </div>
             </footer>
         </div>

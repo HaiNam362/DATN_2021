@@ -7,7 +7,6 @@ router.post('/login',authWebController.login);
 router.get('/logout',authWebController.logout);
 router.get('/profile',authWebController.listUser);
 router.get('/profile/:email',authWebController.findOneProfile);
-// router.get('/profile/:email',authWebController.findOneProfile);
-// router.post('/profileDetail/delete',authWebController.deleteProfile);
+router.post('/profile/insert',authWebController.createEmployee);
 
 export {router};
