@@ -52,13 +52,8 @@ app.post('/create', async(req, res) => {
 
 app.delete('/delete/:id', async(req, res) => {
     const id = req.params.id
-<<<<<<< HEAD
     await roomDetail.delete({ _id: id })
     res.json(`Delete ${id}`)
-=======
-    await roomDetail.delete({ id })
-    res.json({"message": "Delete Success"})
->>>>>>> 2836123dbd5d31a76e74e8ddd06df06d4b3f2406
 })
 
 

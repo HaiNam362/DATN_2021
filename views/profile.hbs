@@ -11,7 +11,7 @@
                     <li class="nav-item"><a class="nav-link" href="home"><i
                                 class="fas fa-tachometer-alt"></i><span>Thống Kê</span></a></li>
                     <li class="nav-item"><a class="nav-link active" href="/profile"><i
-                                class="fas fa-user"></i><span>Người Dùng</span></a></li>
+                                class="fas fa-user"></i><span>Quản Lý Nhân Viên</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/table"><i class="fas fa-flag"></i><span>Báo
                                 Cáo</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/notifications"><i
@@ -72,24 +72,43 @@
                                         <div class="modal-header">
                                             <h5 class="modal-title text-primary">Tạo tài khoản nhân viên</h5>
                                         </div>
-                                        <form id="form" action="/" method="post">
+                                        <form class="user" action="/profile/createUser" method="post">
                                             <div class="modal-body">
 
                                                 <div class="mb-3">
                                                     <label class="form-label">FullName</label>
-                                                    <input type="text" class="form-control" required>
+                                                    <input type="text" class="form-control" required="required" name="fullName">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Phone</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="phone">
                                                 </div>
     
-
                                                 <div class="mb-3">
-                                                    <label class="form-label">Address</label>
+                                                    <label class="form-label">Email</label>
+                                                    <input type="text" class="form-control" name="email">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">UserName</label>
+                                                    <input type="text" class="form-control" name="userName">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Password</label>
+                                                    <input type="text" class="form-control" name="password">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Địa chỉ</label>
+                                                    <input type="text" class="form-control" name="address">
+                                                </div>
+                                                <label for="start">
+                                                    Enter the Date:
+                                                </label> 
+                                                <input type="date" name="DateOfBirth" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Role</label>
                                                     <select name="role" id="">
                                                         <option value="employee">Nhân viên</option>
-                                                        <option value="employee2">Nhân viên 2</option>
+                                                        <option value="employee2">Tạp vụ</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -97,22 +116,13 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Hủy</button>
-                                                <button type="submit" class="btn btn-primary">Lưu</button>
+                                                <button type="submit" method="POST" action=""  class="btn btn-primary">Lưu</button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
 
-                            {{!-- <form id="form" action="/profileUser">
-                                <input type="hidden" name="facilities" />
-                                <input type="hidden" name="specialized" value="" />
-                                <input type="hidden" name="course" value="" />
-                                <input type="hidden" name="gender" value="" />
-                                <input type="hidden" name="report" value="" />
-                                <input type="hidden" name="status" value="" />
-                                <input type="hidden" name="email" />
-                            </form> --}}
 
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
@@ -141,16 +151,20 @@
                                             <td>{{this.phone}}</td>
                                             <td>{{dateFormat this.DateOfBirth "dddd, MMMM Do YYYY"}}</td>
                                             <td>{{this.role}}</td>
+                                            <td><div class="col-lg-13"></div>
+                                            <form class="row" method="POST" action="/profile/deleteUser">
+    
+                                                <button class="btn btn-danger"type="submit" name="_id" value={{this._id}}>Xóa</button>
+                                            
+                                            </form>
+                                            </div></td>
                                         </tr>
                                         {{/each }}
                                     </tbody>
                                 </table>
                             </div>
                             <div class="row">
-                                {{!-- <div class="col-md-6 align-self-center">
-                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Hiển
-                                        thị {{countFrom}} đến {{countTo}} của {{countPage}}</p>
-                                </div> --}}
+                    
                                 <div class="col-md-6">
                                     <nav
                                         class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
