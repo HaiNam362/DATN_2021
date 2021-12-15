@@ -106,7 +106,7 @@
                                                 <input type="date" name="DateOfBirth" placeholder="dd-mm-yyyy" value=""
                                                     min="1997-01-01" max="2030-12-31">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Role</label>
+                                                    <label class="form-label">Vai Trò</label>
                                                     <select name="role" id="">
                                                         <option value="customer">Người Dùng</option>
                             
@@ -137,7 +137,7 @@
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>DateOfBirth</th>
-                                            <th>Role</th>
+                                            <th>Vai Trò</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -154,13 +154,14 @@
                                             <td>{{dateFormat this.DateOfBirth "dddd, MMMM Do YYYY"}}</td>
                                             <td>{{this.role}}</td>
                                             <td>
-                                                <div class="col-lg-13"></div>
+                                                <div class="col-lg-13">
                                                 <form class="row" method="POST" action="/customer/delete">
 
                                                     <button class="btn btn-danger" type="submit" name="_id"
                                                         value={{this._id}}>Xóa</button>
 
                                                 </form>
+                                                </div>
                             </div>
                             </td>
                             </tr>
