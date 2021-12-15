@@ -103,10 +103,10 @@
                                         <hr>
                                         <div class="row" >
                                             <div class="col-md-4 mb-2">
-                                                <p class="fw-bold h5">Số Nhân Viên: {{employee}} </p>
+                                                <p class="text-white" id="tongnhanvien" > {{totalUserEmployee}} </p>
                                             </div>
                                             <div class="col-md-4 mb-2">
-                                                <p class="fw-bold h5">Số Người Dùng: {{totalUserCustomer}}</p>
+                                                <p class="text-white" id="tongnguoidung" > {{totalUserCustomer}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -132,46 +132,10 @@
                                                     <td>501</td>
                                                     <td>500000</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Nguyễn Văn a</td>
-                                                    <td>2021-11-04</td>
-                                                    <td>0987654321</td>
-                                                    <td>501</td>
-                                                    <td>500000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Nguyễn Văn a</td>
-                                                    <td>2021-11-04</td>
-                                                    <td>0987654321</td>
-                                                    <td>501</td>
-                                                    <td>500000</td>
-                                                </tr>
-                                                {{!-- {{#each users}}
-                                                <tr>
-                                                    <td><a href="/users/{{this.email}}">{{this.email}}</a></td>
-                                                    <td>
-                                                        <img class="rounded-circle me-2" width="30" height="30"
-                                                            src="{{this.images.[0]}}">
-                                                        {{this.name}}
-                                                    </td>
-                                                    <td>{{this.hobbies}}</td>
-                                                    <td>{{this.birthDay}}</td>
-                                                    <td>{{this.gender}}</td>
-                                                    <td>{{this.facilities}}</td>
-                                                    <td>{{this.specialized}}</td>
-                                                    <td>{{this.course}}</td>
-                                                    <td>0</td>
-
-                                                    {{#if (eq this.isActive "Kích hoạt")}}
-                                                    <td class="text-success">{{this.isActive}}</td>
-                                                    {{else}}
-                                                    <td class="text-danger">{{this.isActive}}</td>
-                                                    {{/if}}
-
-                                                </tr>
-                                                {{/each }} --}}
+                                            <div class="container">
+                                                <canvas id="myChart"></canvas>
+                                            </div>
+                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -190,5 +154,74 @@
                 </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i
                         class="fas fa-angle-up"></i></a>
             </div>
-
+<script type>
+    let myChart = document.getElementById('myChart').getContext('2d');
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
+   var element = document.getElementById('tongnhanvien');
+   var nguoidung = document.getElementById('tongnguoidung');
+    console.log(element);
+    console.log(element.innerHTML)
+    var x = element.innerHTML
+    console.log(x);
+    var y = nguoidung.innerHTML
+    let massPopChart = new Chart(myChart, {
+        type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+            labels: ['Nhân Viên', 'Người Dùng'],
+            datasets: [{
+                label: 'Population',
+                data: [
+                  x,
+                y,
+                    153060,
+                    106519,
+                    105162,
+                    95072
+                ],
+                //backgroundColor:'green',
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 159, 64, 0.6)',
+                    'rgba(255, 99, 132, 0.6)'
+                ],
+                borderWidth: 1,
+                borderColor: '#777',
+                hoverBorderWidth: 3,
+                hoverBorderColor: '#000'
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Bảng thống kê',
+                fontSize: 25
+            },
+            legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                    fontColor: '#000'
+                }
+            },
+            layout: {
+                padding: {
+                    left: 50,
+                    right: 0,
+                    bottom: 0,
+                    top: 0
+                }
+            },
+            tooltips: {
+                enabled: true
+            }
+        }
+    });
+</script>
 </body>
