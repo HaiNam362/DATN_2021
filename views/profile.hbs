@@ -2,21 +2,35 @@
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
+<<<<<<< HEAD
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="home">
                     <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
                     <div class="sidebar-brand-text mx-3"><span>Hanoi Prime</span></div>
+=======
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    {{!-- <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div> --}}
+                    <div class="sidebar-brand-text mx-2"><span>Hanoi Prime Center</span></div>
+>>>>>>> server/nam
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link" href="home"><i
                                 class="fas fa-tachometer-alt"></i><span>Thống Kê</span></a></li>
                     <li class="nav-item"><a class="nav-link active" href="/profile"><i
+<<<<<<< HEAD
                                 class="fas fa-user"></i><span>Quản Lý Nhân Viên</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/table"><i class="fas fa-flag"></i><span>Quản Lý Phòng
                                 </span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/customer"><i
                                 class="fas fa-bell"></i><span>Quản Lý Người Dùng
                                 </span></a></li>
+=======
+                                class="fas fa-user"></i><span>Người Dùng</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/table"><i class="fas fa-bed"></i><span>Tạo Phòng</span></a></li>
+                    {{!-- <li class="nav-item"><a class="nav-link" href="/notifications"><i
+                                class="fas fa-bell"></i><span>Thông
+                                Báo</span></a></li> --}}
+>>>>>>> server/nam
                     <li class="nav-item"><a class="nav-link" href="/login"><i class="fas fa-sign-out-alt"></i><span>Đăng
                                 Xuất</span></a></li>
                 </ul>
@@ -37,7 +51,78 @@
                 <div class="container-fluid">
                     <div class="card shadow mb-3">
                         <div class="card-header py-3">
+<<<<<<< HEAD
                             <p class="text-primary m-0 fw-bold">Thông tin Nhân Viên</p>
+=======
+                            <div class="row">
+                                <p class="text-primary m-0 fw-bold col-md-9">Thông tin người dùng</p>
+                                <a href="#" class="text-primary m-0 fw-bold col-md-3 " data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" style="text-decoration: none;">Tạo tài khoản Nhân
+                                    Viên</a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-primary">Tạo tài khoản nhân viên</h5>
+                                            </div>
+                                            <form id="form" action="/profile/insert" method="post"
+                                                >
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Role</label>
+                                                        <select name="role" id="">
+                                                            <option value="employee">employee</option>
+                                                            <option value="employee2">dataEntry</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">FullName</label>
+                                                        <input type="text" class="form-control" name="fullName"
+                                                            required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Phone</label>
+                                                        <input type="text" class="form-control" name="phone" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Email</label>
+                                                        <input type="text" class="form-control" name="email" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">UserName</label>
+                                                        <input type="text" class="form-control" name="userName"
+                                                            required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Password</label>
+                                                        <input type="text" class="form-control" name="passWord"
+                                                            required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">DateOfBirth</label>
+                                                        <input type="date" class="form-control" name="DateOfBirth"
+                                                            required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Address</label>
+                                                        <input type="text" class="form-control" name="Address" required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Hủy</button>
+                                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+>>>>>>> server/nam
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -59,10 +144,8 @@
                                 </div>
                             </div>
 
-                            <button href="#" class="btn btn-dark d-block btn-user " data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" style="text-decoration: none;">Tạo tài khoản Nhân
-                                Viên</button>
 
+<<<<<<< HEAD
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
                                     data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -122,6 +205,8 @@
                                 </div>
                             </div>
 
+=======
+>>>>>>> server/nam
 
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
@@ -133,8 +218,10 @@
                                             <th>FullName</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>DateOfBirth</th>
-                                            <th>Role</th>
+                                            {{!-- <th>DateOfBirth</th> --}}
+                                            <th>Vai Trò</th>
+                                            <th>Ngày Tạo</th>
+                                            <th>Ngày Update</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -148,8 +235,8 @@
                                             <td>{{this.fullName}}</td>
                                             <td><a href="/profile/{{this.email}}">{{this.email}}</a></td>
                                             <td>{{this.phone}}</td>
-                                            <td>{{dateFormat this.DateOfBirth "dddd, MMMM Do YYYY"}}</td>
                                             <td>{{this.role}}</td>
+<<<<<<< HEAD
                                             <td><div class="col-lg-13"></div>
                                             <form class="row" method="POST" action="/profile/deleteUser">
     
@@ -157,9 +244,27 @@
                                             
                                             </form>
                                             </div></td>
+=======
+                                            <td >{{#newDate this.createdAt}}{{/newDate}}</td>
+                                            <td >{{#newDate this.updatedAt}}{{/newDate}}</td>
+>>>>>>> server/nam
                                         </tr>
                                         {{/each }}
                                     </tbody>
+                                      <tfoot>
+                                        <tr>
+                                            <td><strong>STT</strong></td>
+                                            <td><strong>Avatar</strong></td>
+                                            <td><strong>FullName</strong></td>
+                                            <td><strong>Email</strong></td>
+                                            <td><strong>Phone</strong></td>
+                                            {{!-- <td><strong>DateOfBirth</strong></td> --}}
+                                            <td><strong>Vai Trò</strong></td>
+                                            <td><strong>Ngày Tạo</strong></td>
+                                            <td><strong>Ngày Update</strong></td>
+
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                             <div class="row">
@@ -177,7 +282,7 @@
             </div>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>
+                    <div class="text-center my-auto copyright"><span>Hanoi Prime Center</span></div>
                 </div>
             </footer>
         </div>

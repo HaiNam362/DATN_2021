@@ -7,6 +7,7 @@ export const listUser = async(req, res, next) => {
     let { keySearch } = req.query;
     let data;
 
+<<<<<<< HEAD
 
     if (keySearch) {
         var options = {
@@ -85,6 +86,58 @@ export const login = async(req, res, next) => {
             return res.redirect('/home');
 
         const data = await User.findOne({ email, password });
+=======
+  if (keySearch) {
+    var options = {
+      email: { $regex: ".*" + keySearch + ".*" }
+    }
+    data = await User.find(options);
+    console.log(data, 1);
+  }
+  else {
+    data = await User.find();
+  }
+  res.render('profile', { UserDB: data });
+}
+export const findOneProfile = async (req, res) => {
+  try {
+    let { email } = req.params;
+
+    console.log(email);
+    let user = await User.findOne({ email });
+    if (!user) return res.sendStatus(404);
+    res.render('test123', user);
+    // res.render('test123', { user });
+
+  } catch (error) {
+    res.send(error.message);
+  }
+}
+
+export const createEmployee = async (req, res, next) => {
+  try {
+    let { role, fullName, phone, email, userName, passWord, DateOfBirth, Address } = req.body;
+    console.log(req.body);
+    let payload = {
+      role,
+      fullName,
+      phone,
+      email,
+      userName,
+      passWord,
+      DateOfBirth,
+      Address,
+    }
+    await User.create(payload);
+    res.redirect('/profile')
+  } catch (error) {
+    res.send(error.message);
+  }
+}
+export const login = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+>>>>>>> server/nam
 
         if (data != email) return res.redirect('login', { msgError: 'Sai email' })
         if (data != password) return res.redirect('login', { msgError: 'Sai mật khẩu' });
@@ -110,23 +163,3 @@ export const logout = async(req, res, next) => {
     }
 }
 
-// <div class="mb-3">
-// <label class="form-label">Email</label>
-// <input type="text" class="form-control">
-// </div>
-// <div class="mb-3">
-// <label class="form-label">UserName</label>
-// <input type="text" class="form-control">
-// </div>
-// <div class="mb-3">
-// <label class="form-label">Password</label>
-// <input type="text" class="form-control">
-// </div>
-// <div class="mb-3">
-// <label class="form-label">DateOfBirth</label>
-// <input type="text" class="form-control">
-// </div>
-// <div class="mb-3">
-// <label class="form-label">Address</label>
-// <input type="text" class="form-control">
-// </div>
