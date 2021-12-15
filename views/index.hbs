@@ -158,7 +158,7 @@
     let myChart = document.getElementById('myChart').getContext('2d');
     // Global Options
     Chart.defaults.global.defaultFontFamily = 'Lato';
-    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontSize = 16;
     Chart.defaults.global.defaultFontColor = '#777';
    var element = document.getElementById('tongnhanvien');
    var nguoidung = document.getElementById('tongnguoidung');
@@ -168,7 +168,7 @@
     console.log(x);
     var y = nguoidung.innerHTML
     let massPopChart = new Chart(myChart, {
-        type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        type: 'horizontalBar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
         data: {
             labels: ['Nhân Viên', 'Người Dùng'],
             datasets: [{
@@ -176,10 +176,7 @@
                 data: [
                   x,
                 y,
-                    153060,
-                    106519,
-                    105162,
-                    95072
+           
                 ],
                 //backgroundColor:'green',
                 backgroundColor: [
