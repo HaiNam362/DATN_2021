@@ -15,7 +15,7 @@ export const create = Joi.object({
     email: Joi.string().required(),
     advanceDeposit: Joi.number().required(),
     bookingStatus: Joi.number().required(),
-
+    note: Joi.string(),
     serviceCharge: Joi.number(),
 
 })
@@ -30,5 +30,6 @@ export const update = Joi.object({
     totalRoomRate: Joi.number(),
     advanceDeposit: Joi.number(),
     bookingStatus: Joi.number(),
+    note: Joi.string(),
     serviceCharge: Joi.number(),
 })

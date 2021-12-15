@@ -12,6 +12,9 @@ const orderRoomBookedModel = Mongoose.Schema({
     email: {
         type: String,
     },
+    note: {
+        type: String,
+    },
     timeBookingStart: {
         type: String,
         required: true
