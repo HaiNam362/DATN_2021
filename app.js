@@ -43,7 +43,7 @@ hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 hbs.registerHelper('newDate', (value) => {
     return value.toLocaleString();
   });
-  
+
 
 
 // app.set('views', path.join(__dirname, 'views'));
@@ -64,17 +64,10 @@ app.get("/customer", async(req, res, next) => {
 app.get("/register", async(req, res) => {
     res.render('register')
 })
-<<<<<<< HEAD
 app.get("/table", async(req, res) => {
         res.render('table')
     })
     //Route api
-=======
-// app.get("/table", async(req, res) => {
-//         res.render('table')
-//     })
-//Route api
->>>>>>> server/nam
 app.use('/orderRoomBooked', orderRoomBookedApi)
 app.use('/roomDetail', roomDetailAPI)
 app.use('/user', userAPI)
@@ -83,14 +76,9 @@ app.use('/api/v1/auth', authRouter.Router);
 app.use('/api/v1/pictureOfRoom', pictureOfRoom.Router);
 app.use('/oderRoomBookingDetail', oderRoomBookingDetailApi);
 //Router web
-<<<<<<< HEAD
-app.use('/', authWebRouter.router);
-app.use('/', statisticalRouter.router);
-=======
 app.use('/',authWebRouter.router);
 app.use('/',statisticalRouter.router);
 app.use('/',roomDetailRouter.router);
->>>>>>> server/nam
 
 //Server
 app.listen(process.env.PORT || 7777, async() => {
