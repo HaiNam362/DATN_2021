@@ -60,8 +60,7 @@
                             </div>
 
 
-<<<<<<< HEAD
-                            <!-- Modal -->
+
                             <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
                                     data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -130,10 +129,10 @@
                                             <th>FullName</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            {{!-- <th>DateOfBirth</th> --}}
-                                            <th>Vai Trò</th>
+                                            <th>Vai Trò</th> 
+                                            <th>DateOfBirth</th>
                                             <th>Ngày Tạo</th>
-                                            <th>Ngày Update</th>
+                                        
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -148,15 +147,18 @@
                                             <td><a href="/profile/{{this.email}}">{{this.email}}</a></td>
                                             <td>{{this.phone}}</td>
                                             <td>{{this.role}}</td>
-                                            <td><div class="col-lg-13">
-                                            <form class="row" method="POST" action="/profile/deleteUser">
-
-                                                <button class="btn btn-danger"type="submit" name="_id" value={{this._id}}>Xóa</button>
-
-                                            </form>
-                                            </div></td>
+                                            <td>{{dateFormat this.DateOfBirth "dddd, MMMM Do YYYY"}}</td>
                                             <td >{{#newDate this.createdAt}}{{/newDate}}</td>
-                                            <td >{{#newDate this.updatedAt}}{{/newDate}}</td>
+                                          
+                                            <td>
+                                                <div class="col-lg-13">
+                                                    <form class="row" method="POST" action="/profile/deleteUser">
+                                            
+                                                        <button class="btn btn-danger" type="submit" name="_id" value={{this._id}}>Xóa</button>
+                                            
+                                                    </form>
+                                                </div>
+                                            </td>
                                         </tr>
                                         {{/each }}
                                     </tbody>
@@ -167,10 +169,10 @@
                                             <td><strong>FullName</strong></td>
                                             <td><strong>Email</strong></td>
                                             <td><strong>Phone</strong></td>
-                                            {{!-- <td><strong>DateOfBirth</strong></td> --}}
-                                            <td><strong>Vai Trò</strong></td>
+                                             <td><strong>Vai Trò</strong></td>
+                                            <td><strong>DateOfBirth</strong></td>
                                             <td><strong>Ngày Tạo</strong></td>
-                                            <td><strong>Ngày Update</strong></td>
+                                         
 
                                         </tr>
                                     </tfoot>

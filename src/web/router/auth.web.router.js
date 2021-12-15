@@ -10,8 +10,8 @@ router.get('/customer', authWebController.listCustomers);
 router.get('/profile/:email', authWebController.findOneProfile);
 router.post('/profile/createUser', authWebController.createUser);
 router.post('/profile/deleteUser', authWebController.DeleteUser);
-router.get('/profile/:email',authWebController.findOneProfile);
-router.post('/profileDetail/delete',authWebController.deleteProfile);
+router.get('/profile/:email', authWebController.findOneProfile);
+//router.post('/profileDetail/delete',authWebController.deleteProfile);
 // =======
 //
 // router.post('/login',authWebController.login);
