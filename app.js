@@ -25,6 +25,7 @@ import * as pictureOfRoom from './src/pictureOfRoom/pictureOfRoom.Router.js'
 import * as authWebRouter from './src/web/router/auth.web.router.js'
 import * as statisticalRouter from './src/web/router/statistical.web.router.js'
 import * as roomDetailRouter from './src/web/router/roomDetail.web.router.js'
+import * as customer from './src/web/router/cusromerRouter.js'
 //dotenv.config()
 connectDatabase();
 const app = express();
@@ -42,7 +43,7 @@ hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 
 hbs.registerHelper('newDate', (value) => {
     return value.toLocaleString();
-  });
+});
 
 
 
@@ -58,16 +59,12 @@ app.get("/login", async(req, res) => {
     // app.get("/home", async(req, res) => {
     //     res.render('index')
     // })
-app.get("/customer", async(req, res, next) => {
-    res.render('customer')
-})
+
 app.get("/register", async(req, res) => {
     res.render('register')
 })
-app.get("/table", async(req, res) => {
-        res.render('table')
-    })
-    //Route api
+
+//Route api
 app.use('/orderRoomBooked', orderRoomBookedApi)
 app.use('/roomDetail', roomDetailAPI)
 app.use('/user', userAPI)
@@ -76,11 +73,11 @@ app.use('/api/v1/auth', authRouter.Router);
 app.use('/api/v1/pictureOfRoom', pictureOfRoom.Router);
 app.use('/oderRoomBookingDetail', oderRoomBookingDetailApi);
 //Router web
-app.use('/',authWebRouter.router);
-app.use('/',statisticalRouter.router);
-app.use('/',roomDetailRouter.router);
-
-//Server
+app.use('/', authWebRouter.router);
+app.use('/', statisticalRouter.router);
+app.use('/', roomDetailRouter.router);
+app.use('/', customer.router)
+    //Server
 app.listen(process.env.PORT || 7777, async() => {
     console.log(`Listening on PORT ${process.env.port}`);
 })

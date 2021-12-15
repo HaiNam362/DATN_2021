@@ -14,7 +14,6 @@ const roomDetailModel = Mongoose.Schema({
     },
     idBooking: {
         type: String,
-        required: true,
     },
     roomPosition: {
         type: String
