@@ -25,7 +25,7 @@
                         <div class="card-header py-3">
 
                              <a href="#" class="text-primary m-0 fw-bold col-md-3 " data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal" style="text-decoration: none;">Tạo Phòng Khách Sạn</a>
+                                    data-bs-target="#exampleModal" style="text-decoration: none;">Thêm Phòng</a>
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
@@ -33,7 +33,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title text-primary">Tạo tài khoản nhân viên</h5>
+                                                <h5 class="modal-title text-primary">Thêm Phòng</h5>
                                             </div>
                                             <form id="form" action="/table/insert" method="post"
                                                 >
@@ -134,7 +134,7 @@
                                                         </form>
                                                     </th>
                                                     <th>
-                                                        <form action="cho router xoá" method="post" class="text-end col-md-6">
+                                                        <form action="cho router sua" method="post" class="text-end col-md-6">
                                                     
                                                             <input type="hidden" name="_id" value="{{this._id}}">
                                                             <input type="hidden" name="checkAction" value="1">

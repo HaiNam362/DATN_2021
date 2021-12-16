@@ -32,75 +32,7 @@
                                     <div class="card-header py-3">
                                         <p class="text-primary m-0 fw-bold">Thống kê chi tiết</p>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-auto text-nowrap">
-                                                <div id="dataTable_length" aria-controls="dataTable">
-                                                    <label class="form-label">
-                                                        <select class="d-inline-block form-select form-select-sm">
-                                                            <option value="" selected="">Cơ sở</option>
-                                                            <option value="25">25</option>
-                                                            <option value="50">50</option>
-                                                            <option value="100">100</option>
-                                                        </select>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-auto text-nowrap">
-                                                <div id="dataTable_length" aria-controls="dataTable">
-                                                    <label class="form-label">
-                                                        <select class="d-inline-block form-select form-select-sm">
-                                                            <option value="" selected="">Chuyên nghành</option>
-                                                            <option value="25">25</option>
-                                                            <option value="50">50</option>
-                                                            <option value="100">100</option>
-                                                        </select>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-auto text-nowrap">
-                                                <div id="dataTable_length" aria-controls="dataTable">
-                                                    <label class="form-label">
-                                                        <select class="d-inline-block form-select form-select-sm">
-                                                            <option value="" selected="">Khóa</option>
-                                                            <option value="25">25</option>
-                                                            <option value="50">50</option>
-                                                            <option value="100">100</option>
-                                                        </select>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-auto text-nowrap">
-                                                <div id="dataTable_length" aria-controls="dataTable">
-                                                    <label class="form-label">
-                                                        <select class="d-inline-block form-select form-select-sm">
-                                                            <option value="" selected="">Ngày</option>
-                                                            <option value="25">25</option>
-                                                            <option value="50">50</option>
-                                                            <option value="100">100</option>
-                                                        </select>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-md-4 mb-2">
-                                                <form
-                                                    class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                                    <div class="input-group"><input
-                                                            class="bg-light form-control border-0 small" type="text"
-                                                            placeholder="Search for ..."><button
-                                                            class="btn btn-primary py-0" type="button"><i
-                                                                class="fas fa-search"></i></button></div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <hr>
+                                    <div class="card-body">                        
                                         <div class="row" >
                                             <div class="col-md-4 mb-2">
                                                 <p class="text-white" id="tongnhanvien" > {{totalUserEmployee}} </p>
@@ -108,7 +40,11 @@
                                             <div class="col-md-4 mb-2">
                                                 <p class="text-white" id="tongnguoidung" > {{totalUserCustomer}}</p>
                                             </div>
+                                            
                                         </div>
+                                        <div class="row" >
+                                            <div class="col-md-4 mb-2">
+                                            <canvas id="myChart" width="500" height="500"></canvas>
                                     </div>
                                     <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                         aria-describedby="dataTable_info">
@@ -118,28 +54,103 @@
                                                     <th>STT</th>
                                                     <th>Tên Người Đặt</th>
                                                     <th>Ngày Đặt</th>
-                                                    <th>Phone</th>
+                                                    <th>Số Điện thoại</th>
                                                     <th>Số Phòng</th>
                                                     <th>Giá Tiền</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Nguyễn Văn a</td>
-                                                    <td>2021-11-04</td>
-                                                    <td>0987654321</td>
-                                                    <td>501</td>
-                                                    <td>500000</td>
-                                                </tr>
-                                            <div class="container">
-                                                <canvas id="myChart"></canvas>
-                                            </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-md-auto text-nowrap">
+                                                        <div id="dataTable_length" aria-controls="dataTable">
+                                                            <label class="form-label">
+                                                                <select class="d-inline-block form-select form-select-sm">
+                                                                    <option value="" selected="">Trạng Thái Đơn</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">Đã Thanh Toán</option>
+                                                                </select>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="col-md-auto text-nowrap">
+                                                        <div id="dataTable_length" aria-controls="dataTable">
+                                                            <label class="form-label">
+                                                                <select class="d-inline-block form-select form-select-sm">
+                                                                    <option value="" selected="">Chuyên nghành</option>
+                                                                    <option value="25">25</option>
+                                                                    <option value="50">50</option>
+                                                                    <option value="100">100</option>
+                                                                </select>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="col-md-auto text-nowrap">
+                                                        <div id="dataTable_length" aria-controls="dataTable">
+                                                            <label class="form-label">
+                                                                <select class="d-inline-block form-select form-select-sm">
+                                                                    <option value="" selected="">Khóa</option>
+                                                                    <option value="25">25</option>
+                                                                    <option value="50">50</option>
+                                                                    <option value="100">100</option>
+                                                                </select>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="col-md-auto text-nowrap">
+                                                        <div id="dataTable_length" aria-controls="dataTable">
+                                                            <label class="form-label">
+                                                                <select class="d-inline-block form-select form-select-sm">
+                                                                    <option value="" selected="">Ngày</option>
+                                                                    <option value="25">25</option>
+                                                                    <option value="50">50</option>
+                                                                    <option value="100">100</option>
+                                                                </select>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{#each OderRoomBookedDB }}
+                                            <tr>
+                                                <td>{{@index}}</td>
+                                               
+                                                <td>{{this.fullName}}</td>
+                                               
+                                                <td>{{this.phone}}</td>
+                                            
+                                                <td>{{dateFormat this.timeBookingStart "dddd, MMMM Do YYYY"}}</td>
+                                                <td>{{this.totalRoomRate}}</td>
+                                            
+                                                <td>
+                                                    <div class="col-lg-13">
+                                                        <form class="row" method="POST" action="/profile/deleteUser">
+                                            
+                                                            <button class="btn btn-danger" type="submit" name="_id" value={{this._id}}>Xóa</button>
+                                            
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {{/each }}
                                 
                                             </tbody>
+                                           
                                         </table>
+                                        
                                     </div>
-
+                                        <div class="col-lg-13">
+                                            <p id="tongdonhoanthanh">Tổng số đơn đã thanh toán: {{totalBooked3}}</p>
+                                        </div>
+                                        <div class="col-lg-13">
+                                            <p id="tongdonchuaxacnhan">Tổng số chưa xác nhận: {{totalBooked0}}</p>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <p id="tongdondaxacnhan">Tổng số đơn đã xác nhận: {{totalBooked1}}</p>
+                                        </div>
 
                                 </div>
                             </div>
@@ -154,71 +165,58 @@
                 </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i
                         class="fas fa-angle-up"></i></a>
             </div>
-<script type>
-    let myChart = document.getElementById('myChart').getContext('2d');
-    // Global Options
-    Chart.defaults.global.defaultFontFamily = 'Lato';
-    Chart.defaults.global.defaultFontSize = 16;
-    Chart.defaults.global.defaultFontColor = '#777';
+<script >
+    const ctx = document.getElementById('myChart');
+     const ctx2 = document.getElementById('myChart2');
    var element = document.getElementById('tongnhanvien');
-   var nguoidung = document.getElementById('tongnguoidung');
+   var element2 = document.getElementById('tongnguoidung');
+   var element3 = document.getElementById('tongdonhoanthanh');
+   var element4 = document.getElementById('tongdonchuaxacnhan');
+   var element5 = document.getElementById('tongdondaxacnhan');
+   var donhoanthanh = element3.innerHTML
+   var donchuaxacnhan = element4.innerHTML
+   var dondaxacnhan = element5.innerHTML
     console.log(element);
     console.log(element.innerHTML)
-    var x = element.innerHTML
-    console.log(x);
-    var y = nguoidung.innerHTML
-    let massPopChart = new Chart(myChart, {
-        type: 'horizontalBar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-        data: {
-            labels: ['Nhân Viên', 'Người Dùng'],
-            datasets: [{
-                label: 'Population',
-                data: [
-                  x,
-                y,
-           
-                ],
-                //backgroundColor:'green',
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.6)',
-                    'rgba(54, 162, 235, 0.6)',
-                    'rgba(255, 206, 86, 0.6)',
-                    'rgba(75, 192, 192, 0.6)',
-                    'rgba(153, 102, 255, 0.6)',
-                    'rgba(255, 159, 64, 0.6)',
-                    'rgba(255, 99, 132, 0.6)'
-                ],
-                borderWidth: 1,
-                borderColor: '#777',
-                hoverBorderWidth: 3,
-                hoverBorderColor: '#000'
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Bảng thống kê',
-                fontSize: 25
+    var nhanvien = element.innerHTML
+    console.log(nhanvien);
+    var nguoidung = element2.innerHTML
+    const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Nhân Viên', 'Người Dùng'],
+                datasets: [{
+                   
+                    label: 'Bảng thống kê truy cập',
+                    data: [nhanvien,nguoidung],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 2
+                }]
             },
-            legend: {
-                display: true,
-                position: 'right',
-                labels: {
-                    fontColor: '#000'
+            options: {
+                   scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
+
             },
-            layout: {
-                padding: {
-                    left: 50,
-                    right: 0,
-                    bottom: 0,
-                    top: 0
-                }
-            },
-            tooltips: {
-                enabled: true
-            }
-        }
-    });
+        });
+
 </script>
 </body>

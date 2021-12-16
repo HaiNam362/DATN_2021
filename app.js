@@ -26,6 +26,7 @@ import * as authWebRouter from './src/web/router/auth.web.router.js'
 import * as statisticalRouter from './src/web/router/statistical.web.router.js'
 import * as roomDetailRouter from './src/web/router/roomDetail.web.router.js'
 import * as customer from './src/web/router/cusromerRouter.js'
+import * as hoadon from './src/web/router/hoadonRouter.js'
 //dotenv.config()
 connectDatabase();
 const app = express();
@@ -77,6 +78,7 @@ app.use('/', authWebRouter.router);
 app.use('/', statisticalRouter.router);
 app.use('/', roomDetailRouter.router);
 app.use('/', customer.router)
+app.use('/', hoadon.router)
     //Server
 app.listen(process.env.PORT || 7777, async() => {
     console.log(`Listening on PORT ${process.env.port}`);

@@ -3,7 +3,7 @@
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="home">
-                 
+                <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
                     <div class="sidebar-brand-text mx-3"><span>Hanoi Prime</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
@@ -59,11 +59,11 @@
                                 </div>
                             </div>
 
-                            <button href="#" class="btn btn-dark d-block btn-user " data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" style="text-decoration: none;">Tạo tài khoản Người Dùng
+                            <button href="#" class="btn btn-success d-block btn-user " data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" style="text-decoration: none;">Thêm Người Dùng
                                 </button>
 
-                            <!-- Modal -->
+                        
                             <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
                                 data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -133,10 +133,10 @@
                                         <tr>
                                             <th>STT</th>
                                             <th>Avatar</th>
-                                            <th>FullName</th>
+                                            <th>Họ Tên</th>
                                             <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>DateOfBirth</th>
+                                            <th>Số Điện Thoại</th>
+                                            <th>Ngày Sinh</th>
                                             <th>Vai Trò</th>
                                         </tr>
                                     </thead>
@@ -149,19 +149,29 @@
                                                     src="{{this.avatar}}">
                                             </td>
                                             <td><p><strong>{{this.fullName}}</strong></p></td>
-                                            <td><a href="/profile/{{this.email}}">{{this.email}}</a></td>
+                                            <td>{{this.email}}</td>
                                             <td>{{this.phone}}</td>
                                             <td>{{dateFormat this.DateOfBirth "dddd, MMMM Do YYYY"}}</td>
                                             <td>{{this.role}}</td>
                                             <td>
-                                                <div class="col-lg-13">
+                                                
                                                 <form class="row" method="POST" action="/customer/delete">
 
                                                     <button class="btn btn-danger" type="submit" name="_id"
                                                         value={{this._id}}>Xóa</button>
 
                                                 </form>
-                                                </div>
+                                                
+                                            </td>
+                                            <th>
+                                                <form action="cho router sua" method="post" class="text-end col-md-6">
+                                            
+                                                    <input type="hidden" name="_id" value="{{this._id}}">
+                                                    <input type="hidden" name="checkAction" value="1">
+                                            
+                                                    <button class="btn btn-primary" type="submit" style="margin-right: 5px;">Sửa</button>
+                                                </form>
+                                            </th>
                             </div>
                             </td>
                             </tr>
@@ -183,7 +193,7 @@
         </div>
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">
-                <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>
+                <div class="text-center my-auto copyright"><span>Hanoi Prime Center</span></div>
             </div>
         </footer>
     </div>

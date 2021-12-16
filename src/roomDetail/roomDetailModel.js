@@ -20,7 +20,7 @@ const roomDetailModel = Mongoose.Schema({
     },
     roomStatus: {
         type: Number,
-        default: 1,
+        default: 0,
     },
     idKindOfRoom: {
         type: Number,
