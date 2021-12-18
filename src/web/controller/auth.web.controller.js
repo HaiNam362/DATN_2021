@@ -1,7 +1,7 @@
 import User from '../../auth/user.models.js'
 import _ from 'lodash';
 import moment from 'moment'
-
+import bcrypt from 'bcryptjs'
 
 export const listUser = async(req, res, next) => {
     let { keySearch } = req.query;
@@ -18,20 +18,24 @@ export const listUser = async(req, res, next) => {
     }
 
     res.render('profile', { UserDB: data });
+
 }
 export const findOneProfile = async(req, res) => {
     try {
         let { email } = req.params;
-
+        let UserDB = await User.findOne({ email });
+        if (!UserDB) {
+            return res.sendStatus(404);
+        }
+        let payload = {
+            UserDB,
+        }
         console.log(email);
-        res.render('test123', { email });
-
+        res.render('profileDetail', payload);
     } catch (error) {
         res.send(error.message);
     }
 }
-
-
 
 export const createUser = async(req, res, next) => {
     try {
@@ -57,23 +61,19 @@ export const DeleteUser = async(req, res, next) => {
 
 export const login = async(req, res, next) => {
     try {
-        const { email, password } = req.body;
+        const { phone, password } = req.body;
 
-        if (email == 'admin' && password == 'admin')
-            return res.redirect('/home');
-
-        const data = await User.findOne({ email, password });
-
-        if (data != email) {
-            Alert.alert("Sai email")
-            return res.redirect('login', { msgError: 'Sai email' })
+        const data = await User.findOne({ phone, role: 'admin' });
+        if (!data) {
+            return res.render('login', { msgError: 'Sai số điện thoại ' });
         }
-
-        if (data != password) return res.redirect('login', { msgError: 'Sai mật khẩu' });
-
-        if (data.role != 'admin') return res.render('login', { msgError: 'Tài Khoản không có quyền hạn' })
-
-        res.redirect('/home');
+        let check = await bcrypt.compareSync(password, data.password);
+        if (data.phone === phone && check == true) {
+            res.cookie("token", data, { maxAge: 1000 * 60 * 60 });
+            res.redirect('/home');
+        } else {
+            return res.render('login', { msgError: 'Sai Mật Khẩu' })
+        }
     } catch (error) {
         res.status(500).send(error.message);
     }
@@ -81,13 +81,35 @@ export const login = async(req, res, next) => {
 
 
 export const logout = async(req, res, next) => {
-    if (req.session) {
-        req.session.destroy(function(err) {
-            if (err) {
-                return next(err);
-            } else {
-                return res.redirect('/'); //đoạn này còn thiều đường dẫn
-            }
-        })
+        try {
+            res.clearCookie('token');
+            res.redirect('/')
+        } catch (error) {
+            res.send(error.message);
+        }
+    }
+    // profileDetail
+
+export const listUserDetail = async(req, res, next) => {
+    try {
+        const { email } = req.params;
+        let data = await User.findOne({ email });
+        console.log(data);
+        if (!data) {
+            return res.sendStatus(404)
+        }
+        res.render('profileDetail', { UserDetailDB: data });
+    } catch (error) {
+        res.send(error.message);
+    }
+
+}
+
+export const deleteUserDetail = async(req, res, next) => {
+    try {
+        await User.findByIdAndDelete(req.body._id);
+        res.redirect('/profileDetail');
+    } catch (error) {
+        res.send(error.message);
     }
 }

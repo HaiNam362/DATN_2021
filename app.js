@@ -1,12 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-// const bodyParser = new bodyParser()
-// var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
-// import dotenv from 'dotenv';
 import exphbs from 'express-handlebars';
 import hbs from 'hbs'
 import path from 'path';
+import cookieParser from 'cookie-parser';
 import { createRequire } from 'module';
 const require = createRequire(
     import.meta.url);
@@ -26,7 +23,9 @@ import * as authWebRouter from './src/web/router/auth.web.router.js'
 import * as statisticalRouter from './src/web/router/statistical.web.router.js'
 import * as roomDetailRouter from './src/web/router/roomDetail.web.router.js'
 import * as customer from './src/web/router/cusromerRouter.js'
-import * as hoadon from './src/web/router/hoadonRouter.js'
+// test thống kê
+import orderRoomBooked from './src/orderRoomBooked/orderRoomBookedModel.js'
+
 //dotenv.config()
 connectDatabase();
 const app = express();
@@ -36,8 +35,11 @@ const __dirname = path.resolve();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
@@ -47,23 +49,27 @@ hbs.registerHelper('newDate', (value) => {
 });
 
 
+app.get('/test', async(req, res, next) => {
+    const total = await orderRoomBooked.aggregate(
+        [{
+            '$group': {
+                '_id': null,
+                'total': {
+                    '$sum': '$totalRoomRate'
+                }
+            }
+        }]
+    )
+    res.send(total);
 
-// app.set('views', path.join(__dirname, 'views'));
+})
+
 
 app.get("/", async(req, res) => {
     res.render('login')
 })
 
-app.get("/login", async(req, res) => {
-        res.render('login')
-    })
-    // app.get("/home", async(req, res) => {
-    //     res.render('index')
-    // })
 
-app.get("/register", async(req, res) => {
-    res.render('register')
-})
 
 //Route api
 app.use('/orderRoomBooked', orderRoomBookedApi)
@@ -74,12 +80,13 @@ app.use('/api/v1/auth', authRouter.Router);
 app.use('/api/v1/pictureOfRoom', pictureOfRoom.Router);
 app.use('/oderRoomBookingDetail', oderRoomBookingDetailApi);
 //Router web
+app.use(cookieParser());
 app.use('/', authWebRouter.router);
 app.use('/', statisticalRouter.router);
 app.use('/', roomDetailRouter.router);
 app.use('/', customer.router)
-app.use('/', hoadon.router)
-    //Server
+
+//Server
 app.listen(process.env.PORT || 7777, async() => {
     console.log(`Listening on PORT ${process.env.port}`);
 })

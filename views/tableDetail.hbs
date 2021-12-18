@@ -1,0 +1,188 @@
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0"><a
+                    class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                    <div class="sidebar-brand-text mx-3"><span>Hanoi Prime</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="/home"><i
+                                class="fas fa-tachometer-alt"></i><span>Thống Kê</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/profile"><i class="fas fa-user"></i><span>Quản Lý
+                                Nhân Viên</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/table"><i class="fas fa-flag"></i><span>Quản
+                                Lý Phòng</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customer"><i class="fas fa-bell"></i><span>Quản Lý
+                                Người Dùng</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout"><i
+                                class="fas fa-sign-out-alt"></i><span>Đăng Xuất</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div class="container-fluid">
+
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                aria-describedby="dataTable_info">
+                                <h3 class="text-dark mb-4">Chi Tiết Phòng</h3>
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+
+                                            <th>ID</th>
+                                            <th>Số Phòng</th>
+                                            <th>Tên Phòng</th>
+                                            <th>Số Người Tối Đa</th>
+                                            <th>Trạng Thái Phòng</th>
+                                            <th>Loại Phòng</th>
+                                            <th>Giá Phòng</th>
+                                            <th>Ngày Giờ Tạo Phòng</th>
+                                            <th>Ngày Giờ Sửa Phòng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td>{{roomDetailDB._id}}</td>
+                                            <td>{{roomDetailDB.idRoom}}</td>
+                                            <td>{{roomDetailDB.roomName}}</td>
+                                            <td>{{roomDetailDB.maximumNumberOfPeople}}</td>
+                                            <td>{{roomDetailDB.roomStatus}}</td>
+                                            <td>{{roomDetailDB.idKindOfRoom}}</td>
+                                            <td>{{roomDetailDB.roomPrice}}</td>
+                                            <td>{{#newDate roomDetailDB.created_at}}{{/newDate}}</td>
+                                            <td>{{#newDate roomDetailDB.updatedAt}}{{/newDate}}</td>
+                                            <th>
+                                                <form action="/tableDetail/delete" method="post"
+                                                    class="text-end col-md-6">
+
+                                                    <input type="hidden" name="_id" value="{{this._id}}" name="_id">
+                                                    <input type="hidden" name="checkAction" value="1">
+
+                                                    <button class="btn btn-danger" type="submit"
+                                                        style="margin-right: 5px;">Xoá</button>
+                                                </form>
+                                            </th>
+                                            <th>
+
+                                                <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal">
+                                                    <span class="text-white">Sửa </span>
+                                                </button>
+                                                <!-- Modal Information -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                    data-bs-backdrop="static" data-bs-keyboard="false"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title text-danger">Sửa Phòng
+                                                                    {{roomDetailDB.idRoom}}
+                                                                </h5>
+                                                            </div>
+                                                            <!-- form -->
+                                                            <form action="/tableDetail/update" method="post">
+                                                                <div class="modal-body row g-3">
+                                                                    <div class="col-md-6">
+                                                                        <label class="form-label">Số Phòng</label>
+                                                                        <input type="text" name="idRoom"
+                                                                            class="form-control"
+                                                                            value="{{roomDetailDB.idRoom}}">
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label class="form-label">Tên Phòng</label>
+                                                                        <input type="text" name="roomName"
+                                                                            value="{{roomDetailDB.roomName}}"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label class="form-label">Số Người Tối
+                                                                            Đa</label>
+                                                                        <input type="tel" name="maximumNumberOfPeople"
+                                                                            value="{{roomDetailDB.maximumNumberOfPeople}}"
+                                                                            class="form-control" required>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label class="form-label">Trạng Thái
+                                                                            Phòng</label>
+                                                                        <input type="tel" name="roomStatus"
+                                                                            value="{{roomDetailDB.roomStatus}}"
+                                                                            class="form-control" required>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label class="form-label">Loại Phòng</label>
+                                                                        <input type="tel" name="idKindOfRoom"
+                                                                            value="{{roomDetailDB.idKindOfRoom}}"
+                                                                            class="form-control" required>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label class="form-label">Giá Phòng</label>
+                                                                        <input type="tel" name="roomPrice"
+                                                                            value="{{roomDetailDB.roomPrice}}"
+                                                                            class="form-control" required>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <input type="hidden" name="_id"
+                                                                            value="{{roomDetailDB._id}}">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Gửi</button>
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Hủy</button>
+                                                                </div>
+                                                            </form>
+                                                            <!-- end form -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </th>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">
+                                        Showing 1 to 10 of 27</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav
+                                        class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#"
+                                                    aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span
+                                                        aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Hanoi Prime Center</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+
+</body>

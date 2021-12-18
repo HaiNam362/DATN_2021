@@ -18,6 +18,7 @@ export const listRoomDetail = async(req, res, next) => {
             data = await roomDetailModel.find()
         }
         res.render('table', { roomDetailDB: data })
+
     } catch (error) {
         res.send(error.message)
     }
@@ -42,7 +43,28 @@ export const createRoomDetail = async(req, res, next) => {
 }
 export const updateRoomDetail = async(req, res, next) => {
     try {
+        let { _id, idRoom, roomName, maximumNumberOfPeople, roomStatus, idKindOfRoom, roomPrice, updatedAt } = req.body;
+        console.log(req.body);
+        console.log("abc");
 
+        let roomDetail = await roomDetailModel.findById(_id);
+
+        console.log(roomDetail);
+
+        if (!roomDetail) {
+            return res.send("Not Found");
+        }
+        let payload = {
+            idRoom,
+            roomName,
+            maximumNumberOfPeople,
+            roomStatus,
+            idKindOfRoom,
+            roomPrice,
+            updatedAt: Date.now(),
+        }
+        await roomDetailModel.updateOne({ _id }, payload);
+        res.redirect("/table");
     } catch (error) {
         res.send(error.message)
     }
@@ -50,9 +72,22 @@ export const updateRoomDetail = async(req, res, next) => {
 export const deleteRoomDetail = async(req, res, next) => {
     try {
         await roomDetailModel.findByIdAndDelete(req.body._id);
-        res.redirect('/table');
+        res.redirect('/tableDetail');
 
     } catch (error) {
         res.status(500).send(error);
+    }
+}
+export const findOneTableDetail = async(req, res) => {
+    try {
+        const { idRoom } = req.params;
+        let data = await roomDetailModel.findOne({ idRoom });
+
+        if (!data) {
+            return res.sendStatus(404)
+        }
+        res.render('tableDetail', { roomDetailDB: data });
+    } catch (error) {
+        res.send(error.message);
     }
 }

@@ -1,0 +1,204 @@
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="home">
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-hotel"></i></div>
+                    <div class="sidebar-brand-text mx-3"><span>Hanoi Prime </span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="/home"><i
+                                class="fas fa-tachometer-alt"></i><span>Thống Kê</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/profile"><i class="fas fa-user"></i><span>Quản Lý
+                                Nhân Viên</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/table"><i class="	fas fa-bed"></i><span>Quản Lý
+                                Phòng</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customer"><i class="fas fa-bell"></i><span>Quản Lý
+                                Người Dùng</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout"><i
+                                class="fas fa-sign-out-alt"></i><span>Đăng Xuất</span></a></li>
+                </ul>
+
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3"
+                            id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <div class="d-sm-inline-block me-auto md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <h4 class="text-dark mb-0">Người dùng</h4>
+                        </div>
+                    </div>
+                </nav>
+
+                {{!-- <div class="container-fluid">
+                    <div class="card shadow mb-3"> --}}
+                        {{!-- <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Thông tin Chi Tiết Nhân Viên</p>
+
+                        </div> --}}
+                        <div class="card-body">
+
+
+
+                            {{!-- <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                aria-describedby="dataTable_info">
+                                <table class="table table-hover my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+
+                                            <th>ID</th>
+                                            <th>Ảnh</th>
+                                            <th>Họ Và Tên</th>
+                                            <th>UserName</th>
+                                            <th>Email</th>
+                                            <th>Số Điện Thoại</th>
+                                            <th>Vai Trò</th>
+                                            <th>Ngày Sinh </th>
+                                            <th>Ngày Tạo</th>
+                                            <th>Ngày Cập Nhật</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        <tr>
+                                            <td>{{UserDetailDB._id}}</td>
+                                            <td>
+                                                <img class="rounded-circle me-2" width="30" height="30"
+                                                    src="{{UserDetailDB.avatar}}">
+                                            </td>
+                                            <td>{{UserDetailDB.fullName}}</td>
+                                            <td>{{UserDetailDB.userName}}</td>
+                                            <td>{{UserDetailDB.email}}</td>
+                                            <td>{{UserDetailDB.phone}}</td>
+                                            <td>{{UserDetailDB.role}}</td>
+                                            <td>{{dateFormat UserDetailDB.DateOfBirth "dddd, MMMM Do YYYY"}}</td>
+                                            <td>{{#newDate UserDetailDB.createdAt}}{{/newDate}}</td>
+                                            <td>{{#newDate UserDetailDB.updatedAt}}{{/newDate}}</td>
+
+                                            <th>
+                                                <div class="col-lg-13">
+                                                    <form class="row" method="POST" action="/profile/deleteUser">
+
+                                                        <button class="btn btn-danger" type="submit" name="_id"
+                                                            value={{this._id}}>Xóa</button>
+
+                                                    </form>
+                                                </div>
+                                            </th>
+
+                                        </tr>
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>STT</strong></td>
+                                            <td><strong>ID</strong></td>
+                                            <td><strong>Ảnh</strong></td>
+                                            <td><strong>Họ Và tên</strong></td>
+                                            <td><strong>UserName</strong></td>
+                                            <td><strong>Email</strong></td>
+                                            <td><strong>Số Điện Thoại</strong></td>
+                                            <td><strong>Vai Trò</strong></td>
+                                            <td><strong>Ngày Sinh</strong></td>
+                                            <td><strong>Ngày Tạo</strong></td>
+                                            <td><strong>Ngày cập nhật</strong></td>
+
+
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div> --}}
+
+                            {{!-- chạy thử --}}
+                            <div class="container-fluid">
+                                <div class="row mb-3">
+                                    <div class="col-lg-6">
+                                        <div class="card shadow mb-3">
+                                            <div class="card-header py-3">
+                                                <p class="text-primary m-0 fw-bold">Hồ sơ Nhân Viên</p>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="col text-center">
+                                                    <img class="rounded-circle mb-3 mt-2" src="{{UserDetailDB.avatar}}"
+                                                        width="180" height="180">
+                                                    <p class="text-black fw-bold h4">{{UserDetailDB.userName}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="card shadow mb-3">
+                                                    <div class="card-header py-3">
+                                                        <p class="text-primary m-0 fw-bold col-md-6">Thông tin chi tiết
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="card-body">
+                                                        <div class="col">
+                                                            <p><span class="text-black">ID: </span>{{UserDetailDB._id}}
+                                                            </p>
+                                                            <p><span class="text-black">Họ tên:
+                                                                </span>{{UserDetailDB.fullName}}</p>
+                                                            <p><span class="text-black">Email:
+                                                                </span>{{UserDetailDB.email}}</p>
+                                                            <p><span class="text-black">Số Điện Thoại:
+                                                                </span>{{UserDetailDB.phone}}</p>
+                                                            <p><span class="text-black">Vai Trò:
+                                                                </span>{{UserDetailDB.role}}</p>
+                                                            <p><span class="text-black">Ngày Sinh: </span>{{#newDate
+                                                                UserDetailDB.DateOfBirth}}{{/newDate}}</p>
+                                                            <p><span class="text-black">Ngày Tạo Tài Khoản:
+                                                                </span>{{#newDate UserDetailDB.createdAt}}{{/newDate}}
+                                                            </p>
+                                                            <hr>
+                                                            <div class="d-md-flex mb-2">
+                                                                <form action="/profileDetail/delete" method="post"
+                                                                    class="text-end col-md-12">
+
+                                                                    <input type="hidden" name="_id" value="{{this._id}}"
+                                                                        name="_id">
+                                                                    <input type="hidden" name="checkAction" value="1">
+
+                                                                    <button class="btn btn-danger" type="submit"
+                                                                        style="margin-right: 5px;">Xoá</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <nav
+                                        class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        {{!--
+                    </div>
+                </div> --}}
+
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Hanoi Prime Center</span></div>
+                </div>
+            </footer>
+        </div>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+
+</body>

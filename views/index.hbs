@@ -15,7 +15,7 @@
                                 </span></a></li>
                     <li class="nav-item"><a class="nav-link" href="customer"><i class="fas fa-bell"></i><span>Quản Lý Người Dùng
                                 </span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="login"><i class="fas fa-sign-out-alt"></i><span>Đăng
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-sign-out-alt"></i><span>Đăng
                                 xuất</span></a></li>
                 </ul>
 
@@ -35,16 +35,33 @@
                                     <div class="card-body">                        
                                         <div class="row" >
                                             <div class="col-md-4 mb-2">
-                                                <p class="text-white" id="tongnhanvien" > {{totalUserEmployee}} </p>
+                                                <p  id="tongnhanvien" >Tổng số nhân viên là: {{totalUserEmployee}} </p>
                                             </div>
                                             <div class="col-md-4 mb-2">
-                                                <p class="text-white" id="tongnguoidung" > {{totalUserCustomer}}</p>
+                                                <p  id="tongnguoidung" > Tổng số người dùng là: {{totalUserCustomer}}</p>
                                             </div>
-                                            
+                                            <div class="col-md-4 mb-2">
+                                                <p id="tongnguoidung"> Admin: {{totalUserDataEntry}}</p>
+                                            </div>
+                                            <div class="col-md-4 mb-2">
+                                                <p id="tongnguoidung"> Tổng số phòng: {{totalRoom}}</p>
                                         </div>
-                                        <div class="row" >
+                                        <div class="col-md-4 mb-2">
+                                            <p id="tongnguoidung"> Số phòng trống: {{totalRoom0}}</p>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <p id="tongnguoidung">Số phòng đã đặt trước:  {{totalRoom1}}</p>
+                                            </div>
                                             <div class="col-md-4 mb-2">
-                                            <canvas id="myChart" width="500" height="500"></canvas>
+                                                <p id="tongnguoidung"> Số phòng đang sử dụng: {{totalRoom2}}</p>
+                                        </div>
+                                            <div class="col-md-4 mb-2">
+                                                <p id="tongnguoidung"> Toong doanh thu: {{_number}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="container" >
+                                        
+                                            <canvas id="myChart" height="50" width="200"></canvas>
                                     </div>
                                     <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                         aria-describedby="dataTable_info">
@@ -54,9 +71,11 @@
                                                     <th>STT</th>
                                                     <th>Tên Người Đặt</th>
                                                     <th>Ngày Đặt</th>
+                                                    <th>Ngày Kết Thúc</th>
+                                                    <th>Số Tiền Thanh Toán</th>
                                                     <th>Số Điện thoại</th>
-                                                    <th>Số Phòng</th>
-                                                    <th>Giá Tiền</th>
+                                                    <th>Trạng Thái </th>
+                                                 
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -74,32 +93,7 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                
-                                                    <div class="col-md-auto text-nowrap">
-                                                        <div id="dataTable_length" aria-controls="dataTable">
-                                                            <label class="form-label">
-                                                                <select class="d-inline-block form-select form-select-sm">
-                                                                    <option value="" selected="">Chuyên nghành</option>
-                                                                    <option value="25">25</option>
-                                                                    <option value="50">50</option>
-                                                                    <option value="100">100</option>
-                                                                </select>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                
-                                                    <div class="col-md-auto text-nowrap">
-                                                        <div id="dataTable_length" aria-controls="dataTable">
-                                                            <label class="form-label">
-                                                                <select class="d-inline-block form-select form-select-sm">
-                                                                    <option value="" selected="">Khóa</option>
-                                                                    <option value="25">25</option>
-                                                                    <option value="50">50</option>
-                                                                    <option value="100">100</option>
-                                                                </select>
-                                                            </label>
-                                                        </div>
-                                                    </div>
+                                              
                                                 
                                                     <div class="col-md-auto text-nowrap">
                                                         <div id="dataTable_length" aria-controls="dataTable">
@@ -114,26 +108,20 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            {{#each OderRoomBookedDB }}
+                                            {{#each orderRoomBookedDB }}
                                             <tr>
                                                 <td>{{@index}}</td>
                                                
                                                 <td>{{this.fullName}}</td>
-                                               
-                                                <td>{{this.phone}}</td>
-                                            
-                                                <td>{{dateFormat this.timeBookingStart "dddd, MMMM Do YYYY"}}</td>
+                                                <td>{{#newDate this.timeBookingStart}}{{/newDate}}</td>
+                                                <td>{{#newDate this.timeBookingEnd}}{{/newDate}}</td>
                                                 <td>{{this.totalRoomRate}}</td>
+                                                <td>{{this.phone}}</td>
+                                                <td>{{this.bookingStatus}}</td>
+                                               
+                                                
                                             
-                                                <td>
-                                                    <div class="col-lg-13">
-                                                        <form class="row" method="POST" action="/profile/deleteUser">
-                                            
-                                                            <button class="btn btn-danger" type="submit" name="_id" value={{this._id}}>Xóa</button>
-                                            
-                                                        </form>
-                                                    </div>
-                                                </td>
+                                        
                                             </tr>
                                             {{/each }}
                                 
@@ -143,13 +131,13 @@
                                         
                                     </div>
                                         <div class="col-lg-13">
-                                            <p id="tongdonhoanthanh">Tổng số đơn đã thanh toán: {{totalBooked3}}</p>
+                                            <p class="text-white"  id="tongdonhoanthanh">{{totalBooked3}}</p>
                                         </div>
                                         <div class="col-lg-13">
-                                            <p id="tongdonchuaxacnhan">Tổng số chưa xác nhận: {{totalBooked0}}</p>
+                                            <p class="text-white" id="tongdonchuaxacnhan"> {{totalBooked0}}</p>
                                         </div>
                                         <div class="col-md-4 mb-2">
-                                            <p id="tongdondaxacnhan">Tổng số đơn đã xác nhận: {{totalBooked1}}</p>
+                                            <p  class="text-white" id="tongdondaxacnhan"> {{totalBooked1}}</p>
                                         </div>
 
                                 </div>
@@ -167,7 +155,6 @@
             </div>
 <script >
     const ctx = document.getElementById('myChart');
-     const ctx2 = document.getElementById('myChart2');
    var element = document.getElementById('tongnhanvien');
    var element2 = document.getElementById('tongnguoidung');
    var element3 = document.getElementById('tongdonhoanthanh');
@@ -182,13 +169,13 @@
     console.log(nhanvien);
     var nguoidung = element2.innerHTML
     const myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
-                labels: ['Nhân Viên', 'Người Dùng'],
+                labels: ['Đơn chưa xác Nhận','Đơn đã xác nhận','Đơn đã thanh toán'],
                 datasets: [{
                    
-                    label: 'Bảng thống kê truy cập',
-                    data: [nhanvien,nguoidung],
+                    label: 'Bảng thống kê trạng thái hóa đơn ',
+                    data: [donchuaxacnhan,dondaxacnhan,donhoanthanh],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -209,9 +196,14 @@
                 }]
             },
             options: {
-                   scales: {
-                    y: {
-                        beginAtZero: true
+                
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Bar Chart'
                     }
                 }
 

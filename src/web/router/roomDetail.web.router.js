@@ -5,6 +5,9 @@ import * as roomDetailController from '../controller/roomDetail.web.controller.j
 
 router.get('/table', roomDetailController.listRoomDetail);
 router.post('/table/insert', roomDetailController.createRoomDetail);
-router.post('/table/delete', roomDetailController.deleteRoomDetail);
+
+router.post('/tableDetail/delete', roomDetailController.deleteRoomDetail);
+router.get('/tableDetail/:idRoom', roomDetailController.findOneTableDetail);
+router.post('/tableDetail/update', roomDetailController.updateRoomDetail);
 
 export { router };

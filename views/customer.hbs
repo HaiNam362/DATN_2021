@@ -1,26 +1,26 @@
+
 <body id="page-top">
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="home">
-                <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-hotel"></i></div>
                     <div class="sidebar-brand-text mx-3"><span>Hanoi Prime</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="home"><i
+                    <li class="nav-item"><a class="nav-link" href="/home"><i
                                 class="fas fa-tachometer-alt"></i><span>Thống Kê</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/profile"><i
-                                class="fas fa-user"></i><span>Quản Lý Nhân Viên</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/table"><i class="fas fa-flag"></i><span>Quản Lý Phòng
-                                </span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/profile"><i class="fas fa-user"></i><span>Quản Lý
+                                Nhân Viên</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/table"><i class="	fas fa-bed"></i><span>Quản Lý
+                                Phòng</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/customer"><i class="fas fa-bell"></i><span>Quản Lý
-                                Người Dùng
-                            </span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login"><i class="fas fa-sign-out-alt"></i><span>Đăng
-                                Xuất</span></a></li>
+                                Người Dùng</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout"><i
+                                class="fas fa-sign-out-alt"></i><span>Đăng Xuất</span></a></li>
                 </ul>
-             
+
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
@@ -59,11 +59,9 @@
                                 </div>
                             </div>
 
-                            <button href="#" class="btn btn-success d-block btn-user " data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" style="text-decoration: none;">Thêm Người Dùng
-                                </button>
-
-                        
+                    <!--     <button href="#" class="btn btn-success d-block btn-user " data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" style="text-decoration: none;">Thêm Người Dùng
+                          </button> -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
                                 data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -109,7 +107,7 @@
                                                     <label class="form-label">Vai Trò</label>
                                                     <select name="role" id="">
                                                         <option value="customer">Người Dùng</option>
-                            
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -148,30 +146,32 @@
                                                 <img class="rounded-circle me-2" width="30" height="30"
                                                     src="{{this.avatar}}">
                                             </td>
-                                            <td><p><strong>{{this.fullName}}</strong></p></td>
-                                            <td>{{this.email}}</td>
+                                            <td>{{this.fullName}}</td>
+                                            <td><a style="text-decoration: none;" class="text-info"
+                                                    href="/custommerDetail/{{this.email}}">{{this.email}}</a></td>
                                             <td>{{this.phone}}</td>
                                             <td>{{dateFormat this.DateOfBirth "dddd, MMMM Do YYYY"}}</td>
                                             <td>{{this.role}}</td>
-                                            <td>
-                                                
+                                            {{!-- <td>
+
                                                 <form class="row" method="POST" action="/customer/delete">
 
                                                     <button class="btn btn-danger" type="submit" name="_id"
                                                         value={{this._id}}>Xóa</button>
 
                                                 </form>
-                                                
-                                            </td>
-                                            <th>
+
+                                            </td> --}}
+                                            {{!-- <th>
                                                 <form action="cho router sua" method="post" class="text-end col-md-6">
-                                            
+
                                                     <input type="hidden" name="_id" value="{{this._id}}">
                                                     <input type="hidden" name="checkAction" value="1">
-                                            
-                                                    <button class="btn btn-primary" type="submit" style="margin-right: 5px;">Sửa</button>
+
+                                                    <button class="btn btn-primary" type="submit"
+                                                        style="margin-right: 5px;">Sửa</button>
                                                 </form>
-                                            </th>
+                                            </th> --}}
                             </div>
                             </td>
                             </tr>
@@ -201,4 +201,3 @@
     </div>
 
 </body>
-

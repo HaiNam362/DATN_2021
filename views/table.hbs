@@ -1,20 +1,26 @@
-
 <body id="page-top">
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
-            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+            <div class="container-fluid d-flex flex-column p-0"><a
+                    class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-hotel"></i></div>
                     <div class="sidebar-brand-text mx-3"><span>Hanoi Prime</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="home"><i class="fas fa-tachometer-alt"></i><span>Thống Kê</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile"><i class="fas fa-user"></i><span>Quản Lý Nhân Viên</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="table"><i class="fas fa-flag"></i><span>Quản Lý Phòng</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="customer"><i class="fas fa-bell"></i><span>Quản Lý Người Dùng</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="login"><i class="fas fa-sign-out-alt"></i><span>Đăng Xuất</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/home"><i
+                                class="fas fa-tachometer-alt"></i><span>Thống Kê</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/profile"><i class="fas fa-user"></i><span>Quản Lý
+                                Nhân Viên</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/table"><i class="fas fa-flag"></i><span>Quản
+                                Lý Phòng</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customer"><i class="fas fa-bell"></i><span>Quản Lý
+                                Người Dùng</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout"><i
+                                class="fas fa-sign-out-alt"></i><span>Đăng Xuất</span></a></li>
                 </ul>
-                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
@@ -24,59 +30,57 @@
                     <div class="card shadow">
                         <div class="card-header py-3">
 
-                             <a href="#" class="text-primary m-0 fw-bold col-md-3 " data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal" style="text-decoration: none;">Thêm Phòng</a>
+                            <a href="#" class="text-primary m-0 fw-bold col-md-3 " data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" style="text-decoration: none;">Thêm Phòng</a>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title text-primary">Thêm Phòng</h5>
-                                            </div>
-                                            <form id="form" action="/table/insert" method="post"
-                                                >
-                                                <div class="modal-body">
-
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Số Phòng</label>
-                                                        <input type="number" class="form-control" name="idRoom"
-                                                            required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Tên Phòng</label>
-                                                        <input type="text" class="form-control" name="roomName" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Số Người Tối Đa</label>
-                                                        <input type="number" class="form-control" name="maximumNumberOfPeople" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Trạng Thái Phòng</label>
-                                                        <input type="number" class="form-control" name="roomStatus"
-                                                            required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Loại Phòng</label>
-                                                        <input type="number" class="form-control" name="idKindOfRoom"
-                                                            required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">giá phòng</label>
-                                                        <input type="number" class="form-control" name="roomPrice"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Hủy</button>
-                                                    <button type="submit" class="btn btn-primary">Lưu</button>
-                                                </div>
-                                            </form>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
+                                data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-primary">Thêm Phòng</h5>
                                         </div>
+                                        <form id="form" action="/table/insert" method="post">
+                                            <div class="modal-body">
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">Số Phòng</label>
+                                                    <input type="number" class="form-control" name="idRoom" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Tên Phòng</label>
+                                                    <input type="text" class="form-control" name="roomName" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Số Người Tối Đa</label>
+                                                    <input type="number" class="form-control"
+                                                        name="maximumNumberOfPeople" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Trạng Thái Phòng</label>
+                                                    <input type="number" class="form-control" name="roomStatus"
+                                                        required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Loại Phòng</label>
+                                                    <input type="number" class="form-control" name="idKindOfRoom"
+                                                        required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">giá phòng</label>
+                                                    <input type="number" class="form-control" name="roomPrice" required>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Hủy</button>
+                                                <button type="submit" class="btn btn-primary">Lưu</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -96,7 +100,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                aria-describedby="dataTable_info">
                                 <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
@@ -106,44 +111,106 @@
                                             <th>Số Người Tối Đa</th>
                                             <th>Trạng Thái Phòng</th>
                                             <th>Loại Phòng</th>
-                                            <th>giá phòng</th>
-                                            <th>Ngày Giờ Tạo Phòng</th>
-                                            <th>Ngày Giờ Sửa Phòng</th>
+                                            <th>Giá Phòng</th>
+                                            <th>Ngày Tạo Phòng</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                             {{#each roomDetailDB}}
-                                                <tr>
-                                                    <td>{{@index}}</td>
-                                                    <td>{{this.idRoom}}</td>
-                                                    <td>{{this.roomName}}</td>
-                                                    <td>{{this.maximumNumberOfPeople}}</td>
-                                                    <td>{{this.roomStatus}}</td>
-                                                    <td>{{this.idKindOfRoom}}</td>
-                                                    <td>{{this.roomPrice}}</td>
-                                                    <td >{{#newDate this.created_at}}{{/newDate}}</td>
-                                                    <td>{{#newDate this.updatedAt}}{{/newDate}}</td>
-                                                    <th>
-                                                        <form action="/table/delete" method="post" class="text-end col-md-6">
+                                        {{#each roomDetailDB}}
+                                        <tr>
+                                            <td>{{@index}}</td>
+                                            <td><a style="text-decoration: none;" class="text-info"
+                                                    href="/tableDetail/{{this.idRoom}}">{{this.idRoom}}</a></td>
+                                            <td>{{this.roomName}}</td>
+                                            <td>{{this.maximumNumberOfPeople}}</td>
+                                            <td>{{this.roomStatus}}</td>
+                                            <td>{{this.idKindOfRoom}}</td>
+                                            <td>{{this.roomPrice}}</td>
+                                            <td>{{#newDate this.created_at}}{{/newDate}}</td>
 
-                                                        <input type="hidden" name="_id" value="{{this._id}}">
-                                                        <input type="hidden" name="checkAction" value="1">
+                                            {{!-- <th>
+                                                <form action="/table/delete" method="post" class="text-end col-md-6">
 
-                                                        <button class="btn btn-danger" type="submit"
-                                                            style="margin-right: 5px;">xoá</button>
-                                                        </form>
-                                                    </th>
-                                                    <th>
-                                                        <form action="cho router sua" method="post" class="text-end col-md-6">
-                                                    
-                                                            <input type="hidden" name="_id" value="{{this._id}}">
-                                                            <input type="hidden" name="checkAction" value="1">
-                                                    
-                                                            <button class="btn btn-primary" type="submit" style="margin-right: 5px;">Sửa</button>
-                                                        </form>
-                                                    </th>
-                                                </tr>
-                                            {{/each}}
+                                                    <input type="hidden" name="_id" value="{{this._id}}" name="_id">
+                                                    <input type="hidden" name="checkAction" value="1">
+
+                                                    <button class="btn btn-danger" type="submit"
+                                                        style="margin-right: 5px;">Xoá</button>
+                                                </form>
+                                            </th> --}}
+                                            {{!-- <th> --}}
+                                                {{!-- <form action="/table/update" method="put"
+                                                    class="text-end col-md-6">
+
+                                                    <input type="hidden" name="_id" value="{{this._id}}">
+                                                    <input type="hidden" name="checkAction" value="1"> --}}
+
+                                                    {{!-- <button href="#" class="btn btn-primary"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModal2"
+                                                        style="text-decoration: none;">Sửa</button> --}}
+
+                                                    <!-- Modal -->
+                                                    {{!-- <div class="modal fade" id="exampleModal2" tabindex="-1"
+                                                        data-bs-backdrop="static" data-bs-keyboard="false"
+                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title text-primary">Sửa phòng:
+                                                                        {{this.roomName}}</h5>
+                                                                </div>
+                                                                <form id="form" action="/table/update" method="put">
+                                                                    <div class="modal-body">
+
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">Số Phòng</label>
+                                                                            <input type="number" class="form-control"
+                                                                                name="idRoom" required>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">Tên Phòng</label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="roomName" required>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">Số Người Tối
+                                                                                Đa</label>
+                                                                            <input type="number" class="form-control"
+                                                                                name="maximumNumberOfPeople" required>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">Trạng Thái
+                                                                                Phòng</label>
+                                                                            <input type="number" class="form-control"
+                                                                                name="roomStatus" required>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">Loại Phòng</label>
+                                                                            <input type="number" class="form-control"
+                                                                                name="idKindOfRoom" required>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">giá phòng</label>
+                                                                            <input type="number" class="form-control"
+                                                                                name="roomPrice" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Hủy</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary">Lưu</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div> --}}
+
+                                                    {{!--
+                                                </form> --}}
+                                                {{!-- </th> --}}
+                                        </tr>
+                                        {{/each}}
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -154,24 +221,27 @@
                                             <td><strong>Trạng Thái Phòng</strong></td>
                                             <td><strong>Loại Phòng</strong></td>
                                             <td><strong>Giá Phòng</strong></td>
-                                            <td><strong>Ngày Giờ Tạo Phòng</strong></td>
-                                            <td><strong>Ngày Giờ Sửa Phòng</strong></td>
+                                            <td><strong>Ngày Tạo Phòng</strong></td>
                                         </tr>
                                     </tfoot>
                                 </table>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 align-self-center">
-                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">
+                                        Showing 1 to 10 of 27</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                    <nav
+                                        class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
                                         <ul class="pagination">
-                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item disabled"><a class="page-link" href="#"
+                                                    aria-label="Previous"><span aria-hidden="true">«</span></a></li>
                                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                             <li class="page-item"><a class="page-link" href="#">2</a></li>
                                             <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span
+                                                        aria-hidden="true">»</span></a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -189,4 +259,3 @@
     </div>
 
 </body>
-

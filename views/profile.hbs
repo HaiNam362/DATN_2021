@@ -3,21 +3,21 @@
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="home">
-                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-hotel"></i></div>
                     <div class="sidebar-brand-text mx-3"><span>Hanoi Prime </span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="home"><i
+                    <li class="nav-item"><a class="nav-link" href="/home"><i
                                 class="fas fa-tachometer-alt"></i><span>Thống Kê</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/profile"><i class="fas fa-user"></i><span>Quản Lý Nhân Viên</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/table"><i class="fas fa-flag"></i><span>Quản Lý Phòng
-                                </span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/customer"><i
-                                class="fas fa-bell"></i><span>Quản Lý Người Dùng
-                                </span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login"><i class="fas fa-sign-out-alt"></i><span>Đăng
-                                Xuất</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/profile"><i class="fas fa-user"></i><span>Quản Lý
+                                Nhân Viên</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/table"><i class="	fas fa-bed"></i><span>Quản Lý
+                                Phòng</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customer"><i class="fas fa-bell"></i><span>Quản Lý
+                                Người Dùng</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout"><i
+                                class="fas fa-sign-out-alt"></i><span>Đăng Xuất</span></a></li>
                 </ul>
 
             </div>
@@ -28,7 +28,7 @@
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3"
                             id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <div class="d-sm-inline-block me-auto md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <h4 class="text-dark mb-0">Người dùng</h4>
+                            <h4 class="text-dark mb-0">Thông Tin Nhân Viên</h4>
                         </div>
                     </div>
                 </nav>
@@ -36,7 +36,10 @@
                 <div class="container-fluid">
                     <div class="card shadow mb-3">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Thông tin Nhân Viên</p>
+                            {{!-- <p class="text-primary m-0 fw-bold">Thông tin Nhân Viên</p> --}}
+                            <button href="#" class="btn btn-success d-block btn-user " data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" style="text-decoration: none;">Thêm Nhân Viên
+                            </button>
 
                         </div>
                         <div class="card-body">
@@ -59,12 +62,10 @@
                                 </div>
                             </div>
 
-                            <button href="#" class="btn btn-success d-block btn-user " data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                style="text-decoration: none;">Thêm Nhân Viên
-                            </button>
+
 
                             <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -72,10 +73,17 @@
                                         </div>
                                         <form class="user" action="/profile/createUser" method="post">
                                             <div class="modal-body">
-
+                                                <div class="mb-3">
+                                                    <label class="form-label">Role</label>
+                                                    <select name="role" id="">
+                                                        <option value="employee">employee</option>
+                                                        <option value="employee2">dataEntry</option>
+                                                    </select>
+                                                </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">FullName</label>
-                                                    <input type="text" class="form-control" required="required" name="fullName">
+                                                    <input type="text" class="form-control" required="required"
+                                                        name="fullName">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Phone</label>
@@ -98,23 +106,18 @@
                                                     <label class="form-label">Địa chỉ</label>
                                                     <input type="text" class="form-control" name="address">
                                                 </div>
-                                                <label for="start">
-                                                    Enter the Date:
-                                                </label>
-                                                <input type="date" name="DateOfBirth" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Role</label>
-                                                    <select name="role" id="">
-                                                        <option value="employee">Nhân viên</option>
-                                                        <option value="employee2">Tạp vụ</option>
-                                                    </select>
+                                                <div for="mb-3">
+                                                    <label class="form-label">Enter the Date:</label>
+                                                    <input type="date" name="DateOfBirth" placeholder="dd-mm-yyyy"
+                                                        value="" min="1997-01-01" max="2030-12-31">
                                                 </div>
                                             </div>
 
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Hủy</button>
-                                                <button type="submit" method="POST" action=""  class="btn btn-primary">Lưu</button>
+                                                <button type="submit" method="POST" action=""
+                                                    class="btn btn-primary">Lưu</button>
                                             </div>
                                         </form>
                                     </div>
@@ -131,10 +134,10 @@
                                             <th>Họ Và Tên</th>
                                             <th>Email</th>
                                             <th>Số Điện Thoại</th>
-                                            <th>Vai Trò</th> 
+                                            <th>Vai Trò</th>
                                             <th>Ngày Sinh </th>
                                             <th>Ngày Tạo</th>
-                                        
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -146,44 +149,26 @@
                                                     src="{{this.avatar}}">
                                             </td>
                                             <td>{{this.fullName}}</td>
-                                            <td>{{this.email}}</td>
+                                            <td><a style="text-decoration: none;" class="text-info"
+                                                    href="/profileDetail/{{this.email}}">{{this.email}}</a></td>
                                             <td>{{this.phone}}</td>
                                             <td>{{this.role}}</td>
                                             <td>{{dateFormat this.DateOfBirth "dddd, MMMM Do YYYY"}}</td>
-                                            <td >{{#newDate this.createdAt}}{{/newDate}}</td>
-                                          
-                                            <th>
-                                                <div class="col-lg-13">
-                                                    <form class="row" method="POST" action="/profile/deleteUser">
-                                            
-                                                        <button class="btn btn-danger" type="submit" name="_id" value={{this._id}}>Xóa</button>
-                                            
-                                                    </form>
-                                                </div>
-                                            </th>
-                                            <th>
-                                                <form action="cho router sua" method="post" class="text-end col-md-6">
-                                            
-                                                    <input type="hidden" name="_id" value="{{this._id}}">
-                                                    <input type="hidden" name="checkAction" value="1">
-                                            
-                                                    <button class="btn btn-primary" type="submit" style="margin-right: 5px;">Sửa</button>
-                                                </form>
-                                            </th>
+                                            <td>{{#newDate this.createdAt}}{{/newDate}}</td>
                                         </tr>
                                         {{/each }}
                                     </tbody>
-                                      <tfoot>
+                                    <tfoot>
                                         <tr>
                                             <td><strong>STT</strong></td>
                                             <td><strong>Avatar</strong></td>
                                             <td><strong>FullName</strong></td>
                                             <td><strong>Email</strong></td>
                                             <td><strong>Phone</strong></td>
-                                             <td><strong>Vai Trò</strong></td>
+                                            <td><strong>Vai Trò</strong></td>
                                             <td><strong>DateOfBirth</strong></td>
                                             <td><strong>Ngày Tạo</strong></td>
-                                         
+
 
                                         </tr>
                                     </tfoot>
