@@ -251,7 +251,7 @@ export const logout = async (req, res, next) => {
     }
 }
 export const getPhone = async (req, res, next) => {
-    const phone = req.body.phone;
+    const phone = req.params.phone;
     console.log(phone,"abc");
     try {
         if(phone.length <1) {
