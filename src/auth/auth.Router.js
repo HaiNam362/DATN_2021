@@ -14,7 +14,7 @@ Router.post('/login', authController.login);
 Router.post('/ResetPassWord', authController.ResetPassWord);
 Router.get('/getEmployees', authController.getEmployees);
 Router.get('/getCustomer', authController.getCustomer);
-Router.get("/getPhone", authController.getPhone);
+Router.get("/getPhone/:phone", authController.getPhone);
 // verifyToken
 Router.use(verifyToken)
 Router.put('/updateTokenId', checkRole(["admin", "employee", "dataEntry", "customer"]), authController.updateTokenID);
