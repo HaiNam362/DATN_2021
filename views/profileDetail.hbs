@@ -160,9 +160,8 @@
                                                             <hr>
                                                             <div class="d-md-flex mb-2">
                                                                 <form class="row" method="POST" action="/profileDetail/delete">
-                                                                    {{!-- <input name="_id" value="{{this._id}}" /> --}}
-                                                                    <button type="submit" name="_id" value={{this._id}}>Xóa</button>
-                                                                
+                                                                    <input type="hidden" name="_id" value="{{UserDetailDB._id}}" />
+                                                                    <button class="btn btn-primary"type="submit">Xóa</button>
                                                                 </form>
                                                             </div>
                                                         </div>

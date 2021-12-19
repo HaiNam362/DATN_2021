@@ -23,7 +23,7 @@ export const listCustomers = async(req, res, next) => {
 export const DeleteCustomer = async(req, res, next) => {
     try {
         await User.findByIdAndDelete(req.body._id);
-        res.redirect('/custommerDetail');
+        res.redirect('/customer');
 
     } catch (error) {
         res.status(500).send(error);
@@ -50,11 +50,11 @@ export const listCustomersDetail = async(req, res, next) => {
     try {
         const { email } = req.params;
         let data = await User.findOne({ email });
-        console.log(data);
+        console.log(data,222222222222222);
         if (!data) {
             return res.sendStatus(404)
         }
-        res.render('profileDetail', { UserDetailDB: data });
+        res.render('custommerDetail', { CustomerDetailDB: data });
     } catch (error) {
         res.send(error.message);
     }

@@ -94,7 +94,7 @@ export const listUserDetail = async(req, res, next) => {
     try {
         const { email } = req.params;
         let data = await User.findOne({ email });
-        console.log(data);
+        // console.log(data,1222);
         if (!data) {
             return res.sendStatus(404)
         }
@@ -108,7 +108,7 @@ export const listUserDetail = async(req, res, next) => {
 export const deleteUserDetail = async(req, res, next) => {
     try {
         await User.findByIdAndDelete(req.body._id);
-        res.redirect('/profileDetail');
+        res.redirect('/profile');
     } catch (error) {
         res.send(error.message);
     }

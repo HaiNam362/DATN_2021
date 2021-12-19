@@ -60,12 +60,8 @@
                                             <td>{{#newDate roomDetailDB.created_at}}{{/newDate}}</td>
                                             <td>{{#newDate roomDetailDB.updatedAt}}{{/newDate}}</td>
                                             <th>
-                                                <form action="/tableDetail/delete" method="post"
-                                                    class="text-end col-md-6">
-
-                                                    <input type="hidden" name="_id" value="{{this._id}}" name="_id">
-                                                    <input type="hidden" name="checkAction" value="1">
-
+                                                <form action="/tableDetail/delete" method="post" class="text-end col-md-6">
+                                                    <input type="hidden" name="_id" value="{{roomDetailDB._id}}" >
                                                     <button class="btn btn-danger" type="submit"
                                                         style="margin-right: 5px;">Xoá</button>
                                                 </form>

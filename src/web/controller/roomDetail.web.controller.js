@@ -72,7 +72,7 @@ export const updateRoomDetail = async(req, res, next) => {
 export const deleteRoomDetail = async(req, res, next) => {
     try {
         await roomDetailModel.findByIdAndDelete(req.body._id);
-        res.redirect('/tableDetail');
+        res.redirect('/table');
 
     } catch (error) {
         res.status(500).send(error);
