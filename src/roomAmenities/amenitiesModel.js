@@ -14,7 +14,7 @@ const amenitiesModel = Mongoose.Schema({
         default: 0,
     },
     bed: {
-        type: Number,
+        type: String,
         default: 0,
     },
     sofa: {
