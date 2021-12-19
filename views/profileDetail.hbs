@@ -159,15 +159,10 @@
                                                             </p>
                                                             <hr>
                                                             <div class="d-md-flex mb-2">
-                                                                <form action="/profileDetail/delete" method="post"
-                                                                    class="text-end col-md-12">
-
-                                                                    <input type="hidden" name="_id" value="{{this._id}}"
-                                                                        name="_id">
-                                                                    <input type="hidden" name="checkAction" value="1">
-
-                                                                    <button class="btn btn-danger" type="submit"
-                                                                        style="margin-right: 5px;">Xoá</button>
+                                                                <form class="row" method="POST" action="/profileDetail/delete">
+                                                                    {{!-- <input name="_id" value="{{this._id}}" /> --}}
+                                                                    <button type="submit" name="_id" value={{this._id}}>Xóa</button>
+                                                                
                                                                 </form>
                                                             </div>
                                                         </div>

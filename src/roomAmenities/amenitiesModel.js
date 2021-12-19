@@ -1,10 +1,6 @@
 import Mongoose from "mongoose";
 
 const amenitiesModel = Mongoose.Schema({
-    idKindOfRoom: {
-        type: String,
-        required: true,
-    },
     airConditioner: {
         type: Number,
         default: 0,
@@ -57,6 +53,9 @@ const amenitiesModel = Mongoose.Schema({
         type: Number,
         default: 0,
     },
+    idKindOfRoom: {
+        type: Number,
+    },
     acreage: {
         type: String,
         required: true,
@@ -64,12 +63,11 @@ const amenitiesModel = Mongoose.Schema({
     created_at: {
         type: Date,
 
-        default: Date.now()
+        default: Date.now(),
     },
     updatedAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
     },
-
-})
+});
 export default Mongoose.model('AmenitiesDetailsData', amenitiesModel)

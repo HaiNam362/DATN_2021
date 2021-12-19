@@ -5,10 +5,6 @@ class amenitiesController {
         const doc = await data.create(obj)
         return doc
     }
-    async findOne(idKindOfRoom) {
-        const doc = await data.findOne(idKindOfRoom)
-        return doc
-    }
     async updateOne(id, obj) {
         const doc = await data.updateOne(id, obj)
         return doc
@@ -17,6 +13,9 @@ class amenitiesController {
         const doc = await data.delete(id)
         return doc
     }
-
+    async findByIdKindOfRoom(idKindOfRoom) {
+        const doc = await data.findByIdKindOfRoom(idKindOfRoom)
+        return doc
+    }
 }
 export default amenitiesController

@@ -1,6 +1,6 @@
 import express from 'express'
 import amenitiesController from './amenitiesController.js'
-
+import amenitiesModel from "./amenitiesModel.js";
 const app = express()
 const roomAmenities = new amenitiesController()
 
@@ -8,9 +8,14 @@ const roomAmenities = new amenitiesController()
 app.use(express())
 
 
-app.get('/', async(req, res) => {
-    res.json("roomAmenities")
-})
+app.get("/:idKindOfRoom", async(req, res) => {
+
+    const idKindOfRoom = req.params.idKindOfRoom
+    const data2 = await amenitiesModel.find({ idKindOfRoom });
+    res.json(data2);
+
+});
+
 app.post('/create', async(req, res) => {
     try {
         const data = req.body
@@ -43,13 +48,6 @@ app.put('/update/:id', async(req, res) => {
 
 })
 
-
-
-app.get("/:idKindOfRoom", async(req, res) => {
-    const id = req.params.idKindOfRoom;
-    const docs = await roomAmenities.findOne({ id });
-    res.json(docs);
-});
 
 
 
