@@ -45,8 +45,8 @@ const orderRoomBookedModel = Mongoose.Schema({
         required: true
     },
 
-    serviceCharge: {
-        type: Number,
+    infoEmployees: {
+        type: String,
     }
 })
 export default Mongoose.model('orderRoomBooked', orderRoomBookedModel)

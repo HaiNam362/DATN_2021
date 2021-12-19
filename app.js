@@ -12,7 +12,7 @@ import roomDetailAPI from "./src/roomDetail/roomDetailAPI.js";
 import oderRoomBookingDetailApi from "./src/orderRoomBookingDetail/orderRoomBookingDatailApi.js";
 // configs
 import connectDatabase from "./src/configs/dbConfigs.js";
-import userAPI from "./src/user/userAPI.js";
+
 import amenitiesAPI from "./src/roomAmenities/amenitiesAPI.js";
 
 // const authRouter = require('./src/auth/auth.Router')
@@ -74,7 +74,7 @@ app.get("/", async(req, res) => {
 //Route api
 app.use('/orderRoomBooked', orderRoomBookedApi)
 app.use('/roomDetail', roomDetailAPI)
-app.use('/user', userAPI)
+
 app.use('/roomAmenities', amenitiesAPI)
 app.use('/api/v1/auth', authRouter.Router);
 app.use('/api/v1/pictureOfRoom', pictureOfRoom.Router);

@@ -6,8 +6,8 @@ class amenitiesDetailsData {
         const doc = await amenitiesModel.create(obj)
         return doc
     }
-    async findOne(id) {
-        const doc = await amenitiesModel.findById(id)
+    async findOne(idKindOfRoom) {
+        const doc = await amenitiesModel.findOne(idKindOfRoom)
         return doc
     }
     async updateOne(id, obj) {
@@ -16,10 +16,6 @@ class amenitiesDetailsData {
     }
     async delete(id) {
         const doc = await amenitiesModel.deleteOne(id)
-        return doc
-    }
-    async findByIdKind(idKindOfRoom) {
-        const doc = await roomDetailModel.findOne(idKindOfRoom)
         return doc
     }
 }

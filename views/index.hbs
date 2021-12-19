@@ -40,24 +40,19 @@
                                             <div class="col-md-4 mb-2">
                                                 <p  id="tongnguoidung" > Tổng số người dùng là: {{totalUserCustomer}}</p>
                                             </div>
-                                            <div class="col-md-4 mb-2">
-                                                <p id="tongnguoidung"> Admin: {{totalUserDataEntry}}</p>
-                                            </div>
-                                            <div class="col-md-4 mb-2">
-                                                <p id="tongnguoidung"> Tổng số phòng: {{totalRoom}}</p>
+                                        <div class="col-md-4 mb-2">
+                                            <p class="text-white" id="tongsophong"> {{totalRoom}}</p>
+                                        </div>
+                                        <div    class="col-md-4 mb-2">
+                                            <p  class="text-white"     id="tongphongtrong"> {{totalRoom0}}</p>
                                         </div>
                                         <div class="col-md-4 mb-2">
-                                            <p id="tongnguoidung"> Số phòng trống: {{totalRoom0}}</p>
+                                            <p  class="text-white"    id="tongphongdattruoc"> {{totalRoom1}}</p>
                                         </div>
                                         <div class="col-md-4 mb-2">
-                                            <p id="tongnguoidung">Số phòng đã đặt trước:  {{totalRoom1}}</p>
-                                            </div>
-                                            <div class="col-md-4 mb-2">
-                                                <p id="tongnguoidung"> Số phòng đang sử dụng: {{totalRoom2}}</p>
+                                            <p class="text-white"      id="tongphongdangsudung"> {{totalRoom2}}</p>
                                         </div>
-                                            <div class="col-md-4 mb-2">
-                                                <p id="tongnguoidung"> Toong doanh thu: {{_number}}</p>
-                                            </div>
+                                          
                                         </div>
                                         <div class="container" >
                                         
@@ -70,43 +65,36 @@
                                                 <tr>
                                                     <th>STT</th>
                                                     <th>Tên Người Đặt</th>
-                                                    <th>Ngày Đặt</th>
+                                                    <th>Ngày Bắt Đầu </th>
                                                     <th>Ngày Kết Thúc</th>
                                                     <th>Số Tiền Thanh Toán</th>
                                                     <th>Số Điện thoại</th>
                                                     <th>Trạng Thái </th>
-                                                 
+                                                    <th>Ngày Tạo Đơn</th> 
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                
+                                                <form id="form">
+                                                    <input id="ipSelect" name="status" type="hidden"></input>
+                                                    <input id="ipDate" name="date" type="hidden"></input>
+                                                </form> 
                                                 <div class="row">
                                                     <div class="col-md-auto text-nowrap">
                                                         <div id="dataTable_length" aria-controls="dataTable">
                                                             <label class="form-label">
-                                                                <select class="d-inline-block form-select form-select-sm">
+                                                                <select id="selectStatus" class="d-inline-block form-select form-select-sm">
                                                                     <option value="" selected="">Trạng Thái Đơn</option>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
+                                                                    <option value="0">Chưa xác nhận</option>
+                                                                    <option value="1">Đã Xác Nhận </option>
+                                                                    <option value="2">Đang Chờ Thanh Toán </option>
                                                                     <option value="3">Đã Thanh Toán</option>
                                                                 </select>
                                                             </label>
                                                         </div>
                                                     </div>
-                                              
+                                               
                                                 
-                                                    <div class="col-md-auto text-nowrap">
-                                                        <div id="dataTable_length" aria-controls="dataTable">
-                                                            <label class="form-label">
-                                                                <select class="d-inline-block form-select form-select-sm">
-                                                                    <option value="" selected="">Ngày</option>
-                                                                    <option value="25">25</option>
-                                                                    <option value="50">50</option>
-                                                                    <option value="100">100</option>
-                                                                </select>
-                                                            </label>
-                                                        </div>
-                                                    </div>
+                                                   
                                                 </div>
                                             {{#each orderRoomBookedDB }}
                                             <tr>
@@ -118,7 +106,7 @@
                                                 <td>{{this.totalRoomRate}}</td>
                                                 <td>{{this.phone}}</td>
                                                 <td>{{this.bookingStatus}}</td>
-                                               
+                                                <td>{{#newDate this.createdAt}}{{/newDate}}</td>
                                                 
                                             
                                         
@@ -128,17 +116,31 @@
                                             </tbody>
                                            
                                         </table>
-                                        
+                                      
+
+                                    <div class="col-lg-13">
+                                        <p id="tongdonhoanthanh">Tổng số đơn: {{totalBooked}}</p>
                                     </div>
-                                        <div class="col-lg-13">
-                                            <p class="text-white"  id="tongdonhoanthanh">{{totalBooked3}}</p>
-                                        </div>
-                                        <div class="col-lg-13">
-                                            <p class="text-white" id="tongdonchuaxacnhan"> {{totalBooked0}}</p>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <p  class="text-white" id="tongdondaxacnhan"> {{totalBooked1}}</p>
-                                        </div>
+                                    <div class="col-lg-13">
+                                        <p id="tongdonhoanthanh">Tổng số đơn đã thanh toán: {{totalBooked3}}</p>
+                                    </div>
+                                    <div class="col-lg-13">
+                                        <p id="tongdonchuaxacnhan">Tổng số đơn chưa xác nhận: {{totalBooked0}}</p>
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <p id="tongdondaxacnhan">Tổng số đơn đã xác nhận: {{totalBooked1}}</p>
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <p id="tongdondangchothanhtoan">Tổng số đơn chờ thanh toán: {{totalBooked2}}</p>
+                                    </div>
+                                    <div for="mb-3">
+                                        <label class="form-label">Chọn Ngày Xem Doanh Thu:</label>
+                                        <input id="date" type="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31">
+                                    </div>
+                                    <p  class="p-3 mb-2 bg-dark text-white"  id="tongnguoidung"> Tổng doanh thu {{date}}:  {{_number}} VND</p>
+                                    <p class="p-3 mb-2 bg-dark text-white" > Tổng doanh thu:  {{_number2}} VND</p>
+                                    </div>
+                                         
 
                                 </div>
                             </div>
@@ -160,6 +162,19 @@
    var element3 = document.getElementById('tongdonhoanthanh');
    var element4 = document.getElementById('tongdonchuaxacnhan');
    var element5 = document.getElementById('tongdondaxacnhan');
+    
+   var element9 = document.getElementById('tongsophong')
+   var element10 = document.getElementById('tongphongtrong')
+    var element11 = document.getElementById('tongphongdattruoc')
+    var element12 = document.getElementById('tongphongdangsudung')
+
+  var tongphong = element9.innerHTML
+  var phongtrong = element10.innerHTML
+  var phongdattruoc = element11.innerHTML
+  var phongdangsudung = element12.innerHTML 
+
+
+
    var donhoanthanh = element3.innerHTML
    var donchuaxacnhan = element4.innerHTML
    var dondaxacnhan = element5.innerHTML
@@ -171,11 +186,11 @@
     const myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Đơn chưa xác Nhận','Đơn đã xác nhận','Đơn đã thanh toán'],
+                labels: ['Tổng số phòng','Phòng Trống','Phòng Đã Đặt Trước','Phòng Đang Sử Dụng'],
                 datasets: [{
                    
                     label: 'Bảng thống kê trạng thái hóa đơn ',
-                    data: [donchuaxacnhan,dondaxacnhan,donhoanthanh],
+                    data: [tongphong,phongtrong,phongdattruoc,phongdangsudung],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -209,6 +224,40 @@
 
             },
         });
+
+
+
+
+    var element6 = document.getElementById('form')
+    var element7 = document.getElementById('ipSelect')
+    var element8 = document.getElementById('ipDate')
+    const selectStatus = document.getElementById('selectStatus');
+    const inputDate = document.getElementById('date')
+
+  function submitForm (){
+        if(selectStatus.value ===""){
+            element7.remove();
+        }else{
+            element7.value = selectStatus.value
+        }
+         if (inputDate.value === "") {
+          element8.remove();
+      } else {
+          element8.value = inputDate.value
+      }
+     if(inputDate.value !== "" ||selectStatus.value !== "") {
+         element6.submit();
+     } 
+    
+
+  } 
+
+    inputDate.addEventListener('change', function () {
+        submitForm();
+    })
+   selectStatus.addEventListener('change', function () {
+       submitForm();
+   });
 
 </script>
 </body>
