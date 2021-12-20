@@ -18,10 +18,11 @@ app.get('/:id', async(req, res) => {
     const docs = await orderRoomBooked.findone({ _id: id })
     res.json(docs)
 })
-app.post('/create', async(req, res, next) => {
-         try {
-        const data = req.body
-        const validate = create.validate(data)
+app.post('/create', async(req, res, next, bookingStatus) => {
+    try {
+        const data = req.body;
+        const validate = create.validate(data);
+        const abc = "";
         if (validate.error) {
             res.status(HTTP_STATUS.BAD_REQUEST)
             res.send(validate.error)

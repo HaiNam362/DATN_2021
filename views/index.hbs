@@ -2,7 +2,7 @@
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="home">
-                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                    <div class="sidebar-brand-icon rotate-n-15 "><i class="fas fa-laugh-wink"></i></div>
                     <div class="sidebar-brand-text mx-3"><span>Hanoi Prime</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
@@ -35,7 +35,7 @@
                                     <div class="card-body">                        
                                         <div class="row" >
                                             <div class="col-md-4 mb-2">
-                                                <p  id="tongnhanvien" >Tổng số nhân viên là: {{totalUserEmployee}} </p>
+                                                <p  id="tongnhanvien" >Tổng số nhân viên là: {{employee}} </p>
                                             </div>
                                             <div class="col-md-4 mb-2">
                                                 <p  id="tongnguoidung" > Tổng số người dùng là: {{totalUserCustomer}}</p>
@@ -77,6 +77,8 @@
                                                 <form id="form">
                                                     <input id="ipSelect" name="status" type="hidden"></input>
                                                     <input id="ipDate" name="date" type="hidden"></input>
+                                                    <input id="ipMonth" name="month" type="hidden"></input>
+                                                    <input id="ipYears" name="years" type="hidden"></input>
                                                 </form> 
                                                 <div class="row">
                                                     <div class="col-md-auto text-nowrap">
@@ -117,28 +119,60 @@
                                            
                                         </table>
                                       
-
-                                    <div class="col-lg-13">
-                                        <p id="tongdonhoanthanh">Tổng số đơn: {{totalBooked}}</p>
-                                    </div>
-                                    <div class="col-lg-13">
-                                        <p id="tongdonhoanthanh">Tổng số đơn đã thanh toán: {{totalBooked3}}</p>
-                                    </div>
-                                    <div class="col-lg-13">
-                                        <p id="tongdonchuaxacnhan">Tổng số đơn chưa xác nhận: {{totalBooked0}}</p>
-                                    </div>
-                                    <div class="col-md-4 mb-2">
-                                        <p id="tongdondaxacnhan">Tổng số đơn đã xác nhận: {{totalBooked1}}</p>
-                                    </div>
-                                    <div class="col-md-4 mb-2">
-                                        <p id="tongdondangchothanhtoan">Tổng số đơn chờ thanh toán: {{totalBooked2}}</p>
-                                    </div>
+<div style="display: flex; flex-direction: row;">
+    <p class="font-weight-bold abc" id="tongdonhoanthanh">Tổng số đơn: {{totalBooked}}</p>
+  
+    <p class="abc" id="tongdonchuaxacnhan">Tổng số đơn chưa xác nhận: {{totalBooked0}}</p>
+    <p class="abc" id="tongdondaxacnhan">Tổng số đơn đã xác nhận: {{totalBooked1}}</p>
+    <p class="abc" id="tongdondangchothanhtoan">Tổng số đơn chờ thanh toán: {{totalBooked2}}</p>
+    <p class="font-weight-bold abc" id="tongdonhoanthanh">Tổng số đơn đã thanh toán: {{totalBooked3}}</p>
+</div>
+        <hr class="sidebar-divider my-0">
+                                  
+                                   
                                     <div for="mb-3">
                                         <label class="form-label">Chọn Ngày Xem Doanh Thu:</label>
                                         <input id="date" type="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31">
                                     </div>
-                                    <p  class="p-3 mb-2 bg-dark text-white"  id="tongnguoidung"> Tổng doanh thu {{date}}:  {{_number}} VND</p>
-                                    <p class="p-3 mb-2 bg-dark text-white" > Tổng doanh thu:  {{_number2}} VND</p>
+                                    <div class="col-md-auto text-nowrap">
+                                        <div id="dataTable_length" aria-controls="dataTable">
+                                            <label class="form-label">Doanh Thu Theo Tháng:
+                                                <select id="selectMonth" class="d-inline-block form-select form-select-sm">
+                                                    <option value="" selected="">Tháng</option>
+                                                    <option value="2021-01">Tháng 1</option>
+                                                    <option value="2021-02">Tháng 2</option>
+                                                    <option value="2021-03">Tháng 3</option>
+                                                    <option value="2021-04">Tháng 4</option>
+                                                    <option value="2021-05">Tháng 5</option>
+                                                    <option value="2021-06">Tháng 6</option>
+                                                    <option value="2021-07">Tháng 7</option>
+                                                    <option value="2021-08">Tháng 8</option>
+                                                    <option value="2021-09">Tháng 9</option>
+                                                    <option value="2021-10">Tháng 10</option>
+                                                    <option value="2021-11">Tháng 11</option>
+                                                    <option value="2021-12">Tháng 12</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-auto text-nowrap">
+                                        <div id="dataTable_length" aria-controls="dataTable">
+                                            <label class="form-label">Doanh Thu Theo Năm:
+                                                <select id="selectYears" class="d-inline-block form-select form-select-sm">
+                                                    <option value="" selected="">Năm</option>
+                                                    <option value="2021">Năm 2021</option>
+                                                    <option value="2022">Năm 2022</option>
+                                                    <option value="2023">Năm 2023</option>
+                                                    <option value="2024">Năm 2024</option>
+                                                    <option value="2025">Năm 2025</option>
+                                
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <p  class="p-3 mb-2 bg-info text-white"  id="tongnguoidung"> Tổng doanh thu {{year}}  {{month}} {{date}}:  {{_number}} VNĐ</p>
+                                    <p class="p-3 mb-2 bg-warning text-dark" > Tổng doanh thu:  {{_number2}} VNĐ</p>
                                     </div>
                                          
 
@@ -157,16 +191,17 @@
             </div>
 <script >
     const ctx = document.getElementById('myChart');
-   var element = document.getElementById('tongnhanvien');
-   var element2 = document.getElementById('tongnguoidung');
-   var element3 = document.getElementById('tongdonhoanthanh');
-   var element4 = document.getElementById('tongdonchuaxacnhan');
-   var element5 = document.getElementById('tongdondaxacnhan');
+    var element = document.getElementById('tongnhanvien');
+    var element2 = document.getElementById('tongnguoidung');
+    var element3 = document.getElementById('tongdonhoanthanh');
+    var element4 = document.getElementById('tongdonchuaxacnhan');
+    var element5 = document.getElementById('tongdondaxacnhan');
     
-   var element9 = document.getElementById('tongsophong')
-   var element10 = document.getElementById('tongphongtrong')
-    var element11 = document.getElementById('tongphongdattruoc')
-    var element12 = document.getElementById('tongphongdangsudung')
+    var element9 = document.getElementById('tongsophong');
+    var element10 = document.getElementById('tongphongtrong');
+    var element11 = document.getElementById('tongphongdattruoc');
+    var element12 = document.getElementById('tongphongdangsudung');
+
 
   var tongphong = element9.innerHTML
   var phongtrong = element10.innerHTML
@@ -189,7 +224,7 @@
                 labels: ['Tổng số phòng','Phòng Trống','Phòng Đã Đặt Trước','Phòng Đang Sử Dụng'],
                 datasets: [{
                    
-                    label: 'Bảng thống kê trạng thái phòng ',
+                    label: 'Biểu đồ trạng thái phòng ',
                     data: [tongphong,phongtrong,phongdattruoc,phongdangsudung],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -227,9 +262,12 @@
     var element6 = document.getElementById('form')
     var element7 = document.getElementById('ipSelect')
     var element8 = document.getElementById('ipDate')
+    var element15 = document.getElementById('ipMonth')
+    var element16 = document.getElementById('ipYears')
     const selectStatus = document.getElementById('selectStatus');
     const inputDate = document.getElementById('date')
-
+    const inputMonth = document.getElementById('selectMonth')
+    const inputYear = document.getElementById('selectYears')
   function submitForm (){
         if(selectStatus.value ===""){
             element7.remove();
@@ -241,7 +279,20 @@
       } else {
           element8.value = inputDate.value
       }
-     if(inputDate.value !== "" ||selectStatus.value !== "") {
+       if (inputMonth.value === "") {
+          element15.remove();
+      } else {
+          element15.value = inputMonth.value
+      }
+         if (inputYear.value === "") {
+          element16.remove();
+      } else {
+          element16.value = inputYear.value
+      }
+
+
+
+     if(inputDate.value !== "" ||selectStatus.value !== "" || inputMonth.value !== "" || inputYear.value !== "") {
          element6.submit();
      } 
     
@@ -254,6 +305,19 @@
    selectStatus.addEventListener('change', function () {
        submitForm();
    });
-
+   inputMonth.addEventListener('change', function () {
+       submitForm();
+   })
+    inputYear.addEventListener('change', function () {
+        submitForm();
+    })
 </script>
+<style>
+    .abc {
+        margin-left: 45px;
+        color: red;
+        font-weight: 400;
+    
+    }
+</style>
 </body>

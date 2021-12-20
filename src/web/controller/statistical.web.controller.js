@@ -8,6 +8,8 @@ export const statistical = async(req, res, next) => {
     try {
         var date = req?.query?.date;
         var status = req?.query?.status;
+        var month = req?.query?.month;
+        var year = req?.query?.years;
         status = _.isEmpty(status) ? 3 : status;
         let totalUserEmployee = await User.countDocuments({ role: "employee" });
         let totalUserDataEntry = await User.countDocuments({ role: "dataEntry" });
@@ -23,7 +25,33 @@ export const statistical = async(req, res, next) => {
         if (!_.isEmpty(date)) {
             totalRoomRate = totalRoomRate1.filter(val => moment(date).format('DD/MM/YYYY') === moment(val.createdAt).format('DD/MM/YYYY'))
         }
+        if (!_.isEmpty(month)) {
+            totalRoomRate = totalRoomRate1.filter(
+                (val) =>
+                moment(month).format("MM/YYYY") ===
+                moment(val.createdAt).format("MM/YYYY")
+            );
+        }
+        if (!_.isEmpty(year)) {
+            totalRoomRate = totalRoomRate1.filter(
+                (val) =>
+                moment(year).format("YYYY") ===
+                moment(val.createdAt).format("YYYY")
+            );
+        }
         console.log(totalRoomRate4)
+
+
+
+
+
+
+
+
+
+
+
+
 
         // cho nay a a
         let totalBooked3 = await orderRoomBookedModel.countDocuments({
@@ -50,7 +78,10 @@ export const statistical = async(req, res, next) => {
         //    }
         //   const objSearch = _.isEmpty(date)?{} : moment(date).format('DD/MM/YYYY')
         let _number = 0;
+
+
         let _number2 = 0;
+
 
         totalRoomRate.forEach((item) => (_number += item.totalRoomRate));
 
@@ -66,6 +97,7 @@ export const statistical = async(req, res, next) => {
         //          } 
 
         //   }
+
         console.log(totalUserEmployee);
         console.log(totalUserCustomer);
 
@@ -86,7 +118,9 @@ export const statistical = async(req, res, next) => {
             _number,
             orderRoomBookedDB,
             date,
-            _number2
+            _number2,
+            month,
+            year
         });
     } catch (error) {
         res.status(500).send(error.message);
