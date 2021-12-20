@@ -39,7 +39,7 @@
                             <p class="text-primary m-0 fw-bold">Thông tin người dùng</p>
                         </div> --}}
                         <div class="card-body">
-                             <div class="container-fluid">
+                            <div class="container-fluid">
                                 <div class="row mb-3">
                                     <div class="col-lg-6">
                                         <div class="card shadow mb-3">
@@ -67,7 +67,8 @@
 
                                                     <div class="card-body">
                                                         <div class="col">
-                                                            <p><span class="text-black">ID: </span>{{CustomerDetailDB._id}}
+                                                            <p><span class="text-black">ID:
+                                                                </span>{{CustomerDetailDB._id}}
                                                             </p>
                                                             <p><span class="text-black">Họ tên:
                                                                 </span>{{CustomerDetailDB.fullName}}</p>
@@ -80,13 +81,17 @@
                                                             <p><span class="text-black">Ngày Sinh: </span>{{#newDate
                                                                 CustomerDetailDB.DateOfBirth}}{{/newDate}}</p>
                                                             <p><span class="text-black">Ngày Tạo Tài Khoản:
-                                                                </span>{{#newDate CustomerDetailDB.createdAt}}{{/newDate}}
+                                                                </span>{{#newDate
+                                                                CustomerDetailDB.createdAt}}{{/newDate}}
                                                             </p>
                                                             <hr>
                                                             <div class="d-md-flex mb-2">
-                                                                <form class="row" method="POST" action="/customer/delete">
-                                                                    <input type="hidden" name="_id" value="{{CustomerDetailDB._id}}" />
-                                                                    <button class="btn btn-danger"type="submit">Xóa</button>
+                                                                <form class="row" method="POST"
+                                                                    action="/customer/delete">
+                                                                    <input type="hidden" name="_id"
+                                                                        value="{{CustomerDetailDB._id}}" />
+                                                                    <button class="btn btn-danger"
+                                                                        type="submit">Xóa</button>
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -98,7 +103,7 @@
                                 </div>
                             </div>
 
-                        
+
                             <div class="row">
 
                                 <div class="col-md-6">
