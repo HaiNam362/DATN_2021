@@ -9,8 +9,9 @@ export const listCustomers = async(req, res, next) => {
 
         if (keySearch) {
             var options = {
-                email: { $regex: ".*" + keySearch + ".*" },
-            }
+                email: { $regex: keySearch },
+                role: "customer",
+            };
             data = await User.find(options);
             console.log(data, 1);
         } else {
@@ -50,7 +51,7 @@ export const listCustomersDetail = async(req, res, next) => {
     try {
         const { email } = req.params;
         let data = await User.findOne({ email });
-        console.log(data,222222222222222);
+        console.log(data, 222222222222222);
         if (!data) {
             return res.sendStatus(404)
         }

@@ -3,14 +3,16 @@ import _ from 'lodash';
 import moment from 'moment'
 import bcrypt from 'bcryptjs'
 
-export const listUser = async (req, res, next) => {
+export const listUser = async(req, res, next) => {
     let { keySearch } = req.query;
     let data;
     let data2 = [];
     if (keySearch) {
         var options = {
             email: { $regex: ".*" + keySearch + ".*" },
-        }
+            role: "employee",
+            role: "dataEntry",
+        };
         data = await User.find(options);
         console.log(data, 1);
     } else {
@@ -27,7 +29,7 @@ export const listUser = async (req, res, next) => {
     }
     res.render('profile', { UserDB: data2 });
 }
-export const findOneProfile = async (req, res) => {
+export const findOneProfile = async(req, res) => {
     try {
         let { email } = req.params;
         let UserDB = await User.findOne({ email });
@@ -44,7 +46,7 @@ export const findOneProfile = async (req, res) => {
     }
 }
 
-export const createUser = async (req, res, next) => {
+export const createUser = async(req, res, next) => {
     try {
         await User.create(req.body);
         res.redirect('/profile');
@@ -54,7 +56,7 @@ export const createUser = async (req, res, next) => {
     }
 }
 
-export const DeleteUser = async (req, res, next) => {
+export const DeleteUser = async(req, res, next) => {
     try {
         await User.findByIdAndDelete(req.body._id);
         res.redirect('/profile');
@@ -66,7 +68,7 @@ export const DeleteUser = async (req, res, next) => {
 }
 
 
-export const login = async (req, res, next) => {
+export const login = async(req, res, next) => {
     try {
         const { phone, password } = req.body;
 
@@ -87,17 +89,17 @@ export const login = async (req, res, next) => {
 }
 
 
-export const logout = async (req, res, next) => {
-    try {
-        res.clearCookie('token');
-        res.redirect('/')
-    } catch (error) {
-        res.send(error.message);
+export const logout = async(req, res, next) => {
+        try {
+            res.clearCookie('token');
+            res.redirect('/')
+        } catch (error) {
+            res.send(error.message);
+        }
     }
-}
-// profileDetail
+    // profileDetail
 
-export const listUserDetail = async (req, res, next) => {
+export const listUserDetail = async(req, res, next) => {
     try {
         const { email } = req.params;
         let data = await User.findOne({ email });
@@ -112,7 +114,7 @@ export const listUserDetail = async (req, res, next) => {
 
 }
 
-export const deleteUserDetail = async (req, res, next) => {
+export const deleteUserDetail = async(req, res, next) => {
     try {
         await User.findByIdAndDelete(req.body._id);
         res.redirect('/profile');
