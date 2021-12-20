@@ -44,16 +44,16 @@
                                     <p id="tongnguoidung"> Tổng số người dùng là: {{totalUserCustomer}}</p>
                                 </div>
                                 <div class="col-md-4 mb-2">
-                                    <p class="text-white" id="tongsophong"> {{totalRoom}}</p>
+                                    <p class="text-white" id="tongsophong" type="hidden"> {{totalRoom}}</p>
                                 </div>
                                 <div class="col-md-4 mb-2">
-                                    <p class="text-white" id="tongphongtrong"> {{totalRoom0}}</p>
+                                    <p class="text-white" id="tongphongtrong" type="hidden">  {{totalRoom0}}</p>
                                 </div>
                                 <div class="col-md-4 mb-2">
-                                    <p class="text-white" id="tongphongdattruoc"> {{totalRoom1}}</p>
+                                    <p class="text-white" id="tongphongdattruoc" type="hidden">    {{totalRoom1}}</p>
                                 </div>
                                 <div class="col-md-4 mb-2">
-                                    <p class="text-white" id="tongphongdangsudung"> {{totalRoom2}}</p>
+                                    <p class="text-white" id="tongphongdangsudung" type="hidden">   {{totalRoom2}}</p>
                                 </div>
 
                             </div>
@@ -74,6 +74,7 @@
                                             <th>Số Điện thoại</th>
                                             <th>Trạng Thái </th>
                                             <th>Ngày Tạo Đơn</th>
+                                            <th>Ngày Cập Nhật</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -90,10 +91,10 @@
                                                         <select id="selectStatus"
                                                             class="d-inline-block form-select form-select-sm">
                                                             <option value="" selected="">Trạng Thái Đơn</option>
-                                                            <option value="0">Chưa xác nhận</option>
-                                                            <option value="1">Đã Xác Nhận </option>
-                                                            <option value="2">Đang Chờ Thanh Toán </option>
-                                                            <option value="3">Đã Thanh Toán</option>
+                                                            <option value="0">Chưa xác nhận(0)</option>
+                                                            <option value="1">Đã Xác Nhận(1) </option>
+                                                            <option value="2">Đang Chờ Thanh Toán(2) </option>
+                                                            <option value="3">Đã Thanh Toán(3)</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -113,8 +114,7 @@
                                             <td>{{this.phone}}</td>
                                             <td>{{this.bookingStatus}}</td>
                                             <td>{{#newDate this.createdAt}}{{/newDate}}</td>
-
-
+                                            <td>{{#newDate this.updatedAt}}{{/newDate}}</td>
 
                                         </tr>
                                         {{/each }}
@@ -136,9 +136,9 @@
                                         {{totalBooked3}}</p>
                                 </div>
                                 <hr class="sidebar-divider my-0">
+                                <br>
 
-
-                                <div for="mb-3">
+                                <div class="col-md-auto text-nowrap"   for="mb-3">
                                     <label class="form-label">Chọn Ngày Xem Doanh Thu:</label>
                                     <input id="date" type="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01"
                                         max="2030-12-31">
@@ -180,9 +180,9 @@
                                     </div>
                                 </div>
 
-                                <p class="p-3 mb-2 bg-info text-white" id="tongnguoidung"> Tổng doanh thu {{year}}
+                                <p class="text-danger fw-bold fst-italic" id="tongnguoidung"> Tổng doanh thu {{year}}
                                     {{month}} {{date}}: {{_number}} VNĐ</p>
-                                <p class="p-3 mb-2 bg-warning text-dark"> Tổng doanh thu: {{_number2}} VNĐ</p>
+                                <p class=" text-warning fw-bold fst-italic"  > Tổng doanh thu: {{_number2}} VNĐ</p>
                             </div>
 
 
@@ -245,7 +245,7 @@
                         'rgba(153, 102, 255, 1)',
                         'rgba(255, 159, 64, 1)'
                     ],
-                    borderWidth: 2
+                    borderWidth: 4
                 }]
             },
             options: {

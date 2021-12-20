@@ -23,20 +23,24 @@ export const statistical = async(req, res, next) => {
         let totalRoomRate = totalRoomRate1;
 
         if (!_.isEmpty(date)) {
-            totalRoomRate = totalRoomRate1.filter(val => moment(date).format('DD/MM/YYYY') === moment(val.createdAt).format('DD/MM/YYYY'))
+            totalRoomRate = totalRoomRate1.filter(
+                (val) =>
+                moment(date).format("DD/MM/YYYY") ===
+                moment(val.updatedAt).format("DD/MM/YYYY")
+            );
         }
         if (!_.isEmpty(month)) {
             totalRoomRate = totalRoomRate1.filter(
                 (val) =>
                 moment(month).format("MM/YYYY") ===
-                moment(val.createdAt).format("MM/YYYY")
+                moment(val.updatedAt).format("MM/YYYY")
             );
         }
         if (!_.isEmpty(year)) {
             totalRoomRate = totalRoomRate1.filter(
                 (val) =>
                 moment(year).format("YYYY") ===
-                moment(val.createdAt).format("YYYY")
+                moment(val.updatedAt).format("YYYY")
             );
         }
         console.log(totalRoomRate4)
